@@ -10,11 +10,11 @@ const Navbar = () => {
   };
 
   const menuLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'Over ons' },
-    { href: '#projects', label: 'Projecten' },
-    { href: '#donate', label: 'Doneer' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/over', label: 'Over ons' },
+    { href: '/projecten', label: 'Projecten' },
+    { href: '/doneer', label: 'Doneer' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -74,8 +74,8 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-0 left-0 w-full bg-white transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <div className="flex flex-col w-full space-y-8 mt-4">
+      <div className={`md:hidden absolute h-[50%] pb-5 z-50 top-26  w-full bg-white transition-all items-center duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <div className="flex flex-col  z-50 justify-center items-center w-full space-y-8 mt-4">
           {menuLinks.map((link) => (
             <a
               key={link.href}

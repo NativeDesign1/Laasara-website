@@ -3,10 +3,10 @@ import headerImage from '../assets/headerImage.png';
 
 const HeaderSection = () => {
   return (
-    <section className="bg-white sm:py-12">
+    <section className="bg-white sm:py-12 pt-5">
       <div className="container mx-auto flex flex-col-reverse sm:flex-row md:mt-7 gap-6 sm:gap-0 ">
         {/* Left Text Section */}
-        <div className=" justify-center space-y-8 md:text-left px-15 w-full sm:w-1/2 pt-9">
+        <div className=" justify-center  text-center space-y-8 md:text-left px-15 w-full sm:w-1/2 pt-9">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
             Samen maken we het verschil
           </h1>

@@ -27,3 +27,29 @@
     background-size: cover; /* Adjust as needed */
     background-position: center; 
   }
+
+  .headerSection{
+    background-image: url("/src/assets/projectSection.png");
+    background-size: cover; /* Adjust as needed */
+    background-position: center ; 
+    repeat: no-repeat;
+    
+  }
+
+  .vision{
+    background-image: url("/src/assets/goalSectionbg.png");
+    background-size: 100% 70%; /* Adjust as needed */
+     
+    background-repeat: no-repeat;
+    
+    
+  }
+
+  @media (max-width: 640px) { /* Tailwind's sm breakpoint */
+    .vision {
+      background-image: none;
+    }
+  }
+
+
+  /*  */
