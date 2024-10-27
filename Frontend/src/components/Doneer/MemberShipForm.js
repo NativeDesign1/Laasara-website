@@ -3,18 +3,18 @@ import { loadStripe } from '@stripe/stripe-js';
 import Select from 'react-select';
 import PersonAddIcon from '@mui/icons-material/PersonAdd'; // Import the membership icon
 
-const stripePromise = loadStripe('pk_test_51MlfU8HM8dE1aPuehjCiSNdPMvzYUcL27JQIC8DTkf4PgMNcPLTBOx3re5eDAexkYFp7Wa9ZioU4H6mhEseIQvJy00Wd1AGhRV');
+const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
 const SubscriptionForm = () => {
-  const [selectedPrice, setSelectedPrice] = useState('price_1Q6rokHM8dE1aPueLG8Dib5t');
+  const [selectedPrice, setSelectedPrice] = useState('price_1Q6WfBHM8dE1aPueXK1VLe30');
   const [isProcessing, setIsProcessing] = useState(false);
 
   const options = [
-    { value: 'price_1Q6rokHM8dE1aPueLG8Dib5t', label: '€5' },
-    { value: 'price_1Q6roqHM8dE1aPue1zvl47sD', label: '€10' },
-    { value: 'price_1Q6rowHM8dE1aPueKIwSnZD6', label: '€15' },
-    { value: 'price_1Q6rp2HM8dE1aPuexL2fBTEh', label: '€25' },
-    { value: 'price_1Q6rp8HM8dE1aPueQgUQmnQi', label: '€50' },
+    { value: 'price_1Q6WfBHM8dE1aPueXK1VLe30', label: '€5' },
+    { value: 'price_1Q6WfIHM8dE1aPueEcFQS4Cd', label: '€10' },
+    { value: 'price_1Q6WfQHM8dE1aPuexsoirJf4', label: '€15' },
+    { value: 'price_1Q6Wf2HM8dE1aPuex2mB7ogZ', label: '€20' },
+    { value: 'price_1Q6WevHM8dE1aPuehEXe2xBz', label: '€50' },
   ];
 
   const handleSubscription = async (e) => {
@@ -57,7 +57,7 @@ const SubscriptionForm = () => {
       <form onSubmit={handleSubscription}>
         <div className="mb-4">
           <label htmlFor="subscriptionPlan" className="block text-lg font-normal mb-2 text-left">
-            Maandelijkse bedrag
+            Maandelijks bedrag
           </label>
           <Select
             id="subscriptionPlan"
@@ -91,7 +91,7 @@ const SubscriptionForm = () => {
           disabled={isProcessing}
           className="w-full bg-lightGreen text-white py-2 px-4 rounded-md hover:scale-80 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          {isProcessing ? 'Processing...' : 'Subscribe'}
+          {isProcessing ? 'Wordt verwerkt...' : 'Abonneer'}
         </button>
       </form>
     </div>

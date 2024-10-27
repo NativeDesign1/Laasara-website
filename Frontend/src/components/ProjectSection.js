@@ -18,8 +18,8 @@ const ProjectSection = () => {
           </p>
 
           <a
-            href="#leesmeer"
-            className="bg-softBlue text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-500 hover:shadow-lg transition duration-300 inline-block mt-3"
+            href="/projecten"
+            className="bg-softBlue text-white px-6 py-3 rounded-lg text-lg hover:scale-105 hover:shadow-lg transition duration-300 inline-block mt-3"
           >
             Lees meer
           </a>

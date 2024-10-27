@@ -25,7 +25,7 @@ const VisionSection = () => {
             vaardigheden die ze hebben geleerd.
           </p>
           <button className="bg-gradient-to-r from-[#38B6FF] to-[#5EB23F] shadow-lg justify-center text-white font-semibold py-2 px-8 sm:px-12 rounded-xl  hover:scale-110 transition duration-300">
-            Steun Ons
+            <a href="/doneer">Steun Ons</a>
           </button>
         </div>
 
@@ -43,7 +43,7 @@ const VisionSection = () => {
           <img
             src={visionImage}
             alt="Onze visie"
-            className="w-[80%] relative sm:w-full align-center h-auto sm:rounded-2xl sm:shadow-2xl ml-10 rounded-sm "
+            className="w-[80%] relative sm:w-full align-center h-auto sm:rounded-2xl sm:shadow-2xl ml-10  "
           />
         </div>
       </div>

@@ -16,10 +16,10 @@ const ProjectenHeader = () => {
       {/* Optional Buttons for Navigation */}
       <div className="flex space-x-4">
         <button className="px-6 py-2 bg-softBlue text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300">
-          Doneer
+          <a href="/doneer">Doneer</a>
         </button>
         <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-lg hover:bg-gray-300 transition duration-300">
-          Neem Contact Op
+          <a href="/contact">Neem Contact Op</a>
         </button>
       </div>
     </div>

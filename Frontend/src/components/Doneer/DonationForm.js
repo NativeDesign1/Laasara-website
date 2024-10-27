@@ -6,7 +6,7 @@ import CheckoutForm from './CheckoutForm';
 import FavoriteIcon from '@mui/icons-material/Favorite'; // Import the heart icon
 
 // Load Stripe.js with your publishable key
-const stripePromise = loadStripe('pk_test_51MlfU8HM8dE1aPuehjCiSNdPMvzYUcL27JQIC8DTkf4PgMNcPLTBOx3re5eDAexkYFp7Wa9ZioU4H6mhEseIQvJy00Wd1AGhRV');
+const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
 const DonationForm = () => {
     const [clientSecret, setClientSecret] = useState('');
@@ -24,7 +24,7 @@ const DonationForm = () => {
 
         try {
             const response = await axios.post('http://localhost:4242/create-payment-intent', {
-                amount: amount * 1000,
+                amount: amount * 100,
                 currency: 'eur',
             });
             setClientSecret(response.data.clientSecret);

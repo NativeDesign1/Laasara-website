@@ -55,14 +55,14 @@ const GoalsSection = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row  justify-center space-y-6 sm:space-y-0 sm:space-x-8 space-x-0 mb-8 px-8 sm:mt-12">
           <a
-            href="#word-lid"
-            className="bg-lightGreen text-white px-12 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-lg"
+            href="/doneer"
+            className="bg-lightGreen text-white px-12 py-3 rounded-lg text-lg hover:bg-green-600 hover:scale-105 transition duration-300 shadow-lg"
           >
             Word lid
           </a>
           <a
-            href="#doneer"
-            className="bg-softBlue text-white px-12 py-3 rounded-lg text-lg hover:bg-blue-600 transition duration-300 shadow-lg "
+            href="/doneer"
+            className="bg-softBlue text-white px-12 py-3 rounded-lg text-lg hover:scale-105 transition duration-300 shadow-lg "
           >
             Doneer
           </a>

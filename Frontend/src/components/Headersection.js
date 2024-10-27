@@ -22,8 +22,8 @@ const HeaderSection = () => {
             gemeenschap en zich willen inzetten om de levensomstandigheden van de mensen te verbeteren.
           </p>
           <a
-            href="#leesmeer"
-            className="bg-softBlue text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition duration-300 inline-block mt-3"
+            href="/over"
+            className="bg-softBlue text-white px-6 py-3 rounded-lg text-lg hover:scale-105 transition duration-300 inline-block mt-3"
           >
             Lees meer
           </a>
@@ -31,7 +31,7 @@ const HeaderSection = () => {
 
         {/* Right Image Section */}
         <motion.div
-          className="bg-transparent flex-1 w-full sm:w-1/2"
+          className="bg-transparent relative flex-1 w-full sm:w-1/2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.5 }}
@@ -39,8 +39,11 @@ const HeaderSection = () => {
           <img
             src={headerImage} // Replace with your image URL
             alt="Laassara Foundation"
-            className="w-full mx-auto max-w-lg md:rounded-tr-2xl md:rounded-br-2xl"
+            className="relative z-10 w-full mx-auto max-w-lg md:rounded-tr-2xl md:rounded-br-2xl"
           />
+           <div className='bg-softBlue absolute -top-6 right-16 w-40 h-24 z-0 rounded-tr-2xl'></div>
+           <div className='bg-softBlue absolute -bottom-6 left-16 w-40 h-24 z-0 rounded-bl-2xl'></div>
+
         </motion.div>
       </div>
     </section>
