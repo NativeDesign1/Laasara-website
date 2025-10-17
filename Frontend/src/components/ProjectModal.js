@@ -19,7 +19,16 @@ function ProjectModal({ project, onClose }) {
 
         <div className="p-6">
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            {project.images.map((image, index) => (
+            {/* Main image */}
+            <div className="rounded-xl overflow-hidden shadow-lg">
+              <img
+                src={project.image_url}
+                alt={project.title}
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            {/* Additional images */}
+            {project.additional_images && project.additional_images.map((image, index) => (
               <div key={index} className="rounded-xl overflow-hidden shadow-lg">
                 <img
                   src={image}
@@ -32,7 +41,7 @@ function ProjectModal({ project, onClose }) {
 
           <div className="prose max-w-none">
             <h3 className="text-xl font-bold text-gray-800 mb-4">Over dit project</h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">{project.fullDescription}</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">{project.full_description}</p>
 
             {project.details && (
               <>
@@ -55,6 +64,21 @@ function ProjectModal({ project, onClose }) {
               </>
             )}
           </div>
+
+          {/* Videos section */}
+          {project.videos && project.videos.length > 0 && (
+            <div className="mt-6">
+              <h4 className="text-lg font-bold text-gray-800 mb-3">Video's</h4>
+              <div className="grid gap-4">
+                {project.videos.map((video, index) => (
+                  <video key={index} controls className="w-full rounded-lg">
+                    <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-8 flex gap-4">
             <button className="flex-1 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition">

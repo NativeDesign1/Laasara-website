@@ -1,163 +1,232 @@
 import React, { useState, useEffect } from 'react';
+import ProjectModal from '../ProjectModal';
 import { supabase } from '../../lib/supabaseClient';
 
-const ProjectForm = ({ initialData, onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    image_url: '',
-    additional_images: [],
-    videos: [],
-    full_description: '',
-    details: [],
-    impact: ''
-  });
-  const [uploading, setUploading] = useState(false);
+const ProjectenNew = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showMore, setShowMore] = useState(false);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (initialData) {
-      setFormData(initialData);
+    fetchProjects();
+  }, []);
+
+const fetchProjects = async () => {
+  try {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    if (error) throw error;
+
+    // First verify all images exist in storage
+    const verifyImageExists = async (imagePath) => {
+      try {
+        const { data } = await supabase
+          .storage
+          .from('Project-images')
+          .list('Projecten');
+        
+        return data.some(file => file.name === imagePath);
+      } catch (err) {
+        console.error('Error verifying image:', err);
+        return false;
+      }
+    };
+
+    // Deduplicate projects based on title and verify images
+    const uniqueProjects = Array.from(
+      new Map(data.map(item => [item.title, item])).values()
+    );
+
+    const projectsWithSignedUrls = await Promise.all(
+      uniqueProjects.map(async project => {
+        try {
+          // Verify image exists before trying to get signed URL
+          const imageExists = await verifyImageExists(project.image_url);
+          
+          if (!imageExists) {
+            console.warn(`Image not found for ${project.title}: ${project.image_url}`);
+            return null;
+          }
+
+          // Get signed URL for main image
+          const { data: mainImageData, error: mainImageError } = await supabase
+            .storage
+            .from('Project-images')
+            .createSignedUrl(`Projecten/${project.image_url}`, 31536000);
+
+          if (mainImageError) {
+            console.error(`Error getting signed URL for ${project.title}:`, mainImageError);
+            return null;
+          }
+
+          // Process additional images only if they exist
+          const additionalImages = await Promise.all(
+            (project.additional_images || [])
+              .filter(Boolean)
+              .filter(async img => await verifyImageExists(img))
+              .map(async img => {
+                const { data } = await supabase
+                  .storage
+                  .from('Project-images')
+                  .createSignedUrl(`Projecten/${img}`, 31536000);
+                return data?.signedUrl;
+              })
+          );
+
+          // Process videos similarly
+          const videos = await Promise.all(
+            (project.videos || [])
+              .filter(Boolean)
+              .map(async video => {
+                const { data } = await supabase
+                  .storage
+                  .from('Project-images')
+                  .createSignedUrl(`Projecten/${video}`, 31536000);
+                return data?.signedUrl;
+              })
+          );
+
+          return {
+            ...project,
+            image_url: mainImageData.signedUrl,
+            additional_images: additionalImages.filter(Boolean),
+            videos: videos.filter(Boolean)
+          };
+        } catch (err) {
+          console.error(`Error processing project ${project.title}:`, err);
+          return null;
+        }
+      })
+    );
+
+    // Filter out null projects and remove duplicates
+    const validProjects = projectsWithSignedUrls.filter(Boolean);
+
+    if (validProjects.length === 0) {
+      setError('No valid projects found');
+      return;
     }
-  }, [initialData]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+    setProjects(validProjects);
+  } catch (err) {
+    console.error('Error fetching projects:', err);
+    setError('Failed to load projects');
+  } finally {
+    setLoading(false);
+  }
+};
+  const displayedProjects = showMore ? projects : projects.slice(0, 6);
 
-  const handleDetailsChange = (e, index) => {
-    const newDetails = [...formData.details];
-    newDetails[index] = e.target.value;
-    setFormData(prev => ({
-      ...prev,
-      details: newDetails
-    }));
-  };
+  if (loading) {
+    return (
+      <div className="pt-32">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded max-w-2xl mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const addDetail = () => {
-    setFormData(prev => ({
-      ...prev,
-      details: [...prev.details, '']
-    }));
-  };
-
-  const removeDetail = (index) => {
-    setFormData(prev => ({
-      ...prev,
-      details: prev.details.filter((_, i) => i !== index)
-    }));
-  };
-
-  const handleImageUpload = async (e) => {
-    try {
-      setUploading(true);
-      const file = e.target.files[0];
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `Projecten/${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('Project-images')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data } = supabase.storage
-        .from('Project-images')
-        .getPublicUrl(`Projecten/${fileName}`);
-
-      setFormData(prev => ({
-        ...prev,
-        image_url: data.publicUrl
-      }));
-    } catch (error) {
-      console.error('Error uploading image:', error);
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
+  if (error) {
+    return (
+      <div className="pt-32">
+        <div className="container mx-auto px-4 text-center text-red-600">
+          {error}
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold mb-6">
-        {initialData ? 'Project Bewerken' : 'Nieuw Project'}
-      </h2>
+    <div className="pt-32">
+      <section className="bg-gradient-to-br from-cyan-600 to-teal-600 text-white py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-6xl font-bold mb-6">Onze Projecten</h1>
+          <p className="text-xl max-w-3xl mx-auto text-cyan-50">
+            Ontdek hoe we samen werken aan een betere toekomst voor gemeenschappen in nood.
+          </p>
+        </div>
+      </section>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Titel
-        </label>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-          className="w-full px-3 py-2 border rounded-md"
-        />
-      </div>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition group"
+              >
+                <div className="relative overflow-hidden h-72">
+                                   
+                  <img
+                    src={project.image_url}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    onError={(e) => {
+                      console.warn(`Failed to load image for project: ${project.title}`);
+                      e.target.src = '/fallback-image.jpg'; // Make sure to add a fallback image
+                    }}
+                    loading="lazy" // Add lazy loading for better performance
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{project.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition w-full"
+                  >
+                    Lees meer
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Korte Beschrijving
-        </label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-          rows="2"
-          className="w-full px-3 py-2 border rounded-md"
-        />
-      </div>
+          {projects.length > 6 && (
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-md hover:shadow-lg transition duration-300"
+              >
+                {showMore ? "Toon minder" : "Toon meer"}
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Hoofdafbeelding
-        </label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="w-full"
-        />
-        {formData.image_url && (
-          <img
-            src={formData.image_url}
-            alt="Preview"
-            className="mt-2 h-32 object-cover rounded"
-          />
-        )}
-      </div>
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Volledige Beschrijving
-        </label>
-        <textarea
-          name="full_description"
-          value={formData.full_description}
-          onChange={handleChange}
-          required
-          rows="4"
-          className="w-full px-3 py-2 border rounded-md"
-        />
-      </div>
+      <section className="bg-gradient-to-br from-emerald-600 to-cyan-600 py-20">
+        <div className="container mx-auto px-4 text-center text-white">
+          <h2 className="text-4xl font-bold mb-6">Wil je een project steunen?</h2>
+          <p className="text-xl mb-10 text-emerald-50 max-w-2xl mx-auto">
+            Elke donatie maakt een verschil. Help ons om deze belangrijke projecten te realiseren en levens te veranderen.
+          </p>
+          <a
+            href="/doneer"
+            className="inline-block bg-white text-emerald-600 px-10 py-4 rounded-lg font-semibold hover:bg-emerald-50 transition text-lg"
+          >
+            Doneer nu
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Details
-        </label>
-        {formData.details.map((detail, index) => (
-          <div key={index} className="flex gap-2 mb-2">
-            <input
-              type="text"
-              value
+export default ProjectenNew;
