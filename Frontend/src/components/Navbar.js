@@ -1,95 +1,90 @@
 import React, { useState } from 'react';
-import logo from '../assets/Laassaara Foundation (2).svg';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Globe, Mail, Phone } from 'lucide-react';
 
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const menuLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/over', label: 'Over ons' },
-    { href: '/projecten', label: 'Projecten' },
-    { href: '/doneer', label: 'Doneer' },
-    { href: '/contact', label: 'Contact' },
+  const navItems = [
+    { path: '/', label: 'Home' },
+    { path: '/over-ons', label: 'Over ons' },
+    { path: '/projecten', label: 'Projecten' },
+    { path: '/doneer', label: 'Doneer' },
+    { path: '/contact', label: 'Contact' }
   ];
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <nav >
-      <div className="bg-gradient-to-r from-green-400 w-full h-10 to-blue-400 p-4">
-
-      </div>
-      <div className="container mx-auto md:mt-2  flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center">
-          <img
-            src={logo} // replace with your logo URL
-            alt="Logo"
-            className="h-[119px] w-[119px]"
-          />
-          
+    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+      <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white py-2">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
+          <a href="mailto:info@laassaarafoundation.nl" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Mail size={16} />
+            <span>info@laassaarafoundation.nl</span>
+          </a>
+          <a href="tel:+31623044495" className="flex items-center gap-2 hover:opacity-80 transition">
+            <Phone size={16} />
+            <span>NL67 TRIO 0320 5916 89</span>
+          </a>
         </div>
+      </div>
 
-        {/* Hamburger Menu Icon for Mobile */}
-        <div className="md:hidden m-2 mr-5">
+      <nav className="container mx-auto px-4 py-4">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
+            <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center">
+              <Globe className="text-white" size={24} />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-gray-800">Laassara Foundation</h1>
+              <p className="text-xs text-gray-600">Samen maken we het verschil</p>
+            </div>
+          </Link>
+
+          <div className="hidden md:flex gap-8">
+            {navItems.map(item => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-gray-700 hover:text-emerald-600 transition font-medium ${
+                  isActive(item.path) ? 'text-emerald-600 border-b-2 border-emerald-600' : ''
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
           <button
-            onClick={toggleMenu}
-            className="text-gray-800 focus:outline-none"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
+            className="md:hidden text-gray-700"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-10">
-          {menuLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="relative text-gray-800 text-lg font-semibold  hover:text-green-600 border-b-2 border-transparent gradient-border tracking-widest"
-            >
-              {link.label}
-              <span className="absolute bottom-0 left-0 w-full h-0.5 hover:bg-gradient-to-r from-green-400 to-blue-400 transform scale-x-0 transition-transform duration-300 ease-out hover:scale-x-100"></span>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden bg-opacity-95 absolute h-[100%] pb-5 z-50 top-26  w-full bg-white transition-all items-center duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <div className="flex flex-col   justify-center items-center w-full space-y-8 mt-4">
-          {menuLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={toggleMenu} // Close the menu when the link is clicked
-              className="text-gray-800 text-lg font-semibold tracking-widest  hover:text-green-600 hover:border-b-2 border-transparent hover:border-green-600"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t pt-4">
+            {navItems.map(item => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left py-2 px-4 hover:bg-emerald-50 rounded transition ${
+                  isActive(item.path) ? 'bg-emerald-50 text-emerald-600 font-medium' : 'text-gray-700'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </nav>
+    </header>
   );
-};
+}
 
-export default Navbar;
+export default Header;

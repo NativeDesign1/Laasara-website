@@ -1,37 +1,44 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Header from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Over from './pages/Over';
+import OverOns from './pages/OverOns';
 import Projecten from './pages/Projecten';
-import Contact from './pages/Contact';
 import Doneer from './pages/Doneer';
+import Contact from './pages/Contact';
+import AdminProjects from './pages/AdminPage';
+import DataMigration from './components/Admin/DataMigration';
+
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
-      <div className="App">
-        {/* Navbar */}
-        <Navbar />
-        
-        {/* Page Content */}
+      <div className="min-h-screen bg-white flex flex-col">
+        <Header />
         <main className="flex-grow">
           <Routes>
-            {/* Define routes for different pages */}
-            <Route exact path="/" element={<Home />} />
-            <Route path="/over" element={<Over />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/over-ons" element={<OverOns />} />
             <Route path="/projecten" element={<Projecten />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="/doneer" element={<Doneer />} />
-            {/* Add more routes as needed */}
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin/migrate" element={<DataMigration />} />
+            <Route path="/admin/projects" element={
+              <ProtectedRoute>
+                <AdminProjects />
+              </ProtectedRoute>} />
           </Routes>
         </main>
-        
-        {/* Footer */}
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

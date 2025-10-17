@@ -1,12 +1,10 @@
 import React from 'react'
-import ProjectenHeader from '../components/Projecten/Projectheader';
-import ProjectsList from '../components/Projecten/ProjectsList';
+import ProjectenNew from '../components/Projecten/ProjectenNew';
 
 const Projecten = () => {
   return (
     <div>
-      <ProjectenHeader />
-      <ProjectsList />
+      <ProjectenNew />
     </div>
   )
 }
