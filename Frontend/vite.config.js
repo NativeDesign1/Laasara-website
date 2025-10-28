@@ -5,6 +5,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      external: ['@mui/material', '@mui/icons-material'],},
     assetsDir: 'assets',
     sourcemap: true
   },
@@ -23,6 +25,7 @@ export default defineConfig({
       loader: {
         '.js': 'jsx'
       }
-    }
+    },
+    include: ['@mui/material', '@mui/icons-material'],
   }
 })
