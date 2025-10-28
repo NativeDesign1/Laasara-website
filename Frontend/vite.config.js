@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: ['@mui/material', '@mui/icons-material'],},
+      external: [],},
     assetsDir: 'assets',
     sourcemap: true
   },
