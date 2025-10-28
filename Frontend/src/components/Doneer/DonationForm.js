@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import CheckoutForm from './CheckoutForm';  
-import FavoriteIcon from '@mui/icons-material/Favorite'; // Import the heart icon
+import CheckoutForm from './CheckoutForm';
+import { Euro, ErrorOutline } from '@mui/icons-material';
 
-// Load Stripe.js with your publishable key
 const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
 const DonationForm = () => {
@@ -16,7 +15,7 @@ const DonationForm = () => {
 
     const createPaymentIntent = async () => {
         if (amount < 1) {
-            setError('Please enter a valid amount greater than 0.');
+            setError('Voer een geldig bedrag in (minimaal €1)');
             return;
         }
 
@@ -31,49 +30,83 @@ const DonationForm = () => {
             setIsPaymentIntentCreated(true);
         } catch (error) {
             console.error('Error creating payment intent', error);
-            setError('Failed to create payment intent. Please try again.');
+            setError('Er is een fout opgetreden. Probeer het opnieuw.');
         }
     };
 
     return (
-      <div className="sm:w-[80%] mx-auto p-6 bg-white shadow-none rounded-md">
-        {/* Icon instead of text */}
-        <div className="flex justify-center mb-6">
-          <FavoriteIcon style={{ fontSize: 48, color: '#D32F2F' }} />  {/* Material UI heart icon */}
+        <div className="space-y-8">
+            {/* Amount Input */}
+            <div className="space-y-4">
+                <label htmlFor="amount" className="block text-lg font-medium text-gray-700">
+                    Donatiebedrag
+                </label>
+                <div className="relative group">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                        <Euro className="text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+                    </div>
+                    <input
+                        id="amount"
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        className="w-full pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-xl
+                            focus:ring-4 focus:ring-blue-100 focus:border-blue-500
+                            transition-all duration-200 outline-none
+                            group-hover:border-blue-300"
+                        placeholder="0.00"
+                    />
+                </div>
+                {error && (
+                    <div className="flex items-center space-x-2 text-red-500 text-sm">
+                        <ErrorOutline fontSize="small" />
+                        <span>{error}</span>
+                    </div>
+                )}
+            </div>
+
+            {/* Quick Amount Buttons */}
+            <div className="grid grid-cols-3 gap-3">
+                {[5, 10, 25, 50, 100, 250].map((quickAmount) => (
+                    <button
+                        key={quickAmount}
+                        onClick={() => setAmount(quickAmount)}
+                        className="py-2 px-4 text-sm font-medium rounded-lg border-2 border-gray-200
+                            hover:border-blue-500 hover:bg-blue-50 transition-all duration-200
+                            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        €{quickAmount}
+                    </button>
+                ))}
+            </div>
+
+            {/* Donate Button */}
+            <button
+                onClick={createPaymentIntent}
+                disabled={!amount || isPaymentIntentCreated}
+                className={`w-full py-4 px-6 rounded-xl text-white text-lg font-semibold
+                    transition-all duration-300 transform hover:scale-[1.02]
+                    ${!amount ? 'bg-gray-400 cursor-not-allowed' :
+                    isPaymentIntentCreated ? 'bg-green-500 cursor-not-allowed' :
+                    'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}
+                    shadow-md hover:shadow-lg`}
+            >
+                {isPaymentIntentCreated ? '✓ Bedrag Gekozen' : 'Doorgaan met Doneren'}
+            </button>
+
+            {/* Payment Form */}
+            {clientSecret && (
+                <div className="mt-8 pt-8 border-t border-gray-200">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                        Betaalgegevens
+                    </h3>
+                    <Elements stripe={stripePromise} options={{ clientSecret }}>
+                        <CheckoutForm amount={amount} />
+                    </Elements>
+                </div>
+            )}
         </div>
-  
-        <div className="mb-8">
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-600">
-            Bedrag (€)
-          </label>
-          <input
-            id="amount"
-            type="number"
-            value={amount}
-            onChange={(e) => {setAmount(e.target.value);
-              createPaymentIntent();}
-            }
-            className="mt-1 block w-full p-2 border my-4  border-gray-300 rounded-md shadow-sm  sm:text-sm"
-            placeholder="Bedrag"
-          />
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-        </div>
-  
-        <button
-          onClick={createPaymentIntent}
-          className={`w-full bg-softBlue text-white py-2 px-4 hover:scale-105 rounded-md transition duration-300 ${isPaymentIntentCreated ? 'opacity-50 cursor-not-allowed' : ''}`}
-          disabled={isPaymentIntentCreated}
-        >
-          {isPaymentIntentCreated ? 'Payment Intent Created' : 'Kies je bedrag'}
-        </button>
-  
-        {clientSecret && (
-          <Elements stripe={stripePromise} options={{ clientSecret }}>
-            <CheckoutForm amount={amount} />  
-          </Elements>
-        )}
-      </div>
     );
-  };
+};
 
 export default DonationForm;

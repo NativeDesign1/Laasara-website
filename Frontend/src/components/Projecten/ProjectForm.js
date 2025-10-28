@@ -183,7 +183,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Hoofdafbeelding
           </label>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             <input
               type="file"
               accept="image/*"
@@ -236,13 +236,14 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
                   alt={`Preview ${index + 1}`} 
                   className="w-full h-full object-cover rounded-lg"
                 />
-                <button
+                <a> <button
                   type="button"
                   onClick={() => removeAdditionalImage(index)}
                   className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
                 >
                   <X size={16} />
                 </button>
+                </a> 
               </div>
             ))}
           </div>

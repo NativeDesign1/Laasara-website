@@ -5,8 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    host: true,
-    open: true
+    host: 'localhost',
+    open: true,
+    cors: true, // Enable CORS
   },
   esbuild: {
     loader: "jsx",

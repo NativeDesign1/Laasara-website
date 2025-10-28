@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import Select from 'react-select';
-import PersonAddIcon from '@mui/icons-material/PersonAdd'; // Import the membership icon
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import AutoRenewIcon from '@mui/icons-material/AutoRenew';
 
 const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
@@ -10,11 +11,11 @@ const SubscriptionForm = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const options = [
-    { value: 'price_1Q6WfBHM8dE1aPueXK1VLe30', label: '€5' },
-    { value: 'price_1Q6WfIHM8dE1aPueEcFQS4Cd', label: '€10' },
-    { value: 'price_1Q6WfQHM8dE1aPuexsoirJf4', label: '€15' },
-    { value: 'price_1Q6Wf2HM8dE1aPuex2mB7ogZ', label: '€20' },
-    { value: 'price_1Q6WevHM8dE1aPuehEXe2xBz', label: '€50' },
+    { value: 'price_1Q6WfBHM8dE1aPueXK1VLe30', label: '€5 per maand' },
+    { value: 'price_1Q6WfIHM8dE1aPueEcFQS4Cd', label: '€10 per maand' },
+    { value: 'price_1Q6WfQHM8dE1aPuexsoirJf4', label: '€15 per maand' },
+    { value: 'price_1Q6Wf2HM8dE1aPuex2mB7ogZ', label: '€20 per maand' },
+    { value: 'price_1Q6WevHM8dE1aPuehEXe2xBz', label: '€50 per maand' },
   ];
 
   const handleSubscription = async (e) => {
@@ -31,7 +32,6 @@ const SubscriptionForm = () => {
       });
 
       const data = await response.json();
-
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({
         sessionId: data.id,
@@ -47,53 +47,93 @@ const SubscriptionForm = () => {
     }
   };
 
+  const customSelectStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      padding: '0.5rem',
+      borderRadius: '1rem',
+      border: '2px solid',
+      borderColor: state.isFocused ? '#3B82F6' : '#E5E7EB',
+      boxShadow: state.isFocused ? '0 0 0 3px rgba(59, 130, 246, 0.1)' : 'none',
+      '&:hover': {
+        borderColor: '#3B82F6',
+      },
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? '#3B82F6' : state.isFocused ? '#EFF6FF' : 'white',
+      color: state.isSelected ? 'white' : '#1F2937',
+      padding: '0.75rem 1rem',
+      cursor: 'pointer',
+      '&:active': {
+        backgroundColor: '#2563EB',
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: '1rem',
+      overflow: 'hidden',
+      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    }),
+  };
+
   return (
-    <div className="max-w-md mx-auto p-6 space-y-4 bg-white  rounded-lg">
-      <div className="flex justify-center items-center mb-6">
-        <PersonAddIcon style={{ fontSize: 48 }} className="text-blue-600 text-4xl " /> {/* Add the icon */}
-        
+    <div className="space-y-8">
+      <div className="text-center space-y-4">
+        <div className="flex items-center justify-center space-x-2 text-gray-600">
+          <AutoRenewIcon className="animate-spin-slow" />
+          <span>Maandelijks opzegbaar</span>
+        </div>
+        <p className="text-gray-600 leading-relaxed">
+          Maak het verschil met een maandelijkse bijdrage en steun ons werk om positieve verandering te creëren.
+        </p>
       </div>
-      <p className='text-center'>Maak het verschil met een maandelijkse bijdrage en steun ons werk om positieve verandering te creëren. Samen kunnen we een impact maken!</p>
-      <form onSubmit={handleSubscription}>
-        <div className="mb-4">
-          <label htmlFor="subscriptionPlan" className="block text-lg font-normal mb-2 text-left">
-            Maandelijks bedrag
+
+      <form onSubmit={handleSubscription} className="space-y-6">
+        <div className="space-y-4">
+          <label htmlFor="subscriptionPlan" className="block text-lg font-medium text-gray-700">
+            Kies uw maandelijkse bijdrage
           </label>
           <Select
             id="subscriptionPlan"
             value={options.find((option) => option.value === selectedPrice)}
             onChange={(option) => setSelectedPrice(option.value)}
             options={options}
-            className="w-full text-md border-sm-gray border-gray-300 rounded-lg shadow-none focus:outline-none"
-            styles={{
-              control: (provided) => ({
-                ...provided,
-                padding: '0.5rem',
-                borderRadius: '8px',
-              }),
-              option: (provided, state) => ({
-                ...provided,
-                borderRadius: state.isSelected ? '8px' : '8px',
-                backgroundColor: state.isSelected ? '#D3D3D3' : state.isFocused ? '#D3D3D3' : null,
-                color: state.isSelected ? '#fff' : '#000',
-              }),
-              singleValue: (provided) => ({
-                ...provided,
-                color: '#000',
-                borderRadius: '8px',
-              }),
-            }}
+            styles={customSelectStyles}
+            isSearchable={false}
+            className="text-lg"
           />
         </div>
 
         <button
           type="submit"
           disabled={isProcessing}
-          className="w-full bg-lightGreen text-white py-2 px-4 rounded-md hover:scale-80 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`w-full py-4 px-6 rounded-xl text-white text-lg font-semibold
+            transition-all duration-300 transform hover:scale-[1.02]
+            ${isProcessing 
+              ? 'bg-gray-400 cursor-not-allowed' 
+              : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}
+            shadow-md hover:shadow-lg flex items-center justify-center space-x-2`}
         >
-          {isProcessing ? 'Wordt verwerkt...' : 'Abonneer'}
+          {isProcessing ? (
+            <>
+              <AutoRenewIcon className="animate-spin" />
+              <span>Wordt verwerkt...</span>
+            </>
+          ) : (
+            <>
+              <PersonAddIcon />
+              <span>Word nu lid</span>
+            </>
+          )}
         </button>
       </form>
+
+      <div className="text-center text-sm text-gray-500">
+        <p>✓ Volledig geautomatiseerd</p>
+        <p>✓ Maandelijks opzegbaar</p>
+        <p>✓ Veilig betalen via Stripe</p>
+      </div>
     </div>
   );
 };
