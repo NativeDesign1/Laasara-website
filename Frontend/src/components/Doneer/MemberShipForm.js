@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import {Select} from 'react-select';
-import {PersonAddIcon} from '@mui/icons-material/PersonAdd';
-import {AutorenewIcon} from '@mui/icons-material/Autorenew';
+import Select from 'react-select';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
