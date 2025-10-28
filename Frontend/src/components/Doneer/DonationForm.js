@@ -12,6 +12,7 @@ const DonationForm = () => {
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
     const [isPaymentIntentCreated, setIsPaymentIntentCreated] = useState(false);
+    const [comment, setComment] = useState(''); 
 
     const createPaymentIntent = async () => {
         if (amount < 1) {
@@ -22,9 +23,10 @@ const DonationForm = () => {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:4242/create-payment-intent', {
+            const response = await axios.post('https://laasara-backend-8a70df67d523.herokuapp.com/create-payment-intent', {
                 amount: amount * 100,
                 currency: 'eur',
+                comment: comment
             });
             setClientSecret(response.data.clientSecret);
             setIsPaymentIntentCreated(true);
@@ -78,6 +80,22 @@ const DonationForm = () => {
                         €{quickAmount}
                     </button>
                 ))}
+            </div>
+            <div className="space-y-4">
+                <label htmlFor="comment" className="block text-lg font-medium text-gray-700">
+                    Opmerkingen (optioneel)
+                </label>
+                <textarea
+                    id="comment"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Voeg een opmerking toe bij uw donatie..."
+                    rows={3}
+                    className="w-full px-4 py-3 text-gray-700 border-2 border-gray-200 rounded-xl
+                        focus:ring-4 focus:ring-blue-100 focus:border-blue-500
+                        transition-all duration-200 outline-none
+                        hover:border-blue-300"
+                />
             </div>
 
             {/* Donate Button */}

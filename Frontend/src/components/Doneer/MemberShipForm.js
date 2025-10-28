@@ -23,7 +23,7 @@ const SubscriptionForm = () => {
     setIsProcessing(true);
 
     try {
-      const response = await fetch('http://localhost:4242/create-subscription-session', {
+      const response = await fetch('https://laasara-backend-8a70df67d523.herokuapp.com/create-subscription-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
