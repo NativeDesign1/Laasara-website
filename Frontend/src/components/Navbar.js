@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe, Mail, Phone } from 'lucide-react';
+import logo from "../assets/logo.svg"
 
 
 function Header() {
@@ -35,8 +36,8 @@ function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center">
-              <Globe className="text-white" size={24} />
+            <div className="w-12 h-12  rounded-full flex items-center justify-center">
+              <img className="text-white" src={logo} size={100} />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-800">Laassara Foundation</h1>

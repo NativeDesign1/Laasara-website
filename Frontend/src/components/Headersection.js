@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Users, Gift, ArrowRight } from 'lucide-react';
+import headerImage from "../assets/headerPic1.png"
 
 function Home() {
   return (
@@ -35,7 +36,7 @@ function Home() {
           <div className="relative">
             <div className="absolute -top-8 -left-8 w-full h-full bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-3xl opacity-20"></div>
             <img
-              src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src={headerImage}
               alt="Laassara Foundation"
               className="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]"
             />

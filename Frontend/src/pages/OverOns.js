@@ -1,5 +1,7 @@
 import React from 'react';
 import { Heart, Users, Gift, Building, Globe, Handshake } from 'lucide-react';
+import missie from "../assets/missie.png"
+import visie from "../assets/visie.png"
 
 function Over() {
   const goals = [
@@ -74,7 +76,7 @@ function Over() {
             <div className="relative">
               <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-2xl opacity-20"></div>
               <img
-                src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={missie}
                 alt="Ons team"
                 className="relative rounded-2xl shadow-2xl w-full object-cover h-96"
               />
@@ -85,7 +87,7 @@ function Over() {
             <div className="order-2 lg:order-1 relative">
               <div className="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-cyan-400 to-teal-500 rounded-2xl opacity-20"></div>
               <img
-                src="https://images.pexels.com/photos/8500427/pexels-photo-8500427.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={visie}
                 alt="Onze visie"
                 className="relative rounded-2xl shadow-2xl w-full object-cover h-96"
               />
