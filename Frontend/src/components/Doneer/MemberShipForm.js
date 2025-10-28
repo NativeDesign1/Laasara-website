@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import Select from 'react-select';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import AutoRenewIcon from '@mui/icons-material/AutoRenew';
+import {Select} from 'react-select';
+import {PersonAddIcon} from '@mui/icons-material/PersonAdd';
+import {AutorenewIcon} from '@mui/icons-material/Autorenew';
 
 const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
@@ -81,7 +81,7 @@ const SubscriptionForm = () => {
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center space-x-2 text-gray-600">
-          <AutoRenewIcon className="animate-spin-slow" />
+          <AutorenewIcon className="animate-spin-slow" />
           <span>Maandelijks opzegbaar</span>
         </div>
         <p className="text-gray-600 leading-relaxed">
@@ -117,7 +117,7 @@ const SubscriptionForm = () => {
         >
           {isProcessing ? (
             <>
-              <AutoRenewIcon className="animate-spin" />
+              <AutorenewIcon className="animate-spin" />
               <span>Wordt verwerkt...</span>
             </>
           ) : (
