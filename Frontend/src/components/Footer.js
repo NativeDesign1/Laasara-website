@@ -109,18 +109,8 @@ const Footer = () => {
       {/* Social Media Links & Copyright */}
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-8 border-t border-green-800 pt-4">
         <div className="space-x-4">
-          <a href="#" className="hover:text-gray-400">
-            <FontAwesomeIcon
-              icon={faFacebookF}
-              className="text-white text-2xl hover:text-3xl transition-all duration-200"
-            />
-          </a>
-          <a href="#" className="hover:text-gray-400">
-            <FontAwesomeIcon
-              icon={faInstagram}
-              className="text-white text-2xl hover:text-3xl transition-all duration-200"
-            />
-          </a>
+          
+          
           <a href="#" className="hover:text-gray-400">
             <FontAwesomeIcon
               icon={faWhatsapp}
