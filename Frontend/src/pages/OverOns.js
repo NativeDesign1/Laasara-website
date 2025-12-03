@@ -2,6 +2,12 @@ import React from 'react';
 import { Heart, Users, Gift, Building, Globe, Handshake } from 'lucide-react';
 import missie from "../assets/missie.png"
 import visie from "../assets/visie.png"
+import abdel from "../assets/team/Abdelaziz.png"
+import Hakim from "../assets/team/Hakim.png"
+import Ilias from "../assets/team/Ilias.png"
+import Moussa from "../assets/team/Moussa.png"
+import Moustapha from "../assets/team/Moustapha.png"
+
 
 function Over() {
   const goals = [
@@ -38,12 +44,12 @@ function Over() {
   ];
 
   const team = [
-    { name: 'Moussa Ahammar', role: 'Penningmeester' },
-    { name: 'Abdelaziz Ahammar', role: 'Voorzitter' },
-    { name: 'Abdelhakim Koubaa', role: '2de penningmeester' },
-    { name: 'Moustapha El Founti', role: 'Secretaris' },
-    { name: 'Ilias El Founti', role: 'Vice voorzitter' }
-  ];
+  { name: 'Moussa Ahammar', role: 'Penningmeester', image: Moussa },
+  { name: 'Abdelaziz Ahammar', role: 'Voorzitter', image: abdel },
+  { name: 'Abdelhakim Koubaa', role: '2de penningmeester', image: Hakim },
+  { name: 'Moustapha El Founti', role: 'Secretaris', image: Moustapha }, 
+  { name: 'Ilias El Founti', role: 'Vice voorzitter', image: Ilias }
+];
 
   return (
     <div className="pt-32">
@@ -156,7 +162,7 @@ function Over() {
                 className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl shadow-sm hover:shadow-xl transition text-center p-8 group"
               >
                 <div className="w-28 h-28 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition">
-                  <Users className="text-white" size={48} />
+                  <img className="text-white" size={48} src={member.image}  />
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">{member.name}</h3>
                 <p className="text-gray-600 text-sm font-medium">{member.role}</p>
