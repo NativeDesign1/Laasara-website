@@ -27,24 +27,7 @@ const Doneer = () => {
         {/* Cards Container */}
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-            {/* Donation Card */}
-            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-300">
-              <div className="text-center mb-8">
-                <div className="inline-block p-3 bg-red-50 rounded-full mb-4">
-                  <FavoriteIcon 
-                    className="text-red-500"
-                    style={{ fontSize: 40 }}
-                  />
-                </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Eenmalige Donatie
-                </h2>
-                <p className="text-gray-600">
-                  Steun ons met een eenmalige gift
-                </p>
-              </div>
-              <DonationForm />
-            </div>
+           
 
             {/* Membership Card */}
             <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-300">
@@ -65,6 +48,24 @@ const Doneer = () => {
               <SubscriptionForm />
             </div>
           </div>
+           {/* Donation Card */}
+            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-300">
+              <div className="text-center mb-8">
+                <div className="inline-block p-3 bg-red-50 rounded-full mb-4">
+                  <FavoriteIcon 
+                    className="text-red-500"
+                    style={{ fontSize: 40 }}
+                  />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Eenmalige Donatie
+                </h2>
+                <p className="text-gray-600">
+                  Steun ons met een eenmalige gift
+                </p>
+              </div>
+              <DonationForm />
+            </div>
 
           {/* Trust Indicators */}
           <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">

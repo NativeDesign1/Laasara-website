@@ -83,6 +83,7 @@ function Over() {
               <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-2xl opacity-20"></div>
               <img
                 src={missie}
+                loading='lazy'
                 alt="Ons team"
                 className="relative rounded-2xl shadow-2xl w-full object-cover h-96"
               />
