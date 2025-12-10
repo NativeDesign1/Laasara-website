@@ -55,6 +55,7 @@ const TabContent1 = () => (
     
     <img
       src={Laassaramaroc}
+      loading="lazy"
       alt="Home"
       className="w-full h-auto mb-6 rounded-lg shadow-md max-w-md mx-auto"
     />
@@ -69,6 +70,7 @@ const TabContent2 = () => (
     
     <img
       src={masjied}
+      loading="lazy"
       alt="About"
       className="w-full h-auto mb-6 rounded-lg shadow-md max-w-md mx-auto"
     />
@@ -93,6 +95,7 @@ const TabContent3 = () => (
     
     <img
       src={Aqboush}
+      loading="lazy"
       alt="Contact"
       className="w-full h-auto mb-6 rounded-lg shadow-md max-w-md mx-auto"
     />

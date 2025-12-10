@@ -15,17 +15,20 @@ const OverHeader = () => {
 
         <div
           className=" h-36 sm:hidden inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${teamImage})` }}
-        ></div>
+        >
+          <img src={teamImage} loading="lazy" alt="Laassara team" className="w-full h-full object-cover" />
+        </div>
 
         {/* Full-Width Image Section */}
         <div className="relative flex flex-col sm:h-[550px] w-full team mt-5">
           {/* Team Image */}
 
-          <div
-            className=" hidden sm:block absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${teamImage})` }}
-          ></div>
+          <img
+            src={teamImage}
+            loading="lazy"
+            alt="Laassara team"
+            className="hidden sm:block absolute inset-0 w-full h-full object-cover"
+          />
           {/* Overlay */}
           <div className=" sm:absolute sm:left-[170px]  sm:top-[170px]  flex flex-col items-center md:items-start">
             <div className="bg-transparent max-w-xl mt-69 md:max-w-2xl">

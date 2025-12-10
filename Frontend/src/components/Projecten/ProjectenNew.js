@@ -23,33 +23,37 @@ const fetchProjects = async () => {
 
     if (error) throw error;
 
-    // First verify all images exist in storage
-    const verifyImageExists = async (imagePath) => {
-      try {
-        const { data } = await supabase
-          .storage
-          .from('Project-images')
-          .list('Projecten');
-        
-        return data.some(file => file.name === imagePath);
-      } catch (err) {
-        console.error('Error verifying image:', err);
-        return false;
+    // Cache file list to avoid multiple requests
+    let fileList = null;
+    const getFileList = async () => {
+      if (!fileList) {
+        try {
+          const { data } = await supabase
+            .storage
+            .from('Project-images')
+            .list('Projecten');
+          fileList = new Set(data.map(file => file.name));
+        } catch (err) {
+          console.error('Error fetching file list:', err);
+          fileList = new Set();
+        }
       }
+      return fileList;
     };
 
-    // Deduplicate projects based on title and verify images
+    // Deduplicate projects based on title
     const uniqueProjects = Array.from(
       new Map(data.map(item => [item.title, item])).values()
     );
 
+    // Get file list once
+    const files = await getFileList();
+
     const projectsWithSignedUrls = await Promise.all(
       uniqueProjects.map(async project => {
         try {
-          // Verify image exists before trying to get signed URL
-          const imageExists = await verifyImageExists(project.image_url);
-          
-          if (!imageExists) {
+          // Check if main image exists in cache
+          if (!files.has(project.image_url)) {
             console.warn(`Image not found for ${project.title}: ${project.image_url}`);
             return null;
           }
@@ -65,11 +69,11 @@ const fetchProjects = async () => {
             return null;
           }
 
-          // Process additional images only if they exist
+          // Process additional images in parallel (only existing ones)
           const additionalImages = await Promise.all(
             (project.additional_images || [])
               .filter(Boolean)
-              .filter(async img => await verifyImageExists(img))
+              .filter(img => files.has(img))
               .map(async img => {
                 const { data } = await supabase
                   .storage
@@ -79,10 +83,11 @@ const fetchProjects = async () => {
               })
           );
 
-          // Process videos similarly
+          // Process videos in parallel
           const videos = await Promise.all(
             (project.videos || [])
               .filter(Boolean)
+              .filter(video => files.has(video))
               .map(async video => {
                 const { data } = await supabase
                   .storage
@@ -105,7 +110,7 @@ const fetchProjects = async () => {
       })
     );
 
-    // Filter out null projects and remove duplicates
+    // Filter out null projects
     const validProjects = projectsWithSignedUrls.filter(Boolean);
 
     if (validProjects.length === 0) {

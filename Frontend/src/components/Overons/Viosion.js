@@ -42,6 +42,7 @@ const VisionSection = () => {
           </div>
           <img
             src={visionImage}
+            loading="lazy"
             alt="Onze visie"
             className="w-[80%] relative sm:w-full align-center h-auto sm:rounded-2xl sm:shadow-2xl ml-10  "
           />

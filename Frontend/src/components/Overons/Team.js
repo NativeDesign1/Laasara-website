@@ -51,6 +51,7 @@ const Teammembers = () => {
           >
             <img
               src={member.image}
+              loading="lazy"
               alt={member.name}
               className="w-32 h-32 object-cover rounded-3xl bg-none shadow-lg"
             />

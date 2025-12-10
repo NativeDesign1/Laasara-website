@@ -95,6 +95,7 @@ function Over() {
               <div className="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-cyan-400 to-teal-500 rounded-2xl opacity-20"></div>
               <img
                 src={visie}
+                loading='lazy'
                 alt="Onze visie"
                 className="relative rounded-2xl shadow-2xl w-full object-cover h-96"
               />
@@ -162,8 +163,13 @@ function Over() {
                 key={index}
                 className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl shadow-sm hover:shadow-xl transition text-center p-8 group"
               >
-                <div className="w-28 h-28 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition">
-                  <img className="text-white" size={48} src={member.image}  />
+                <div className="w-28 h-28 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition overflow-hidden">
+                  <img 
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">{member.name}</h3>
                 <p className="text-gray-600 text-sm font-medium">{member.role}</p>

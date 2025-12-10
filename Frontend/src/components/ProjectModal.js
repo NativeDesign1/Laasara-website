@@ -23,6 +23,7 @@ function ProjectModal({ project, onClose }) {
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img
                 src={project.image_url}
+                loading="lazy"
                 alt={project.title}
                 className="w-full h-64 object-cover"
               />
@@ -32,6 +33,7 @@ function ProjectModal({ project, onClose }) {
               <div key={index} className="rounded-xl overflow-hidden shadow-lg">
                 <img
                   src={image}
+                  loading="lazy"
                   alt={`${project.title} ${index + 1}`}
                   className="w-full h-64 object-cover"
                 />

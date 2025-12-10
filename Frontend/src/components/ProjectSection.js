@@ -29,6 +29,7 @@ const ProjectSection = () => {
         <div className="flex bg-transparent md:pr-24">
           <img
             src={projectenImage} // Replace with your image URL
+            loading="lazy"
             alt="Laassara Foundation"
             className="w-full max-w-lg sm:rounded-2xl rounded-none"
           />
