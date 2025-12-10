@@ -6,6 +6,7 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane as faPaperPlaneSolid } from "@fortawesome/free-solid-svg-icons"; // Import solid paper plane icon for the send button
+import beleidsplanPDF from "../assets/Beleidsplan.pdf";
 
 const Footer = () => {
   return (
@@ -62,7 +63,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="../assets/Beleidsplan-definitief-Laassara-3.pdf"
+                href={beleidsplanPDF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
