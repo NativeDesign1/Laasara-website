@@ -58,7 +58,10 @@ app.post('/api/contact', async (req, res) => {
 
   const msg = {
     to: process.env.EMAIL_TO,
-    from: process.env.EMAIL_FROM,
+    from: {
+      email: process.env.EMAIL_FROM,
+      name: email,
+    },
     replyTo: email,
     subject: subject,
     text: `Je hebt een nieuw bericht ontvangen van het contactformulier:\n\nE-mail: ${email}\n\nBericht:\n${message}`,
