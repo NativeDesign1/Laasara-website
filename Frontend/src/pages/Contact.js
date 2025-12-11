@@ -23,7 +23,7 @@ const Contact = () => {
     
     // Send form data to backend API
     try {
-      const response = await fetch('https://laasara-backend.herokuapp.com/api/contact', {
+      const response = await fetch('https://laasara-backend-8a70df67d523.herokuapp.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
