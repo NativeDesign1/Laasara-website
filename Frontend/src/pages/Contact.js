@@ -23,7 +23,7 @@ const Contact = () => {
     
     // Send form data to backend API
     try {
-      const response = await fetch('http://localhost:4242/api/contact', {
+      const response = await fetch('https://laasara-backend.herokuapp.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,6 +45,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
+      setSuccesText('Er is een fout opgetreden. Zorg ervoor dat u verbonden bent met het internet.');
     }
   };
 
