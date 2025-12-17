@@ -83,9 +83,9 @@ function ProjectModal({ project, onClose }) {
           )}
 
           <div className="mt-8 flex gap-4">
-            <button className="flex-1 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition">
+            <a href="/doneer" className="flex-1 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition text-center">
               Doneer voor dit project
-            </button>
+            </a>
             <button
               onClick={onClose}
               className="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold hover:border-emerald-500 hover:text-emerald-600 transition"
