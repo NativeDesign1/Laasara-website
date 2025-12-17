@@ -7,6 +7,7 @@
     "node": "22.x"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",

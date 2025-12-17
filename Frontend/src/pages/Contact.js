@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   // State to capture form input
@@ -8,6 +9,11 @@ const Contact = () => {
     message: '',
   });
   const [succesText, setSuccesText] = useState('');
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('qQ8F3gYhjAGO4OQZA'); // Public Key van EmailJS
+  }, []);
 
   // Handle change in form inputs
   const handleChange = (e) => {
@@ -21,31 +27,31 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
     
-    // Send form data to backend API
     try {
-      const response = await fetch('https://laasara-backend-8a70df67d523.herokuapp.com/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      await emailjs.send(
+        'service_5j0m1m9', // Service ID
+        'template_5b8ux4m', // Template ID
+        {
+          from_email: formData.email,
+          from_name: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'info@laassarafoundation.nl',
+        }
+      );
+
+      setSuccesText('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
+      setFormData({
+        email: '',
+        subject: '',
+        message: '',
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccesText('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
-        setFormData({
-          email: '',
-          subject: '',
-          message: '',
-        });
-      } else {
-        setSuccesText('Er is een fout opgetreden bij het verzenden van uw bericht. Probeer opnieuw.');
-      }
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSuccesText(''), 5000);
     } catch (error) {
       console.error('Error sending message:', error);
-      setSuccesText('Er is een fout opgetreden. Zorg ervoor dat u verbonden bent met het internet.');
+      setSuccesText('Er is een fout opgetreden bij het verzenden van uw bericht. Probeer opnieuw.');
     }
   };
 

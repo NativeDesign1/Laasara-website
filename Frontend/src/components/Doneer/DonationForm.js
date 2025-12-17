@@ -24,7 +24,7 @@ const DonationForm = () => {
 
         try {
             const response = await axios.post('https://laasara-backend-8a70df67d523.herokuapp.com/create-payment-intent', {
-                amount: amount * 100,
+                amount: amount,
                 currency: 'eur',
                 comment: comment
             });
