@@ -37,7 +37,7 @@ function Header() {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
             <div className="w-12 h-12  rounded-full flex items-center justify-center">
-              <img className="text-white" src={logo} size={100} />
+              <img className="text-white" src={logo} size={100} fetchPriority="high" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-800">Laassara Foundation</h1>

@@ -16,7 +16,7 @@ const OverHeader = () => {
         <div
           className=" h-36 sm:hidden inset-0 bg-cover bg-center"
         >
-          <img src={teamImage} loading="lazy" alt="Laassara team" className="w-full h-full object-cover" />
+          <img src={teamImage} alt="Laassara team" className="w-full h-full object-cover" />
         </div>
 
         {/* Full-Width Image Section */}
@@ -25,7 +25,6 @@ const OverHeader = () => {
 
           <img
             src={teamImage}
-            loading="lazy"
             alt="Laassara team"
             className="hidden sm:block absolute inset-0 w-full h-full object-cover"
           />

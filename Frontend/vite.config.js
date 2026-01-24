@@ -6,9 +6,27 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: [],},
+      external: [],
+      output: {
+        // Separate vendor chunks for better caching
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+        // Optimize asset file names
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+      },
+    },
     assetsDir: 'assets',
-    sourcemap: true
+    sourcemap: true,
+    // Inline small assets for faster loading
+    assetsInlineLimit: 4096,
   },
   server: {
     port: 3000,

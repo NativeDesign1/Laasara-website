@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/Login';
@@ -12,9 +12,14 @@ import Doneer from './pages/Doneer';
 import Contact from './pages/Contact';
 import AdminProjects from './pages/AdminPage';
 import DataMigration from './components/Admin/DataMigration';
+import { preloadAllImages } from './utils/imagePreloader';
 
 
 function App() {
+  useEffect(() => {
+    preloadAllImages();
+  }, []);
+
   return (
     <AuthProvider>
     <Router>
