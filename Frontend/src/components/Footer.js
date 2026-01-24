@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane as faPaperPlaneSolid } from "@fortawesome/free-solid-svg-icons"; // Import solid paper plane icon for the send button
 import beleidsplanPDF from "../assets/Beleidsplan.pdf";
+import jaarafrekening2025 from "../assets/Jaarafrekening2025.xlsx";
 
 const Footer = () => {
   return (
@@ -69,6 +70,16 @@ const Footer = () => {
                 className="hover:underline"
               >
                 Anbi
+              </a>
+            </li>
+            <li>
+              <a
+                href={jaarafrekening2025}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Jaarafrekening 2025
               </a>
             </li>
           </ul>
