@@ -1,19 +1,19 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
-const stripe = require('stripe')(process.env.SECRET_KEY);
-const sgMail = require('@sendgrid/mail');
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+const stripe = require("stripe")(process.env.SECRET_KEY);
+const sgMail = require("@sendgrid/mail");
 
 const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  'http://localhost:3000', // Development
-  'https://laasara-frontend-62d1cdfea610.herokuapp.com',
-  'https://www.laassarafoundation.nl',
-  'https://www.laassara.nl',
-  'https://www.laassarafoundation.nl',
-  'https://laassara.nl',
+  "http://localhost:3000", // Development
+  "https://laasara-backend-8a70df67d523.herokuapp.com/",
+  "https://www.laassarafoundation.nl",
+  "https://www.laassara.nl",
+  "https://www.laassarafoundation.nl",
+  "https://laassara.nl",
   // Production
 ];
 
@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Redirect HTTP to HTTPS
 app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
+  if (req.headers["x-forwarded-proto"] !== "https") {
     return res.redirect(`https://${req.headers.host}${req.url}`);
   }
   next();
@@ -49,11 +49,11 @@ app.use((req, res, next) => {
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // POST route to handle contact form submissions
-app.post('/api/contact', async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   const { email, subject, message } = req.body;
 
   if (!email || !subject || !message) {
-    return res.status(400).json({ message: 'Please fill in all fields' });
+    return res.status(400).json({ message: "Please fill in all fields" });
   }
 
   const msg = {
@@ -69,51 +69,54 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await sgMail.send(msg);
-    res.status(200).json({ message: 'E-mail succesvol verzonden' });
+    res.status(200).json({ message: "E-mail succesvol verzonden" });
   } catch (error) {
-    console.error('Fout bij het verzenden van e-mail:', error);
-    res.status(500).json({ message: 'Fout bij het verzenden van e-mail', error: error.message });
+    console.error("Fout bij het verzenden van e-mail:", error);
+    res
+      .status(500)
+      .json({
+        message: "Fout bij het verzenden van e-mail",
+        error: error.message,
+      });
   }
 });
 
 // Stripe payment intent route
-app.post('/create-payment-intent', async (req, res) => {
+app.post("/create-payment-intent", async (req, res) => {
   const { amount, currency, comment } = req.body;
   console.log("comment = ", typeof comment);
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount * 100,
-      currency: currency || 'eur',
-      payment_method_types: ['card', 'ideal', 'bancontact', 'sepa_debit'],
-      metadata: { mededeling: comment, },
+      currency: currency || "eur",
+      payment_method_types: ["card", "ideal", "bancontact", "sepa_debit"],
+      metadata: { mededeling: comment },
     });
 
     res.send({
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
-    console.error('Error creating payment intent:', error);
+    console.error("Error creating payment intent:", error);
     res.status(500).send({ error: error.message });
   }
 });
 
 // Determine the domain based on the environment
-const isProduction = process.env.NODE_ENV === 'production';
-const DOMAIN = isProduction
-  ? 'https://laassara.nl'
-  : 'http://localhost:3000';
+const isProduction = process.env.NODE_ENV === "production";
+const DOMAIN = isProduction ? "https://laassara.nl" : "http://localhost:3000";
 
 // Stripe subscription session route
-app.post('/create-subscription-session', async (req, res) => {
+app.post("/create-subscription-session", async (req, res) => {
   const { priceId } = req.body;
 
   console.log(`Received priceId: ${priceId}`);
 
   try {
     const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
-      payment_method_types: ['card', 'ideal', 'bancontact', 'sepa_debit'],
+      mode: "subscription",
+      payment_method_types: ["card", "ideal", "bancontact", "sepa_debit"],
       line_items: [
         {
           price: priceId,
@@ -124,10 +127,10 @@ app.post('/create-subscription-session', async (req, res) => {
       cancel_url: `${DOMAIN}/doneer`,
     });
 
-    console.log('Subscription session created:', session.id);
+    console.log("Subscription session created:", session.id);
     res.json({ id: session.id });
   } catch (error) {
-    console.log('Error creating session:', error);
+    console.log("Error creating session:", error);
     res.status(500).json({ error: error.message });
   }
 });
