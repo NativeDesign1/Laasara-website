@@ -7,6 +7,8 @@ const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingProject, setEditingProject] = useState(null);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   useEffect(() => {
     fetchProjects();
@@ -31,20 +33,30 @@ const AdminProjects = () => {
   const handleSubmit = async (formData) => {
     try {
       setLoading(true);
-      
-      // Upload main image
-      const mainImageFile = formData.image_file;
-      const mainImagePath = `Projecten/${Date.now()}-${mainImageFile.name}`;
-      
-      const { error: uploadError } = await supabase.storage
-        .from('Project-images')
-        .upload(mainImagePath, mainImageFile);
+      setError(null);
+      setSuccess(null);
 
-      if (uploadError) throw uploadError;
+      let mainImagePath = editingProject?.image_url || null;
+
+      // Upload main image if a new one is provided
+      if (formData.image_file) {
+        const mainImageFile = formData.image_file;
+        const uploadPath = `Projecten/${Date.now()}-${mainImageFile.name}`;
+        
+        const { error: uploadError } = await supabase.storage
+          .from('Project-images')
+          .upload(uploadPath, mainImageFile);
+
+        if (uploadError) throw uploadError;
+        mainImagePath = uploadPath.split('Projecten/')[1];
+      } else if (!editingProject) {
+        // If creating a new project and no image is provided, show error
+        throw new Error('Hoofdafbeelding is vereist voor een nieuw project');
+      }
 
       // Upload additional images
       const additionalImagePaths = await Promise.all(
-        formData.additional_images.map(async (file) => {
+        (formData.additional_images || []).map(async (file) => {
           const path = `Projecten/${Date.now()}-${file.name}`;
           const { error } = await supabase.storage
             .from('Project-images')
@@ -57,7 +69,7 @@ const AdminProjects = () => {
 
       // Upload videos
       const videoPaths = await Promise.all(
-        formData.videos.map(async (file) => {
+        (formData.videos || []).map(async (file) => {
           const path = `Projecten/${Date.now()}-${file.name}`;
           const { error } = await supabase.storage
             .from('Project-images')
@@ -68,26 +80,47 @@ const AdminProjects = () => {
         })
       );
 
-      // Save project data to database
+      // Prepare project data
       const projectData = {
         title: formData.title,
         description: formData.description,
         full_description: formData.full_description,
-        image_url: mainImagePath.split('Projecten/')[1],
-        additional_images: additionalImagePaths,
-        videos: videoPaths,
-        created_at: new Date().toISOString()
+        details: formData.details,
+        impact: formData.impact,
+        image_url: mainImagePath,
+        additional_images: editingProject 
+          ? [...(editingProject.additional_images || []), ...additionalImagePaths]
+          : additionalImagePaths,
+        videos: editingProject 
+          ? [...(editingProject.videos || []), ...videoPaths]
+          : videoPaths,
       };
 
-      const { error: dbError } = await supabase
-        .from('projects')
-        .insert([projectData]);
+      if (editingProject) {
+        // Update existing project
+        const { error: dbError } = await supabase
+          .from('projects')
+          .update(projectData)
+          .eq('id', editingProject.id);
 
-      if (dbError) throw dbError;
+        if (dbError) throw dbError;
+        setSuccess('Project succesvol bijgewerkt!');
+        setEditingProject(null);
+      } else {
+        // Create new project
+        projectData.created_at = new Date().toISOString();
+        const { error: dbError } = await supabase
+          .from('projects')
+          .insert([projectData]);
+
+        if (dbError) throw dbError;
+        setSuccess('Project succesvol toegevoegd!');
+      }
 
       await fetchProjects();
     } catch (error) {
       console.error('Error saving project:', error);
+      setError(error.message || 'Er is een fout opgetreden bij het opslaan van het project');
     } finally {
       setLoading(false);
     }
@@ -100,6 +133,8 @@ const AdminProjects = () => {
 
     try {
       setLoading(true);
+      setError(null);
+      setSuccess(null);
       
       // Get project data first
       const { data: project } = await supabase
@@ -110,9 +145,11 @@ const AdminProjects = () => {
 
       if (project) {
         // Delete main image
-        await supabase.storage
-          .from('Project-images')
-          .remove([`Projecten/${project.image_url}`]);
+        if (project.image_url) {
+          await supabase.storage
+            .from('Project-images')
+            .remove([`Projecten/${project.image_url}`]);
+        }
 
         // Delete additional images
         if (project.additional_images?.length) {
@@ -136,10 +173,12 @@ const AdminProjects = () => {
 
         if (error) throw error;
 
+        setSuccess('Project succesvol verwijderd!');
         await fetchProjects();
       }
     } catch (error) {
       console.error('Error deleting project:', error);
+      setError(error.message || 'Er is een fout opgetreden bij het verwijderen van het project');
     } finally {
       setLoading(false);
     }
@@ -151,6 +190,18 @@ const AdminProjects = () => {
         <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
           Projecten Beheer
         </h1>
+
+        {error && (
+          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        {success && (
+          <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            {success}
+          </div>
+        )}
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <h2 className="text-2xl font-bold mb-6">

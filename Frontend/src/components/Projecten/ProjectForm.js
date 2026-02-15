@@ -14,6 +14,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
   });
   const [preview, setPreview] = useState(null);
   const [additionalPreviews, setAdditionalPreviews] = useState([]);
+  const [videoPreviews, setVideoPreviews] = useState([]);
 
   useEffect(() => {
     if (initialData) {
@@ -59,6 +60,20 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
       ...prev,
       videos: [...prev.videos, ...files]
     }));
+    
+    const newPreviews = files.map(file => ({
+      url: URL.createObjectURL(file),
+      name: file.name
+    }));
+    setVideoPreviews(prev => [...prev, ...newPreviews]);
+  };
+
+  const removeVideo = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      videos: prev.videos.filter((_, i) => i !== index)
+    }));
+    setVideoPreviews(prev => prev.filter((_, i) => i !== index));
   };
 
   const removeAdditionalImage = (index) => {
@@ -92,6 +107,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
     });
     setPreview(null);
     setAdditionalPreviews([]);
+    setVideoPreviews([]);
   };
 
   return (
@@ -253,18 +269,43 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Video's
           </label>
-          <input
-            type="file"
-            accept="video/*"
-            onChange={handleVideoChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500
-              file:mr-4 file:py-2 file:px-4
-              file:rounded-full file:border-0
-              file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100"
-            multiple
-          />
+          <div className="flex flex-wrap gap-4">
+            <input
+              type="file"
+              accept="video/*"
+              onChange={handleVideoChange}
+              className="hidden"
+              id="video-upload"
+              multiple
+            />
+            <label
+              htmlFor="video-upload"
+              className="cursor-pointer flex items-center justify-center w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500"
+            >
+              <div className="text-center">
+                <Upload className="w-8 h-8 text-gray-400 mx-auto" />
+                <span className="text-xs text-gray-500 mt-1">Video's</span>
+              </div>
+            </label>
+            {videoPreviews.map((video, index) => (
+              <div key={index} className="relative w-32 h-32">
+                <video
+                  src={video.url}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs p-1 truncate rounded-b-lg">
+                  {video.name}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeVideo(index)}
+                  className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
