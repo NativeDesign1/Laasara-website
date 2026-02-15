@@ -162,36 +162,50 @@ const fetchProjects = async () => {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayedProjects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition group"
+                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100"
               >
-                <div className="relative overflow-hidden h-72">
-                                   
+                <div className="relative overflow-hidden h-56">
                   <img
                     src={project.image_url}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     onError={(e) => {
                       console.warn(`Failed to load image for project: ${project.title}`);
-                      e.target.src = '/fallback-image.jpg'; // Make sure to add a fallback image
+                      e.target.src = '/fallback-image.jpg';
                     }}
-                    loading="lazy" // Add lazy loading for better performance
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white drop-shadow-lg">{project.title}</h3>
+                  </div>
+                  {/* Badge for images/videos count */}
+                  <div className="absolute top-3 right-3 flex gap-2">
+                    {project.additional_images && project.additional_images.length > 0 && (
+                      <span className="bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-2 py-1 rounded-full">
+                        📷 {project.additional_images.length + 1}
+                      </span>
+                    )}
+                    {project.videos && project.videos.length > 0 && (
+                      <span className="bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-2 py-1 rounded-full">
+                        🎬 {project.videos.length}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{project.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-5 leading-relaxed line-clamp-3">{project.description}</p>
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition w-full"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
                   >
-                    Lees meer
+                    Bekijk project
                   </button>
                 </div>
               </div>
