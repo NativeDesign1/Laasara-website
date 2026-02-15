@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Upload, X } from 'lucide-react';
+import { Upload, X, AlertCircle } from 'lucide-react';
+
+// Maximum file sizes (in bytes)
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB for images
+const MAX_VIDEO_SIZE = 50 * 1024 * 1024; // 50MB for videos (Supabase default limit)
+
+const formatFileSize = (bytes) => {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+};
 
 const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +25,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
   const [preview, setPreview] = useState(null);
   const [additionalPreviews, setAdditionalPreviews] = useState([]);
   const [videoPreviews, setVideoPreviews] = useState([]);
+  const [fileError, setFileError] = useState(null);
 
   useEffect(() => {
     if (initialData) {
@@ -38,6 +49,12 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > MAX_IMAGE_SIZE) {
+        setFileError(`Afbeelding "${file.name}" is te groot (${formatFileSize(file.size)}). Maximum is ${formatFileSize(MAX_IMAGE_SIZE)}.`);
+        e.target.value = '';
+        return;
+      }
+      setFileError(null);
       setFormData(prev => ({ ...prev, image_file: file }));
       setPreview(URL.createObjectURL(file));
     }
@@ -45,6 +62,15 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
   const handleAdditionalImagesChange = (e) => {
     const files = Array.from(e.target.files);
+    const oversizedFiles = files.filter(file => file.size > MAX_IMAGE_SIZE);
+    
+    if (oversizedFiles.length > 0) {
+      setFileError(`${oversizedFiles.length} afbeelding(en) te groot. Maximum is ${formatFileSize(MAX_IMAGE_SIZE)}: ${oversizedFiles.map(f => f.name).join(', ')}`);
+      e.target.value = '';
+      return;
+    }
+    
+    setFileError(null);
     setFormData(prev => ({
       ...prev,
       additional_images: [...prev.additional_images, ...files]
@@ -56,6 +82,15 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
   const handleVideoChange = (e) => {
     const files = Array.from(e.target.files);
+    const oversizedFiles = files.filter(file => file.size > MAX_VIDEO_SIZE);
+    
+    if (oversizedFiles.length > 0) {
+      setFileError(`Video('s) te groot. Maximum is ${formatFileSize(MAX_VIDEO_SIZE)}: ${oversizedFiles.map(f => `${f.name} (${formatFileSize(f.size)})`).join(', ')}`);
+      e.target.value = '';
+      return;
+    }
+    
+    setFileError(null);
     setFormData(prev => ({
       ...prev,
       videos: [...prev.videos, ...files]
@@ -63,7 +98,8 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
     
     const newPreviews = files.map(file => ({
       url: URL.createObjectURL(file),
-      name: file.name
+      name: file.name,
+      size: formatFileSize(file.size)
     }));
     setVideoPreviews(prev => [...prev, ...newPreviews]);
   };
@@ -112,6 +148,20 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
+      {fileError && (
+        <div className="flex items-center gap-2 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+          <AlertCircle size={20} />
+          <span>{fileError}</span>
+          <button 
+            type="button" 
+            onClick={() => setFileError(null)}
+            className="ml-auto text-red-500 hover:text-red-700"
+          >
+            <X size={18} />
+          </button>
+        </div>
+      )}
+      
       <div className="grid grid-cols-1 gap-8">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -197,7 +247,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Hoofdafbeelding
+            Hoofdafbeelding <span className="text-gray-400 font-normal">(max 10MB)</span>
           </label>
           <div className="flex items-center">
             <input
@@ -228,7 +278,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Extra Afbeeldingen
+            Extra Afbeeldingen <span className="text-gray-400 font-normal">(max 10MB per afbeelding)</span>
           </label>
           <div className="flex flex-wrap gap-4">
             <input
@@ -267,7 +317,7 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Video's
+            Video's <span className="text-gray-400 font-normal">(max 50MB per video)</span>
           </label>
           <div className="flex flex-wrap gap-4">
             <input
@@ -293,8 +343,9 @@ const ProjectForm = ({ onSubmit, initialData, onCancel }) => {
                   src={video.url}
                   className="w-full h-full object-cover rounded-lg"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs p-1 truncate rounded-b-lg">
-                  {video.name}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 rounded-b-lg">
+                  <div className="truncate">{video.name}</div>
+                  <div className="text-green-300">{video.size}</div>
                 </div>
                 <button
                   type="button"
