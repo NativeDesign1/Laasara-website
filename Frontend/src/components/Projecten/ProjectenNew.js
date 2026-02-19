@@ -183,12 +183,33 @@ const fetchProjects = async () => {
   if (loading) {
     return (
       <div className="pt-20 md:pt-24 min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-          <div className="animate-pulse space-y-4">
-            <div className="h-8 md:h-10 bg-gray-100 rounded w-48 md:w-64 mb-2"></div>
-            <div className="h-4 md:h-5 bg-gray-100 rounded w-64 md:w-96"></div>
+        {/* Header Skeleton */}
+        <section className="bg-gradient-to-br from-emerald-50 to-white py-12 md:py-20 border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 bg-gray-200 rounded w-24 mb-3"></div>
+              <div className="h-10 md:h-12 bg-gray-200 rounded w-64 md:w-80"></div>
+              <div className="h-5 bg-gray-200 rounded w-96 max-w-full"></div>
+            </div>
           </div>
-        </div>
+        </section>
+        
+        {/* Projects Grid Skeleton */}
+        <section className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="animate-pulse flex flex-col">
+                  <div className="bg-gray-200 rounded-lg aspect-[4/3] mb-4"></div>
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-full mb-1"></div>
+                  <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                  <div className="h-4 bg-gray-200 rounded w-24 mt-4"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     );
   }

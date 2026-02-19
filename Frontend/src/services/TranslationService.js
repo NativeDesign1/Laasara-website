@@ -1,9 +1,11 @@
-// Translation Service using DeepL API
+// Translation Service using DeepL API via backend proxy
 // Free tier: 500,000 characters/month
 // Get your API key at: https://www.deepl.com/pro-api
 
-const DEEPL_API_KEY = import.meta.env.VITE_DEEPL_API_KEY;
-const DEEPL_API_URL = 'https://api-free.deepl.com/v2/translate';
+// Backend API URL (proxy to avoid CORS)
+const API_URL = import.meta.env.MODE === 'production' 
+  ? 'https://laasara-backend-8a70df67d523.herokuapp.com'
+  : 'http://localhost:4242';
 
 // Language codes mapping (our app -> DeepL)
 const LANGUAGE_MAP = {
@@ -18,19 +20,13 @@ const LANGUAGE_MAP = {
 const SUPPORTED_LANGUAGES = ['fr', 'de', 'da', 'es']; // Arabic not fully supported by DeepL free
 
 /**
- * Translate text using DeepL API
+ * Translate text using DeepL API via backend proxy
  * @param {string} text - Text to translate (Dutch)
  * @param {string} targetLang - Target language code
  * @returns {Promise<string>} Translated text
  */
 export const translateText = async (text, targetLang) => {
   if (!text || !text.trim()) return text;
-  
-  // Skip if no API key configured
-  if (!DEEPL_API_KEY) {
-    console.warn('DeepL API key not configured. Skipping translation.');
-    return null;
-  }
 
   // Skip unsupported languages
   if (!SUPPORTED_LANGUAGES.includes(targetLang)) {
@@ -39,13 +35,12 @@ export const translateText = async (text, targetLang) => {
   }
 
   try {
-    const response = await fetch(DEEPL_API_URL, {
+    const response = await fetch(`${API_URL}/api/translate`, {
       method: 'POST',
       headers: {
-        'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      body: new URLSearchParams({
+      body: JSON.stringify({
         text: text,
         source_lang: 'NL',
         target_lang: LANGUAGE_MAP[targetLang],
@@ -54,7 +49,7 @@ export const translateText = async (text, targetLang) => {
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('DeepL API error:', error);
+      console.error('Translation API error:', error);
       return null;
     }
 
@@ -100,12 +95,10 @@ export const translateProject = async (project) => {
 };
 
 /**
- * Check if DeepL API is configured and working
+ * Check if translation service is configured and working
  * @returns {Promise<boolean>}
  */
 export const checkTranslationService = async () => {
-  if (!DEEPL_API_KEY) return false;
-  
   try {
     const result = await translateText('test', 'fr');
     return result !== null;

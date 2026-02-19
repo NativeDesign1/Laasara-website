@@ -135,6 +135,47 @@ app.post("/create-subscription-session", async (req, res) => {
   }
 });
 
+// DeepL Translation Proxy (to avoid CORS issues)
+app.post("/api/translate", async (req, res) => {
+  const { text, source_lang, target_lang } = req.body;
+
+  if (!text || !target_lang) {
+    return res.status(400).json({ error: "Missing text or target_lang" });
+  }
+
+  const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+  if (!DEEPL_API_KEY) {
+    return res.status(500).json({ error: "DeepL API key not configured on server" });
+  }
+
+  try {
+    const response = await fetch("https://api-free.deepl.com/v2/translate", {
+      method: "POST",
+      headers: {
+        "Authorization": `DeepL-Auth-Key ${DEEPL_API_KEY}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        text: text,
+        source_lang: source_lang || "NL",
+        target_lang: target_lang,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error("DeepL API error:", error);
+      return res.status(response.status).json({ error: "DeepL API error", details: error });
+    }
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error("Translation proxy error:", error);
+    res.status(500).json({ error: "Translation failed", message: error.message });
+  }
+});
+
 // Start the server on the appropriate port
 const port = process.env.PORT || 4242;
 app.listen(port, () => console.log(`Server running on port ${port}`));
