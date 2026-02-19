@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ProjectForm from '../components/Projecten/ProjectForm';
 import { supabase } from '../lib/supabaseClient';
-import { Trash2, Edit } from 'lucide-react';
+import { Trash2, Edit, Languages, RefreshCw } from 'lucide-react';
+import { translateProject } from '../services/TranslationService';
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -9,6 +10,7 @@ const AdminProjects = () => {
   const [editingProject, setEditingProject] = useState(null);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [translating, setTranslating] = useState(null); // Track which project is being translated
 
   useEffect(() => {
     fetchProjects();
@@ -27,6 +29,47 @@ const AdminProjects = () => {
       console.error('Error fetching projects:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Create/update translations for a project
+  const createTranslations = async (project) => {
+    try {
+      // Save Dutch version first
+      await supabase
+        .from('project_translations')
+        .upsert({
+          project_id: project.id,
+          language_code: 'nl',
+          title: project.title,
+          description: project.description
+        }, { onConflict: 'project_id,language_code' });
+
+      // Auto-translate to other languages
+      const translations = await translateProject(project);
+      
+      if (translations.length > 0) {
+        await supabase
+          .from('project_translations')
+          .upsert(translations, { onConflict: 'project_id,language_code' });
+        
+        console.log(`Created ${translations.length} translations for "${project.title}"`);
+      }
+    } catch (error) {
+      console.error('Translation error:', error);
+    }
+  };
+
+  // Manually retranslate a project
+  const handleRetranslate = async (project) => {
+    setTranslating(project.id);
+    try {
+      await createTranslations(project);
+      setSuccess(`Vertalingen voor "${project.title}" zijn bijgewerkt!`);
+    } catch (error) {
+      setError('Vertaling mislukt: ' + error.message);
+    } finally {
+      setTranslating(null);
     }
   };
 
@@ -104,17 +147,27 @@ const AdminProjects = () => {
           .eq('id', editingProject.id);
 
         if (dbError) throw dbError;
+        
+        // Update translations in background
+        createTranslations({ id: editingProject.id, ...projectData });
+        
         setSuccess('Project succesvol bijgewerkt!');
         setEditingProject(null);
       } else {
         // Create new project
         projectData.created_at = new Date().toISOString();
-        const { error: dbError } = await supabase
+        const { data: newProject, error: dbError } = await supabase
           .from('projects')
-          .insert([projectData]);
+          .insert([projectData])
+          .select()
+          .single();
 
         if (dbError) throw dbError;
-        setSuccess('Project succesvol toegevoegd!');
+        
+        // Auto-translate in background
+        createTranslations(newProject);
+        
+        setSuccess('Project succesvol toegevoegd! Vertalingen worden aangemaakt...');
       }
 
       await fetchProjects();
@@ -165,7 +218,7 @@ const AdminProjects = () => {
             .remove(project.videos.map(video => `Projecten/${video}`));
         }
 
-        // Delete project from database
+        // Delete project from database (translations are deleted via CASCADE)
         const { error } = await supabase
           .from('projects')
           .delete()
@@ -180,6 +233,27 @@ const AdminProjects = () => {
       console.error('Error deleting project:', error);
       setError(error.message || 'Er is een fout opgetreden bij het verwijderen van het project');
     } finally {
+      setLoading(false);
+    }
+  };
+
+  // Translate all existing projects without translations
+  const handleTranslateAll = async () => {
+    setLoading(true);
+    setError(null);
+    let translated = 0;
+    
+    try {
+      for (const project of projects) {
+        setTranslating(project.id);
+        await createTranslations(project);
+        translated++;
+      }
+      setSuccess(`${translated} projecten zijn vertaald!`);
+    } catch (error) {
+      setError('Bulk vertaling mislukt: ' + error.message);
+    } finally {
+      setTranslating(null);
       setLoading(false);
     }
   };
@@ -215,7 +289,17 @@ const AdminProjects = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold mb-6">Huidige Projecten</h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold">Huidige Projecten</h2>
+            <button
+              onClick={handleTranslateAll}
+              disabled={loading || translating}
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 disabled:opacity-50 transition"
+            >
+              <Languages size={18} />
+              Alle projecten vertalen
+            </button>
+          </div>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -236,6 +320,18 @@ const AdminProjects = () => {
                     </div>
                   </div>
                   <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleRetranslate(project)}
+                      disabled={translating === project.id}
+                      className="p-2 text-emerald-600 hover:bg-emerald-50 rounded disabled:opacity-50"
+                      title="Vertalingen opnieuw genereren"
+                    >
+                      {translating === project.id ? (
+                        <RefreshCw size={20} className="animate-spin" />
+                      ) : (
+                        <Languages size={20} />
+                      )}
+                    </button>
                     <button
                       onClick={() => setEditingProject(project)}
                       className="p-2 text-blue-600 hover:bg-blue-50 rounded"
