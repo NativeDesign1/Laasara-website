@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import ProjectModal from '../ProjectModal';
 import { supabase } from '../../lib/supabaseClient';
 import { ArrowRight, Image, Film } from 'lucide-react';
 
 const ProjectenNew = () => {
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const [projects, setProjects] = useState([]);
@@ -158,13 +160,13 @@ const fetchProjects = async () => {
       <section className="bg-gradient-to-br from-emerald-50 to-white py-12 md:py-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-xs md:text-sm font-medium tracking-wider text-emerald-600 uppercase mb-3 md:mb-4">
-            Wat we doen
+            {t('projects.subtitle')}
           </p>
           <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4 md:mb-6 tracking-tight">
-            Onze Projecten
+            {t('projects.title')}
           </h1>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl leading-relaxed">
-            Ontdek hoe we samen werken aan een betere toekomst voor gemeenschappen in nood.
+            {t('projects.description')}
           </p>
         </div>
       </section>
@@ -216,7 +218,7 @@ const fetchProjects = async () => {
                     {project.description}
                   </p>
                   <span className="inline-flex items-center text-sm font-medium text-emerald-600 group-hover:gap-2 transition-all mt-auto">
-                    Bekijk project
+                    {t('projects.viewProject')}
                     <ArrowRight size={16} className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </span>
                 </div>
@@ -231,7 +233,7 @@ const fetchProjects = async () => {
                 onClick={() => setShowMore(!showMore)}
                 className="px-6 md:px-8 py-3 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors"
               >
-                {showMore ? "Toon minder" : "Toon meer projecten"}
+                {showMore ? t('projects.showLess') : t('projects.showMore')}
               </button>
             </div>
           )}
@@ -249,26 +251,26 @@ const fetchProjects = async () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl md:rounded-2xl p-8 md:p-14 text-center">
             <span className="inline-block px-3 md:px-4 py-1.5 bg-white/20 text-white text-xs md:text-sm font-medium rounded-full mb-4 md:mb-6">
-              Maak impact
+              {t('projects.cta.badge')}
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white mb-3 md:mb-4">
-              Wil je een project steunen?
+              {t('projects.cta.title')}
             </h2>
             <p className="text-white/80 mb-8 md:mb-10 max-w-xl mx-auto text-base md:text-lg">
-              Elke donatie maakt een verschil. Help ons om deze belangrijke projecten te realiseren.
+              {t('projects.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
               <a
                 href="/doneer"
                 className="inline-flex items-center justify-center bg-white text-emerald-600 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-emerald-50 transition-colors text-base md:text-lg shadow-lg"
               >
-                Doneer nu
+                {t('projects.cta.donateNow')}
               </a>
               <a
                 href="/contact"
                 className="inline-flex items-center justify-center border-2 border-white/40 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-medium hover:bg-white/10 transition-colors text-sm md:text-base"
               >
-                Neem contact op
+                {t('projects.cta.contact')}
               </a>
             </div>
           </div>

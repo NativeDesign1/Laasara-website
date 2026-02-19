@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "projects": "Projekte",
+    "donate": "Spenden",
+    "contact": "Kontakt",
+    "anbi": "ANBI anerkannt",
+    "slogan": "Gemeinsam machen wir den Unterschied"
+  },
+  "home": {
+    "hero": {
+      "title": "Gemeinsam machen wir",
+      "titleHighlight": "den Unterschied",
+      "description": "Die Stiftung Laasara setzt sich für die Hilfe des Dorfes Laasara und seiner Bewohner ein. Die Stiftung wurde von einer Gruppe von Menschen gegründet, die sich mit der Gemeinschaft verbunden fühlen und die Lebensbedingungen der Bewohner verbessern möchten.",
+      "learnMore": "Mehr über uns erfahren",
+      "donateNow": "Jetzt spenden"
+    },
+    "stats": {
+      "projects": "Projekte",
+      "yearsActive": "Jahre aktiv",
+      "transparent": "Transparenz"
+    },
+    "why": {
+      "subtitle": "Warum wir",
+      "title": "Warum Stiftung Laasara?",
+      "description": "Wir glauben an nachhaltige Wirkung durch Bildung und Gemeinschaftsunterstützung.",
+      "community": {
+        "title": "Gemeinschaft zuerst",
+        "description": "Wir hören auf die Bedürfnisse der lokalen Gemeinschaft und arbeiten gemeinsam an Lösungen, die wirklich einen Unterschied machen."
+      },
+      "transparent": {
+        "title": "Transparent und ehrlich",
+        "description": "Vollständige Transparenz darüber, wie Spenden ausgegeben werden. Jedes Projekt wird dokumentiert und berichtet."
+      },
+      "impact": {
+        "title": "Nachhaltige Wirkung",
+        "description": "Wir konzentrieren uns auf Projekte, die langfristige positive Veränderungen im Leben der Menschen bewirken."
+      }
+    },
+    "cta": {
+      "title": "Bereit, einen Unterschied zu machen?",
+      "description": "Jeder Beitrag, groß oder klein, hilft uns, Leben zu verändern und Gemeinschaften zu stärken.",
+      "donateNow": "Jetzt spenden",
+      "viewProjects": "Projekte ansehen"
+    }
+  },
+  "projects": {
+    "subtitle": "Was wir tun",
+    "title": "Unsere Projekte",
+    "description": "Entdecken Sie, wie wir gemeinsam an einer besseren Zukunft für bedürftige Gemeinschaften arbeiten.",
+    "viewProject": "Projekt ansehen",
+    "showMore": "Mehr Projekte anzeigen",
+    "showLess": "Weniger anzeigen",
+    "cta": {
+      "badge": "Machen Sie Wirkung",
+      "title": "Möchten Sie ein Projekt unterstützen?",
+      "description": "Jede Spende macht einen Unterschied. Helfen Sie uns, diese wichtigen Projekte zu verwirklichen.",
+      "donateNow": "Jetzt spenden",
+      "contact": "Kontaktieren Sie uns"
+    },
+    "modal": {
+      "about": "Über dieses Projekt",
+      "details": "Details",
+      "impact": "Wirkung",
+      "videos": "Videos",
+      "support": "Möchten Sie dieses Projekt unterstützen?",
+      "supportDescription": "Ihr Beitrag macht den Unterschied.",
+      "close": "Schließen"
+    }
+  },
+  "donate": {
+    "subtitle": "Unterstützen Sie uns",
+    "title": "Unterstützen Sie unsere Arbeit",
+    "description": "Wählen Sie unten, wie Sie zu unserer Mission beitragen möchten",
+    "membership": {
+      "title": "Mitglied werden",
+      "description": "Unterstützen Sie uns mit einem monatlichen Beitrag",
+      "monthlyCancel": "Monatlich kündbar",
+      "monthlyInfo": "Machen Sie einen Unterschied mit einem monatlichen Beitrag und unterstützen Sie unsere Arbeit für positive Veränderungen.",
+      "chooseAmount": "Wählen Sie Ihren monatlichen Beitrag",
+      "becomeMember": "Jetzt Mitglied werden",
+      "processing": "Wird verarbeitet...",
+      "automated": "Vollautomatisch",
+      "cancelable": "Monatlich kündbar",
+      "secure": "Sichere Zahlung über Stripe"
+    },
+    "oneTime": {
+      "title": "Einmalige Spende",
+      "description": "Unterstützen Sie uns mit einer einmaligen Spende",
+      "amount": "Spendenbetrag",
+      "comment": "Anmerkungen (optional)",
+      "commentPlaceholder": "Fügen Sie eine Nachricht zu Ihrer Spende hinzu...",
+      "continue": "Zur Spende fortfahren",
+      "amountChosen": "Betrag gewählt",
+      "paymentDetails": "Zahlungsdetails",
+      "minAmount": "Geben Sie einen gültigen Betrag ein (mindestens €1)"
+    },
+    "trust": {
+      "impact": "100% Wirkung",
+      "impactDescription": "Ihre Spende geht direkt an unsere Projekte",
+      "anbi": "ANBI-Status",
+      "anbiDescription": "Steuerlich absetzbar (861878405)",
+      "secure": "Sichere Spende",
+      "secureDescription": "Über sichere Zahlungsmethoden"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Nehmen Sie Kontakt auf",
+    "description": "Haben Sie Fragen oder möchten Sie mehr über unsere Projekte erfahren? Zögern Sie nicht, uns zu kontaktieren.",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefonnummer",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "send": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Nachricht gesendet!",
+      "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    },
+    "info": {
+      "address": "Adresse",
+      "email": "E-Mail",
+      "phone": "Telefon"
+    }
+  },
+  "about": {
+    "title": "Über uns",
+    "subtitle": "Lernen Sie uns kennen",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Die Stiftung Laasara setzt sich für die Entwicklung und das Wohlergehen des Dorfes Laasara und seiner Bewohner ein."
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "description": "Eine Gemeinschaft, in der jeder Zugang zu Bildung, Gesundheitsversorgung und Möglichkeiten zur persönlichen Entwicklung hat."
+    },
+    "team": {
+      "title": "Unser Team",
+      "description": "Lernen Sie die Menschen hinter der Stiftung Laasara kennen."
+    }
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "links": "Links",
+    "newsletter": "Bleiben Sie informiert",
+    "newsletterDescription": "Bleiben Sie über unsere neuesten Nachrichten auf dem Laufenden, indem Sie unseren Newsletter abonnieren!",
+    "name": "Name",
+    "email": "E-Mail",
+    "subscribe": "Abonnieren",
+    "rights": "Alle Rechte vorbehalten"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schief gelaufen",
+    "readMore": "Mehr lesen",
+    "back": "Zurück",
+    "perMonth": "pro Monat"
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useTranslation } from 'react-i18next';
 import DonationForm from "../../src/components/Doneer/DonationForm";
 import SubscriptionForm from "../../src/components/Doneer/MemberShipForm";
 import { Heart, Users, Shield, BadgeCheck, Banknote } from 'lucide-react';
@@ -10,6 +11,8 @@ const stripePromise = loadStripe(
 );
 
 const Doneer = () => {
+  const { t } = useTranslation();
+
   return (
     <Elements stripe={stripePromise}>
       <div className="bg-white pt-28 md:pt-32 pb-16">
@@ -17,13 +20,13 @@ const Doneer = () => {
         <div className="bg-gradient-to-br from-emerald-50 to-white py-12 md:py-16 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <p className="text-sm font-medium tracking-wider text-emerald-600 uppercase mb-3">
-              Steun ons
+              {t('donate.subtitle')}
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Steun Ons Werk
+              {t('donate.title')}
             </h1>
             <p className="text-lg text-gray-600 max-w-xl mx-auto">
-              Kies hieronder hoe u wilt bijdragen aan onze missie
+              {t('donate.description')}
             </p>
           </div>
         </div>
@@ -39,10 +42,10 @@ const Doneer = () => {
                   <Users className="text-emerald-600" size={28} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                  Word Lid
+                  {t('donate.membership.title')}
                 </h2>
                 <p className="text-gray-500">
-                  Steun ons met een maandelijkse bijdrage
+                  {t('donate.membership.description')}
                 </p>
               </div>
               <SubscriptionForm />
@@ -55,10 +58,10 @@ const Doneer = () => {
                   <Heart className="text-emerald-600" size={28} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                  Eenmalige Donatie
+                  {t('donate.oneTime.title')}
                 </h2>
                 <p className="text-gray-500">
-                  Steun ons met een eenmalige gift
+                  {t('donate.oneTime.description')}
                 </p>
               </div>
               <DonationForm />
@@ -72,10 +75,10 @@ const Doneer = () => {
                 <Banknote className="text-emerald-600" size={20} />
               </div>
               <h3 className="text-base font-semibold text-gray-900 mb-1">
-                100% Impact
+                {t('donate.trust.impact')}
               </h3>
               <p className="text-sm text-gray-500">
-                Uw donatie gaat direct naar onze projecten
+                {t('donate.trust.impactDescription')}
               </p>
             </div>
             <div className="bg-gray-50 p-5 md:p-6 rounded-xl text-center">
@@ -83,10 +86,10 @@ const Doneer = () => {
                 <BadgeCheck className="text-emerald-600" size={20} />
               </div>
               <h3 className="text-base font-semibold text-gray-900 mb-1">
-                ANBI Status
+                {t('donate.trust.anbi')}
               </h3>
               <p className="text-sm text-gray-500">
-                Fiscaal aftrekbaar (861878405)
+                {t('donate.trust.anbiDescription')}
               </p>
             </div>
             <div className="bg-gray-50 p-5 md:p-6 rounded-xl text-center">
@@ -94,10 +97,10 @@ const Doneer = () => {
                 <Shield className="text-emerald-600" size={20} />
               </div>
               <h3 className="text-base font-semibold text-gray-900 mb-1">
-                Veilig Doneren
+                {t('donate.trust.secure')}
               </h3>
               <p className="text-sm text-gray-500">
-                Via beveiligde betaalmethoden
+                {t('donate.trust.secureDescription')}
               </p>
             </div>
           </div>

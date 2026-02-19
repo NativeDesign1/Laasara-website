@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over ons",
+    "projects": "Projecten",
+    "donate": "Doneer",
+    "contact": "Contact",
+    "anbi": "ANBI erkend",
+    "slogan": "Samen maken we het verschil"
+  },
+  "home": {
+    "hero": {
+      "title": "Samen maken we het",
+      "titleHighlight": "verschil",
+      "description": "Stichting Laassara zet zich in om het dorp Laassara en haar bewoners te helpen. De stichting is opgericht door een groep mensen die zich betrokken voelen bij de gemeenschap en zich willen inzetten om de levensomstandigheden van de mensen te verbeteren.",
+      "learnMore": "Lees meer over ons",
+      "donateNow": "Doneer nu"
+    },
+    "stats": {
+      "projects": "Projecten",
+      "yearsActive": "Jaren actief",
+      "transparent": "Transparant"
+    },
+    "why": {
+      "subtitle": "Waarom wij",
+      "title": "Waarom Laassara Foundation?",
+      "description": "We geloven in het creëren van duurzame impact door middel van onderwijs en gemeenschapsondersteuning.",
+      "community": {
+        "title": "Gemeenschap eerst",
+        "description": "We luisteren naar de behoeften van de lokale gemeenschap en werken samen aan oplossingen die echt verschil maken."
+      },
+      "transparent": {
+        "title": "Transparant & Eerlijk",
+        "description": "Volledige transparantie in hoe we donaties besteden. Elk project wordt gedocumenteerd en gerapporteerd."
+      },
+      "impact": {
+        "title": "Duurzame impact",
+        "description": "We richten ons op projecten die langdurige positieve verandering brengen in de levens van mensen."
+      }
+    },
+    "cta": {
+      "title": "Klaar om het verschil te maken?",
+      "description": "Elke bijdrage, groot of klein, helpt ons om levens te veranderen en gemeenschappen te versterken.",
+      "donateNow": "Doneer nu",
+      "viewProjects": "Bekijk projecten"
+    }
+  },
+  "projects": {
+    "subtitle": "Wat we doen",
+    "title": "Onze Projecten",
+    "description": "Ontdek hoe we samen werken aan een betere toekomst voor gemeenschappen in nood.",
+    "viewProject": "Bekijk project",
+    "showMore": "Toon meer projecten",
+    "showLess": "Toon minder",
+    "cta": {
+      "badge": "Maak impact",
+      "title": "Wil je een project steunen?",
+      "description": "Elke donatie maakt een verschil. Help ons om deze belangrijke projecten te realiseren.",
+      "donateNow": "Doneer nu",
+      "contact": "Neem contact op"
+    },
+    "modal": {
+      "about": "Over dit project",
+      "details": "Details",
+      "impact": "Impact",
+      "videos": "Video's",
+      "support": "Wil je dit project steunen?",
+      "supportDescription": "Jouw bijdrage maakt het verschil.",
+      "close": "Sluiten"
+    }
+  },
+  "donate": {
+    "subtitle": "Steun ons",
+    "title": "Steun Ons Werk",
+    "description": "Kies hieronder hoe u wilt bijdragen aan onze missie",
+    "membership": {
+      "title": "Word Lid",
+      "description": "Steun ons met een maandelijkse bijdrage",
+      "monthlyCancel": "Maandelijks opzegbaar",
+      "monthlyInfo": "Maak het verschil met een maandelijkse bijdrage en steun ons werk om positieve verandering te creëren.",
+      "chooseAmount": "Kies uw maandelijkse bijdrage",
+      "becomeMember": "Word nu lid",
+      "processing": "Wordt verwerkt...",
+      "automated": "Volledig geautomatiseerd",
+      "cancelable": "Maandelijks opzegbaar",
+      "secure": "Veilig betalen via Stripe"
+    },
+    "oneTime": {
+      "title": "Eenmalige Donatie",
+      "description": "Steun ons met een eenmalige gift",
+      "amount": "Donatiebedrag",
+      "comment": "Opmerkingen (optioneel)",
+      "commentPlaceholder": "Voeg een opmerking toe bij uw donatie...",
+      "continue": "Doorgaan met Doneren",
+      "amountChosen": "Bedrag Gekozen",
+      "paymentDetails": "Betaalgegevens",
+      "minAmount": "Voer een geldig bedrag in (minimaal €1)"
+    },
+    "trust": {
+      "impact": "100% Impact",
+      "impactDescription": "Uw donatie gaat direct naar onze projecten",
+      "anbi": "ANBI Status",
+      "anbiDescription": "Fiscaal aftrekbaar (861878405)",
+      "secure": "Veilig Doneren",
+      "secureDescription": "Via beveiligde betaalmethoden"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Neem contact met ons op",
+    "description": "Heeft u vragen of wilt u meer weten over onze projecten? Neem gerust contact met ons op.",
+    "form": {
+      "name": "Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "subject": "Onderwerp",
+      "message": "Bericht",
+      "send": "Verstuur bericht",
+      "sending": "Verzenden...",
+      "success": "Bericht verzonden!",
+      "error": "Er is iets misgegaan. Probeer het opnieuw."
+    },
+    "info": {
+      "address": "Adres",
+      "email": "E-mail",
+      "phone": "Telefoon"
+    }
+  },
+  "about": {
+    "title": "Over Ons",
+    "subtitle": "Wie we zijn",
+    "mission": {
+      "title": "Onze Missie",
+      "description": "Stichting Laassara zet zich in voor de ontwikkeling en het welzijn van het dorp Laassara en haar bewoners."
+    },
+    "vision": {
+      "title": "Onze Visie",
+      "description": "Een gemeenschap waar iedereen toegang heeft tot onderwijs, gezondheidszorg en mogelijkheden voor persoonlijke ontwikkeling."
+    },
+    "team": {
+      "title": "Ons Team",
+      "description": "Ontmoet de mensen achter Laassara Foundation."
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "links": "Links",
+    "newsletter": "Blijf op de hoogte",
+    "newsletterDescription": "Blijf op de hoogte van onze nieuwste weetjes door je aan te melden op onze nieuwsbrief!",
+    "name": "Naam",
+    "email": "Email",
+    "subscribe": "Aanmelden",
+    "rights": "Alle rechten voorbehouden"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "readMore": "Lees meer",
+    "back": "Terug",
+    "perMonth": "per maand"
+  }
+}

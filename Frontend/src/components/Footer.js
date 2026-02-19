@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -10,17 +11,19 @@ import beleidsplanPDF from "../assets/Beleidsplan.pdf";
 import jaarafrekening2025 from "../assets/Jaarafrekening2025.xlsx";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-darkGreen text-white sm:text-left py-12 w-full ">
       <div className="container mx-auto flex flex-col md:flex-row justify-between text-left  space-y-8 md:space-y-0 px-4">
         {/* Contact Section */}
         <div className="space-y-2  flex-1 sm:text-left">
-          <h2 className="text-lg font-bold">CONTACT</h2>
+          <h2 className="text-lg font-bold">{t('footer.contact').toUpperCase()}</h2>
           <p>Laassaara Foundation</p>
           <p>Keulseplein 11</p>
           <p>6043EX Roermond, NL</p>
           <p>
-            Email:{" "}
+            {t('footer.email')}:{" "}
             <a
               href="mailto:info@laassaarafoundation.nl"
               className="hover:underline"
@@ -35,31 +38,31 @@ const Footer = () => {
 
         {/* Links Section */}
         <div className="space-y-2 flex-1">
-          <h2 className="text-lg font-bold">LINKS</h2>
+          <h2 className="text-lg font-bold">{t('footer.links').toUpperCase()}</h2>
           <ul className="space-y-2">
             <li>
               <a href="/" className="hover:underline">
-                Home
+                {t('nav.home')}
               </a>
             </li>
             <li>
-              <a href="/over" className="hover:underline">
-                Over Ons
+              <a href="/over-ons" className="hover:underline">
+                {t('nav.about')}
               </a>
             </li>
             <li>
               <a href="/projecten" className="hover:underline">
-                Projecten
+                {t('nav.projects')}
               </a>
             </li>
             <li>
               <a href="/doneer" className="hover:underline">
-                Doneer
+                {t('nav.donate')}
               </a>
             </li>
             <li>
               <a href="/contact" className="hover:underline">
-                Contact
+                {t('nav.contact')}
               </a>
             </li>
             <li>
@@ -69,7 +72,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                Anbi
+                ANBI
               </a>
             </li>
             <li>
@@ -87,21 +90,20 @@ const Footer = () => {
 
         {/* Newsletter Signup Section */}
         <div className="flex-1">
-          <h2 className="text-lg font-bold">BLIJF OP DE HOOGTE</h2>
+          <h2 className="text-lg font-bold">{t('footer.newsletter').toUpperCase()}</h2>
           <p className="mb-4">
-            Blijf op de hoogte van onze nieuwste weetjes door je aan te melden
-            op onze nieuwsbrief!
+            {t('footer.newsletterDescription')}
           </p>
           <form className="space-y-2">
             <div className="flex flex-col space-y-5 ">
               <input
                 type="text"
-                placeholder="Naam"
+                placeholder={t('footer.name')}
                 className="px-4 py-2 rounded-lg bg-green-700 text-white focus:outline-none"
               />
               <input
                 type="email"
-                placeholder="Email"
+                placeholder={t('footer.email')}
                 className="px-4 py-2 bg-green-700 text-white focus:outline-none rounded-lg"
               />
               <button
@@ -130,7 +132,7 @@ const Footer = () => {
             />
           </a>
         </div>
-        <p className="mt-4 md:mt-0">&copy; Copyright 2024</p>
+        <p className="mt-4 md:mt-0">&copy; {new Date().getFullYear()} {t('footer.rights')}</p>
       </div>
     </footer>
   );

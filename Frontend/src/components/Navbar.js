@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Menu, X, Mail, Phone, Heart, BadgeCheck } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
 import logo from "../assets/logo.svg"
 
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/over-ons', label: 'Over ons' },
-    { path: '/projecten', label: 'Projecten' },
-    { path: '/doneer', label: 'Doneer' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/', label: t('nav.home') },
+    { path: '/over-ons', label: t('nav.about') },
+    { path: '/projecten', label: t('nav.projects') },
+    { path: '/doneer', label: t('nav.donate') },
+    { path: '/contact', label: t('nav.contact') }
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -34,16 +37,17 @@ function Header() {
             </a>
           </div>
           
-          {/* ANBI + IBAN rechts */}
+          {/* ANBI + IBAN + Language rechts */}
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 bg-white/15 px-2 py-0.5 rounded text-xs font-medium">
               <BadgeCheck size={12} />
-              ANBI erkend
+              {t('nav.anbi')}
             </span>
             <span className="flex items-center gap-1.5">
               <Heart size={14} />
               <span className="font-medium">NL67 TRIO 0320 5916 89</span>
             </span>
+            <LanguageSelector variant="topbar" />
           </div>
         </div>
       </div>
@@ -56,7 +60,7 @@ function Header() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-800">Laassara Foundation</h1>
-              <p className="text-xs text-gray-600">Samen maken we het verschil</p>
+              <p className="text-xs text-gray-600">{t('nav.slogan')}</p>
             </div>
           </Link>
 

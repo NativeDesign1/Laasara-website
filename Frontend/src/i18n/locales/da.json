@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "about": "Om os",
+    "projects": "Projekter",
+    "donate": "Donér",
+    "contact": "Kontakt",
+    "anbi": "ANBI anerkendt",
+    "slogan": "Sammen gør vi en forskel"
+  },
+  "home": {
+    "hero": {
+      "title": "Sammen gør vi",
+      "titleHighlight": "en forskel",
+      "description": "Stichting Laasara er engageret i at hjælpe landsbyen Laasara og dens indbyggere. Stiftelsen blev grundlagt af en gruppe mennesker, der føler sig forbundet med samfundet og ønsker at forbedre indbyggernes levevilkår.",
+      "learnMore": "Læs mere om os",
+      "donateNow": "Donér nu"
+    },
+    "stats": {
+      "projects": "Projekter",
+      "yearsActive": "År aktive",
+      "transparent": "Transparens"
+    },
+    "why": {
+      "subtitle": "Hvorfor os",
+      "title": "Hvorfor Stichting Laasara?",
+      "description": "Vi tror på vedvarende indflydelse gennem uddannelse og støtte til lokalsamfundet.",
+      "community": {
+        "title": "Fællesskabet først",
+        "description": "Vi lytter til det lokale samfunds behov og arbejder sammen om løsninger, der virkelig gør en forskel."
+      },
+      "transparent": {
+        "title": "Transparent og ærlig",
+        "description": "Fuld gennemsigtighed om, hvordan donationer bruges. Hvert projekt dokumenteres og rapporteres."
+      },
+      "impact": {
+        "title": "Vedvarende indflydelse",
+        "description": "Vi fokuserer på projekter, der skaber langsigtede positive forandringer i menneskers liv."
+      }
+    },
+    "cta": {
+      "title": "Klar til at gøre en forskel?",
+      "description": "Ethvert bidrag, stort eller lille, hjælper os med at forandre liv og styrke lokalsamfund.",
+      "donateNow": "Donér nu",
+      "viewProjects": "Se projekter"
+    }
+  },
+  "projects": {
+    "subtitle": "Hvad vi gør",
+    "title": "Vores projekter",
+    "description": "Opdag, hvordan vi sammen arbejder for en bedre fremtid for lokalsamfund i nød.",
+    "viewProject": "Se projekt",
+    "showMore": "Vis flere projekter",
+    "showLess": "Vis færre",
+    "cta": {
+      "badge": "Gør en forskel",
+      "title": "Vil du støtte et projekt?",
+      "description": "Hver donation gør en forskel. Hjælp os med at realisere disse vigtige projekter.",
+      "donateNow": "Donér nu",
+      "contact": "Kontakt os"
+    },
+    "modal": {
+      "about": "Om dette projekt",
+      "details": "Detaljer",
+      "impact": "Indflydelse",
+      "videos": "Videoer",
+      "support": "Vil du støtte dette projekt?",
+      "supportDescription": "Dit bidrag gør forskellen.",
+      "close": "Luk"
+    }
+  },
+  "donate": {
+    "subtitle": "Støt os",
+    "title": "Støt vores arbejde",
+    "description": "Vælg nedenfor, hvordan du vil bidrage til vores mission",
+    "membership": {
+      "title": "Bliv medlem",
+      "description": "Støt os med et månedligt bidrag",
+      "monthlyCancel": "Kan opsiges månedligt",
+      "monthlyInfo": "Gør en forskel med et månedligt bidrag og støt vores arbejde for positive forandringer.",
+      "chooseAmount": "Vælg dit månedlige bidrag",
+      "becomeMember": "Bliv medlem nu",
+      "processing": "Behandler...",
+      "automated": "Fuldt automatisk",
+      "cancelable": "Kan opsiges månedligt",
+      "secure": "Sikker betaling via Stripe"
+    },
+    "oneTime": {
+      "title": "Engangsdonation",
+      "description": "Støt os med en engangsdonation",
+      "amount": "Donationsbeløb",
+      "comment": "Bemærkninger (valgfrit)",
+      "commentPlaceholder": "Tilføj en besked til din donation...",
+      "continue": "Fortsæt til donation",
+      "amountChosen": "Beløb valgt",
+      "paymentDetails": "Betalingsoplysninger",
+      "minAmount": "Indtast et gyldigt beløb (minimum €1)"
+    },
+    "trust": {
+      "impact": "100% indflydelse",
+      "impactDescription": "Din donation går direkte til vores projekter",
+      "anbi": "ANBI-status",
+      "anbiDescription": "Skattefradrag (861878405)",
+      "secure": "Sikker donation",
+      "secureDescription": "Via sikre betalingsmetoder"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kom i kontakt",
+    "description": "Har du spørgsmål eller vil du vide mere om vores projekter? Tøv ikke med at kontakte os.",
+    "form": {
+      "name": "Navn",
+      "email": "E-mail",
+      "phone": "Telefonnummer",
+      "subject": "Emne",
+      "message": "Besked",
+      "send": "Send besked",
+      "sending": "Sender...",
+      "success": "Besked sendt!",
+      "error": "Noget gik galt. Prøv venligst igen."
+    },
+    "info": {
+      "address": "Adresse",
+      "email": "E-mail",
+      "phone": "Telefon"
+    }
+  },
+  "about": {
+    "title": "Om os",
+    "subtitle": "Lær os at kende",
+    "mission": {
+      "title": "Vores mission",
+      "description": "Stichting Laasara er engageret i udviklingen og trivslen af landsbyen Laasara og dens indbyggere."
+    },
+    "vision": {
+      "title": "Vores vision",
+      "description": "Et samfund, hvor alle har adgang til uddannelse, sundhedspleje og muligheder for personlig udvikling."
+    },
+    "team": {
+      "title": "Vores team",
+      "description": "Mød menneskene bag Stichting Laasara."
+    }
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "links": "Links",
+    "newsletter": "Hold dig opdateret",
+    "newsletterDescription": "Hold dig opdateret med vores seneste nyheder ved at abonnere på vores nyhedsbrev!",
+    "name": "Navn",
+    "email": "E-mail",
+    "subscribe": "Abonnér",
+    "rights": "Alle rettigheder forbeholdes"
+  },
+  "common": {
+    "loading": "Indlæser...",
+    "error": "Noget gik galt",
+    "readMore": "Læs mere",
+    "back": "Tilbage",
+    "perMonth": "pr. måned"
+  }
+}

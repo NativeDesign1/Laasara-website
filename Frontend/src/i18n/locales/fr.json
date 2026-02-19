@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "donate": "Faire un don",
+    "contact": "Contact",
+    "anbi": "Reconnu ANBI",
+    "slogan": "Ensemble, nous faisons la différence"
+  },
+  "home": {
+    "hero": {
+      "title": "Ensemble, nous faisons la",
+      "titleHighlight": "différence",
+      "description": "La Fondation Laassara s'engage à aider le village de Laassara et ses habitants. La fondation a été créée par un groupe de personnes qui se sentent concernées par la communauté et veulent s'engager à améliorer les conditions de vie des habitants.",
+      "learnMore": "En savoir plus",
+      "donateNow": "Faire un don"
+    },
+    "stats": {
+      "projects": "Projets",
+      "yearsActive": "Années d'activité",
+      "transparent": "Transparent"
+    },
+    "why": {
+      "subtitle": "Pourquoi nous",
+      "title": "Pourquoi Laassara Foundation?",
+      "description": "Nous croyons en la création d'un impact durable grâce à l'éducation et au soutien communautaire.",
+      "community": {
+        "title": "La communauté d'abord",
+        "description": "Nous écoutons les besoins de la communauté locale et travaillons ensemble sur des solutions qui font vraiment la différence."
+      },
+      "transparent": {
+        "title": "Transparent & Honnête",
+        "description": "Transparence totale sur la façon dont nous dépensons les dons. Chaque projet est documenté et rapporté."
+      },
+      "impact": {
+        "title": "Impact durable",
+        "description": "Nous nous concentrons sur des projets qui apportent des changements positifs durables dans la vie des gens."
+      }
+    },
+    "cta": {
+      "title": "Prêt à faire la différence?",
+      "description": "Chaque contribution, grande ou petite, nous aide à changer des vies et à renforcer les communautés.",
+      "donateNow": "Faire un don",
+      "viewProjects": "Voir les projets"
+    }
+  },
+  "projects": {
+    "subtitle": "Ce que nous faisons",
+    "title": "Nos Projets",
+    "description": "Découvrez comment nous travaillons ensemble pour un avenir meilleur pour les communautés dans le besoin.",
+    "viewProject": "Voir le projet",
+    "showMore": "Afficher plus de projets",
+    "showLess": "Afficher moins",
+    "cta": {
+      "badge": "Faites un impact",
+      "title": "Voulez-vous soutenir un projet?",
+      "description": "Chaque don fait une différence. Aidez-nous à réaliser ces projets importants.",
+      "donateNow": "Faire un don",
+      "contact": "Nous contacter"
+    },
+    "modal": {
+      "about": "À propos de ce projet",
+      "details": "Détails",
+      "impact": "Impact",
+      "videos": "Vidéos",
+      "support": "Voulez-vous soutenir ce projet?",
+      "supportDescription": "Votre contribution fait la différence.",
+      "close": "Fermer"
+    }
+  },
+  "donate": {
+    "subtitle": "Soutenez-nous",
+    "title": "Soutenez Notre Travail",
+    "description": "Choisissez ci-dessous comment vous souhaitez contribuer à notre mission",
+    "membership": {
+      "title": "Devenir Membre",
+      "description": "Soutenez-nous avec une contribution mensuelle",
+      "monthlyCancel": "Résiliable mensuellement",
+      "monthlyInfo": "Faites la différence avec une contribution mensuelle et soutenez notre travail pour créer un changement positif.",
+      "chooseAmount": "Choisissez votre contribution mensuelle",
+      "becomeMember": "Devenir membre",
+      "processing": "Traitement en cours...",
+      "automated": "Entièrement automatisé",
+      "cancelable": "Résiliable mensuellement",
+      "secure": "Paiement sécurisé via Stripe"
+    },
+    "oneTime": {
+      "title": "Don Unique",
+      "description": "Soutenez-nous avec un don unique",
+      "amount": "Montant du don",
+      "comment": "Commentaires (optionnel)",
+      "commentPlaceholder": "Ajoutez un commentaire à votre don...",
+      "continue": "Continuer le don",
+      "amountChosen": "Montant choisi",
+      "paymentDetails": "Détails de paiement",
+      "minAmount": "Entrez un montant valide (minimum 1€)"
+    },
+    "trust": {
+      "impact": "100% Impact",
+      "impactDescription": "Votre don va directement à nos projets",
+      "anbi": "Statut ANBI",
+      "anbiDescription": "Déductible fiscalement (861878405)",
+      "secure": "Don Sécurisé",
+      "secureDescription": "Via des méthodes de paiement sécurisées"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contactez-nous",
+    "description": "Avez-vous des questions ou souhaitez-vous en savoir plus sur nos projets? N'hésitez pas à nous contacter.",
+    "form": {
+      "name": "Nom",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé!",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "info": {
+      "address": "Adresse",
+      "email": "E-mail",
+      "phone": "Téléphone"
+    }
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "Qui nous sommes",
+    "mission": {
+      "title": "Notre Mission",
+      "description": "La Fondation Laassara s'engage pour le développement et le bien-être du village de Laassara et de ses habitants."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Une communauté où chacun a accès à l'éducation, aux soins de santé et aux possibilités de développement personnel."
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "description": "Rencontrez les personnes derrière la Fondation Laassara."
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "links": "Liens",
+    "newsletter": "Restez informé",
+    "newsletterDescription": "Restez informé de nos dernières nouvelles en vous inscrivant à notre newsletter!",
+    "name": "Nom",
+    "email": "Email",
+    "subscribe": "S'inscrire",
+    "rights": "Tous droits réservés"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "readMore": "En savoir plus",
+    "back": "Retour",
+    "perMonth": "par mois"
+  }
+}
