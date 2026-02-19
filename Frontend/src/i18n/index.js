@@ -8,13 +8,15 @@ import fr from './locales/fr.json';
 import ar from './locales/ar.json';
 import de from './locales/de.json';
 import da from './locales/da.json';
+import es from './locales/es.json';
 
 const resources = {
   nl: { translation: nl },
   fr: { translation: fr },
   ar: { translation: ar },
   de: { translation: de },
-  da: { translation: da }
+  da: { translation: da },
+  es: { translation: es }
 };
 
 i18n

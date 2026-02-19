@@ -106,57 +106,84 @@
     }
   },
   "contact": {
-    "title": "Kontakt",
+    "title": "Kontakt os",
     "subtitle": "Kom i kontakt",
-    "description": "Har du spørgsmål eller vil du vide mere om vores projekter? Tøv ikke med at kontakte os.",
-    "form": {
-      "name": "Navn",
+    "description": "Har du spørgsmål eller vil du vide mere? Tøv ikke med at kontakte os!",
+    "info": {
+      "title": "Kontaktoplysninger",
       "email": "E-mail",
-      "phone": "Telefonnummer",
+      "phone": "Telefon",
+      "address": "Adresse"
+    },
+    "form": {
+      "email": "Din e-mailadresse",
+      "emailPlaceholder": "din@email.com",
       "subject": "Emne",
-      "message": "Besked",
+      "subjectPlaceholder": "Hvad handler din besked om?",
+      "message": "Din besked",
+      "messagePlaceholder": "Fortæl os, hvad du ønsker...",
       "send": "Send besked",
       "sending": "Sender...",
-      "success": "Besked sendt!",
-      "error": "Noget gik galt. Prøv venligst igen."
-    },
-    "info": {
-      "address": "Adresse",
-      "email": "E-mail",
-      "phone": "Telefon"
+      "success": "Tak for din besked! Vi kontakter dig hurtigst muligt.",
+      "error": "Der opstod en fejl ved afsendelse af din besked. Prøv igen."
     }
   },
   "about": {
     "title": "Om os",
-    "subtitle": "Lær os at kende",
+    "subtitle": "Hvem vi er",
+    "description": "Opdag hvem vi er, hvad vi gør, og hvordan vi sammen gør en forskel i verden.",
     "mission": {
       "title": "Vores mission",
-      "description": "Stichting Laasara er engageret i udviklingen og trivslen af landsbyen Laasara og dens indbyggere."
+      "description": "Laassara Foundation arbejder for udvikling og trivsel i landsbyen Laassara og dens indbyggere.",
+      "text1": "Laassara Foundation arbejder for at hjælpe landsbyen Laassara og dens indbyggere. Fonden er oprettet af en gruppe mennesker, der føler sig forbundet med samfundet og ønsker at forbedre folks levevilkår.",
+      "text2": "Vores mission er at hjælpe mennesker og lære dem at blive selvhjulpne. Gennem vores hjælp ønsker vi at skabe holdbar forandring, så folk ikke kun hjælpes på kort sigt, men også kan drage fordel af de færdigheder, de har lært på lang sigt."
     },
     "vision": {
       "title": "Vores vision",
-      "description": "Et samfund, hvor alle har adgang til uddannelse, sundhedspleje og muligheder for personlig udvikling."
+      "description": "Et samfund hvor alle har adgang til uddannelse, sundhedspleje og muligheder for personlig udvikling.",
+      "text1": "Vi ser på vores globale samfund for at sikre, at de får den støtte, de fortjener. Gennem vores projekter stræber vi efter en verden, hvor alle har adgang til basale behov som uddannelse, sundhedspleje, rent vand og et sikkert levemiljø.",
+      "text2": "Vi tror på samarbejdets kraft og lokalt engagement. Kun ved at arbejde sammen med samfundene selv kan vi opnå holdbar og meningsfuld forandring."
+    },
+    "goals": {
+      "title": "Vores",
+      "titleHighlight": "Mål",
+      "description": "Vi fokuserer på seks kerneområder for at skabe maksimal effekt i de samfund, vi tjener.",
+      "community": { "title": "Samfund & Udvikling", "description": "Hjælpe mennesker og styrke samfund gennem lokale initiativer og samarbejde." },
+      "donations": { "title": "Donationer & Vandstrukturer", "description": "Levere hjælpepakker og muliggøre adgang til rent vand for alle i nød." },
+      "education": { "title": "Uddannelse & Beskyttelse", "description": "Skabe adgang til kvalitetsuddannelse og sikre miljøer for alle samfundsmedlemmer." },
+      "justice": { "title": "Social retfærdighed", "description": "Skabe lige muligheder for alle, uanset baggrund eller social status." },
+      "culture": { "title": "Kultur & Traditioner", "description": "Bevare og dele kulturelle værdier for at beskytte den rige historie og identitet." },
+      "local": { "title": "Lokalt engageret", "description": "Direkte samarbejde med lokale samfund for at opnå holdbar effekt." }
     },
     "team": {
-      "title": "Vores team",
-      "description": "Mød menneskene bag Stichting Laasara."
+      "title": "Vores",
+      "titleHighlight": "Team",
+      "description": "Mød de dedikerede mennesker, der arbejder for at realisere vores mission.",
+      "roles": {
+        "chairman": "Formand",
+        "viceChairman": "Næstformand",
+        "treasurer": "Kasserer",
+        "treasurer2": "2. kasserer",
+        "secretary": "Sekretær"
+      }
     }
   },
   "footer": {
     "contact": "Kontakt",
     "links": "Links",
     "newsletter": "Hold dig opdateret",
-    "newsletterDescription": "Hold dig opdateret med vores seneste nyheder ved at abonnere på vores nyhedsbrev!",
+    "newsletterDescription": "Hold dig opdateret med vores seneste nyheder ved at tilmelde dig vores nyhedsbrev!",
     "name": "Navn",
     "email": "E-mail",
-    "subscribe": "Abonnér",
+    "subscribe": "Tilmeld",
     "rights": "Alle rettigheder forbeholdes"
   },
   "common": {
     "loading": "Indlæser...",
-    "error": "Noget gik galt",
+    "error": "Der opstod en fejl",
     "readMore": "Læs mere",
     "back": "Tilbage",
-    "perMonth": "pr. måned"
+    "perMonth": "pr. måned",
+    "donate": "Donér"
   }
 }

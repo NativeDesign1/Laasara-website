@@ -221,9 +221,9 @@ const fetchProjects = async () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
             {displayedProjects.map((project) => (
               <article
                 key={project.id}

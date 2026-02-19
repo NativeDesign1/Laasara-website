@@ -7,6 +7,7 @@ const languages = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   { code: 'da', name: 'Dansk', flag: '🇩🇰' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'ar', name: 'العربية', flag: '🇲🇦', rtl: true }
 ];
 

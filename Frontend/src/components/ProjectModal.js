@@ -67,7 +67,7 @@ function ProjectModal({ project, onClose }) {
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={(e) => e.target === e.currentTarget && onClose()}
       >
-        <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+        <div className="bg-white rounded-xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
           {/* Header */}
           <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-5 flex justify-between items-start z-10">
             <div>
@@ -203,21 +203,21 @@ function ProjectModal({ project, onClose }) {
               )}
 
               {/* Call to Action */}
-              <div className="border-t border-gray-100 pt-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <div>
-                  <h4 className="font-medium text-gray-900">{t('projects.modal.support')}</h4>
-                  <p className="text-gray-500 text-sm">{t('projects.modal.supportDescription')}</p>
+              <div className="bg-gray-50 -mx-6 px-6 py-6 mt-6">
+                <div className="text-center mb-4">
+                  <h4 className="font-semibold text-gray-900">{t('projects.modal.support')}</h4>
+                  <p className="text-gray-500 text-sm mt-1">{t('projects.modal.supportDescription')}</p>
                 </div>
-                <div className="flex gap-3 w-full sm:w-auto">
+                <div className="flex gap-3 justify-center">
                   <a 
                     href="/doneer" 
-                    className="flex-1 sm:flex-none bg-emerald-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors text-center text-sm"
+                    className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors text-center"
                   >
                     {t('projects.cta.donateNow')}
                   </a>
                   <button
                     onClick={onClose}
-                    className="px-5 py-2.5 border border-gray-200 rounded-lg font-medium hover:border-gray-300 hover:bg-gray-50 transition text-gray-600 text-sm"
+                    className="px-6 py-3 border border-gray-300 rounded-lg font-medium hover:border-gray-400 hover:bg-gray-100 transition text-gray-700"
                   >
                     {t('projects.modal.close')}
                   </button>

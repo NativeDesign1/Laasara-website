@@ -38,15 +38,17 @@ function Header() {
           </div>
           
           {/* ANBI + IBAN + Language rechts */}
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 bg-white/15 px-2 py-0.5 rounded text-xs font-medium">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 bg-white/15 px-2.5 py-0.5 rounded text-xs font-medium">
               <BadgeCheck size={12} />
               {t('nav.anbi')}
             </span>
+            <span className="hidden sm:block w-px h-4 bg-white/30"></span>
             <span className="flex items-center gap-1.5">
               <Heart size={14} />
               <span className="font-medium">NL67 TRIO 0320 5916 89</span>
             </span>
+            <span className="hidden sm:block w-px h-4 bg-white/30"></span>
             <LanguageSelector variant="topbar" />
           </div>
         </div>

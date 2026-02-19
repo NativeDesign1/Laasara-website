@@ -129,17 +129,64 @@
   "about": {
     "title": "Over Ons",
     "subtitle": "Wie we zijn",
+    "description": "Ontdek wie we zijn, wat we doen en hoe we samen een verschil maken in de wereld.",
     "mission": {
       "title": "Onze Missie",
-      "description": "Stichting Laassara zet zich in voor de ontwikkeling en het welzijn van het dorp Laassara en haar bewoners."
+      "description": "Stichting Laassara zet zich in voor de ontwikkeling en het welzijn van het dorp Laassara en haar bewoners.",
+      "text1": "Stichting Laassara zet zich in om het dorp Laassara en haar bewoners te helpen. De stichting is opgericht door een groep mensen die zich betrokken voelen bij de gemeenschap en zich willen inzetten om de levensomstandigheden van de mensen te verbeteren.",
+      "text2": "Onze missie is om mensen te helpen en hen te leren zelfredzaam te zijn. Door middel van onze hulp willen we een duurzame verandering bewerkstelligen, zodat mensen niet alleen geholpen worden op korte termijn, maar ook op lange termijn kunnen profiteren van de vaardigheden die ze hebben geleerd."
     },
     "vision": {
       "title": "Onze Visie",
-      "description": "Een gemeenschap waar iedereen toegang heeft tot onderwijs, gezondheidszorg en mogelijkheden voor persoonlijke ontwikkeling."
+      "description": "Een gemeenschap waar iedereen toegang heeft tot onderwijs, gezondheidszorg en mogelijkheden voor persoonlijke ontwikkeling.",
+      "text1": "Wij kijken naar onze wereldwijde gemeenschap om ervoor te zorgen dat ze de steun krijgen die ze verdienen. Door middel van onze projecten streven we naar een wereld waarin iedereen toegang heeft tot basisbehoeften zoals onderwijs, gezondheidszorg, schoon water en een veilige leefomgeving.",
+      "text2": "We geloven in het kracht van samenwerking en lokale betrokkenheid. Alleen door samen te werken met de gemeenschappen zelf kunnen we duurzame en betekenisvolle verandering realiseren."
+    },
+    "goals": {
+      "title": "Onze",
+      "titleHighlight": "Doelen",
+      "description": "We richten ons op zes kerngebieden om maximale impact te maken in de gemeenschappen die we dienen.",
+      "community": { "title": "Gemeenschap & Ontwikkeling", "description": "Mensen helpen en gemeenschappen versterken door middel van lokale initiatieven en samenwerking." },
+      "donations": { "title": "Donaties & water structuren", "description": "Hulppakketten verstrekken en toegang tot schoon water mogelijk maken voor iedereen in nood." },
+      "education": { "title": "Onderwijs & Beschutting", "description": "Toegang tot kwaliteitsonderwijs en veilige omgevingen creëren voor alle leden van de gemeenschap." },
+      "justice": { "title": "Sociale rechtvaardigheid", "description": "Gelijke kansen voor iedereen creëren, ongeacht achtergrond of sociale status." },
+      "culture": { "title": "Cultuur & tradities", "description": "Culturele waarden behouden en delen om de rijke geschiedenis en identiteit te bewaren." },
+      "local": { "title": "Lokaal betrokken", "description": "Directe samenwerking met lokale gemeenschappen om duurzame impact te realiseren." }
     },
     "team": {
-      "title": "Ons Team",
-      "description": "Ontmoet de mensen achter Laassara Foundation."
+      "title": "Ons",
+      "titleHighlight": "Team",
+      "description": "Ontmoet de toegewijde mensen die zich inzetten om onze missie te realiseren.",
+      "roles": {
+        "chairman": "Voorzitter",
+        "viceChairman": "Vice voorzitter",
+        "treasurer": "Penningmeester",
+        "treasurer2": "2de penningmeester",
+        "secretary": "Secretaris"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact opnemen",
+    "subtitle": "Neem contact met ons op",
+    "description": "Heb je vragen of wil je meer informatie? Neem gerust contact met ons op!",
+    "info": {
+      "title": "Contactgegevens",
+      "email": "Email",
+      "phone": "Telefoon",
+      "address": "Adres"
+    },
+    "form": {
+      "email": "Je e-mailadres",
+      "emailPlaceholder": "jouw@email.com",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "Waar gaat je bericht over?",
+      "message": "Je bericht",
+      "messagePlaceholder": "Vertel ons wat je wilt...",
+      "send": "Verstuur bericht",
+      "sending": "Bezig met verzenden...",
+      "success": "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.",
+      "error": "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer opnieuw."
     }
   },
   "footer": {
@@ -157,6 +204,7 @@
     "error": "Er is een fout opgetreden",
     "readMore": "Lees meer",
     "back": "Terug",
-    "perMonth": "per maand"
+    "perMonth": "per maand",
+    "donate": "Doneer"
   }
 }

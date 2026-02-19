@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heart, Users, Gift, Building, Globe, Handshake } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import missie from "../assets/missie.png"
 import visie from "../assets/visie.png"
 import abdel from "../assets/team/Abdelaziz.png"
@@ -10,54 +11,56 @@ import Moustapha from "../assets/team/Moustapha.png"
 
 
 function Over() {
+  const { t } = useTranslation();
+  
   const goals = [
     {
       icon: Heart,
-      title: 'Gemeenschap & Ontwikkeling',
-      description: 'Mensen helpen en gemeenschappen versterken door middel van lokale initiatieven en samenwerking.'
+      title: t('about.goals.community.title'),
+      description: t('about.goals.community.description')
     },
     {
       icon: Gift,
-      title: 'Donaties & water structuren',
-      description: 'Hulppakketten verstrekken en toegang tot schoon water mogelijk maken voor iedereen in nood.'
+      title: t('about.goals.donations.title'),
+      description: t('about.goals.donations.description')
     },
     {
       icon: Users,
-      title: 'Onderwijs & Beschutting',
-      description: 'Toegang tot kwaliteitsonderwijs en veilige omgevingen creëren voor alle leden van de gemeenschap.'
+      title: t('about.goals.education.title'),
+      description: t('about.goals.education.description')
     },
     {
       icon: Building,
-      title: 'Sociale rechtvaardigheid',
-      description: 'Gelijke kansen voor iedereen creëren, ongeacht achtergrond of sociale status.'
+      title: t('about.goals.justice.title'),
+      description: t('about.goals.justice.description')
     },
     {
       icon: Globe,
-      title: 'Cultuur & tradities',
-      description: 'Culturele waarden behouden en delen om de rijke geschiedenis en identiteit te bewaren.'
+      title: t('about.goals.culture.title'),
+      description: t('about.goals.culture.description')
     },
     {
       icon: Handshake,
-      title: 'Lokaal betrokken',
-      description: 'Directe samenwerking met lokale gemeenschappen om duurzame impact te realiseren.'
+      title: t('about.goals.local.title'),
+      description: t('about.goals.local.description')
     }
   ];
 
   const team = [
-  { name: 'Moussa Ahammar', role: 'Penningmeester', image: Moussa },
-  { name: 'Abdelaziz Ahammar', role: 'Voorzitter', image: abdel },
-  { name: 'Abdelhakim Koubaa', role: '2de penningmeester', image: Hakim },
-  { name: 'Moustapha El Founti', role: 'Secretaris', image: Moustapha }, 
-  { name: 'Ilias El Founti', role: 'Vice voorzitter', image: Ilias }
+  { name: 'Moussa Ahammar', role: t('about.team.roles.treasurer'), image: Moussa },
+  { name: 'Abdelaziz Ahammar', role: t('about.team.roles.chairman'), image: abdel },
+  { name: 'Abdelhakim Koubaa', role: t('about.team.roles.treasurer2'), image: Hakim },
+  { name: 'Moustapha El Founti', role: t('about.team.roles.secretary'), image: Moustapha }, 
+  { name: 'Ilias El Founti', role: t('about.team.roles.viceChairman'), image: Ilias }
 ];
 
   return (
     <div className="pt-32">
       <section className="bg-gradient-to-br from-emerald-600 to-cyan-600 text-white py-24">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold mb-6">Over ons</h1>
+          <h1 className="text-6xl font-bold mb-6">{t('about.title')}</h1>
           <p className="text-xl max-w-3xl mx-auto text-emerald-50">
-            Ontdek wie we zijn, wat we doen en hoe we samen een verschil maken in de wereld.
+            {t('about.description')}
           </p>
         </div>
       </section>
@@ -66,17 +69,12 @@ function Over() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
             <div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">Onze Missie</h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">{t('about.mission.title')}</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Stichting Laassara zet zich in om het dorp Laassara en haar bewoners te helpen.
-                De stichting is opgericht door een groep mensen die zich betrokken voelen bij de
-                gemeenschap en zich willen inzetten om de levensomstandigheden van de mensen te verbeteren.
+                {t('about.mission.text1')}
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Onze missie is om mensen te helpen en hen te leren zelfredzaam te zijn. Door middel
-                van onze hulp willen we een duurzame verandering bewerkstelligen, zodat mensen niet
-                alleen geholpen worden op korte termijn, maar ook op lange termijn kunnen profiteren
-                van de vaardigheden die ze hebben geleerd.
+                {t('about.mission.text2')}
               </p>
             </div>
             <div className="relative">
@@ -101,17 +99,12 @@ function Over() {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">Onze Visie</h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">{t('about.vision.title')}</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Wij kijken naar onze wereldwijde gemeenschap om ervoor te zorgen dat ze de steun
-                krijgen die ze verdienen. Door middel van onze projecten streven we naar een wereld
-                waarin iedereen toegang heeft tot basisbehoeften zoals onderwijs, gezondheidszorg,
-                schoon water en een veilige leefomgeving.
+                {t('about.vision.text1')}
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We geloven in het kracht van samenwerking en lokale betrokkenheid. Alleen door
-                samen te werken met de gemeenschappen zelf kunnen we duurzame en betekenisvolle
-                verandering realiseren.
+                {t('about.vision.text2')}
               </p>
             </div>
           </div>
@@ -122,10 +115,10 @@ function Over() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-gray-800 mb-6">
-              Onze <span className="text-emerald-600">Doelen</span>
+              {t('about.goals.title')} <span className="text-emerald-600">{t('about.goals.titleHighlight')}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We richten ons op zes kerngebieden om maximale impact te maken in de gemeenschappen die we dienen.
+              {t('about.goals.description')}
             </p>
           </div>
 
@@ -150,10 +143,10 @@ function Over() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-gray-800 mb-6">
-              Ons <span className="text-cyan-600">Team</span>
+              {t('about.team.title')} <span className="text-cyan-600">{t('about.team.titleHighlight')}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ontmoet de toegewijde mensen die zich inzetten om onze missie te realiseren.
+              {t('about.team.description')}
             </p>
           </div>
 

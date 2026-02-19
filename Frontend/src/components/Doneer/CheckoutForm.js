@@ -1,7 +1,9 @@
 import React from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+import { useTranslation } from 'react-i18next';
 
 const CheckoutForm = ({ amount }) => {
+  const { t } = useTranslation();
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = React.useState('');
@@ -46,7 +48,7 @@ const CheckoutForm = ({ amount }) => {
         disabled={!stripe || isProcessing}
         className={`w-full py-3 px-6 rounded-lg font-semibold text-white ${isProcessing ? 'bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'} transition duration-300`}
       >
-        {isProcessing ? 'Processing...' : `Doneer €${amount}`}
+        {isProcessing ? 'Processing...' : `${t('common.donate')} €${amount}`}
       </button>
 
       {message && (

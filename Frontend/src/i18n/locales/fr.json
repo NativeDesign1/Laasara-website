@@ -106,40 +106,66 @@
     }
   },
   "contact": {
-    "title": "Contact",
+    "title": "Nous contacter",
     "subtitle": "Contactez-nous",
-    "description": "Avez-vous des questions ou souhaitez-vous en savoir plus sur nos projets? N'hésitez pas à nous contacter.",
+    "description": "Avez-vous des questions ou souhaitez-vous plus d'informations? N'hésitez pas à nous contacter!",
+    "info": {
+      "title": "Coordonnées",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "address": "Adresse"
+    },
     "form": {
-      "name": "Nom",
-      "email": "Adresse e-mail",
-      "phone": "Numéro de téléphone",
+      "email": "Votre adresse e-mail",
+      "emailPlaceholder": "votre@email.com",
       "subject": "Sujet",
-      "message": "Message",
+      "subjectPlaceholder": "De quoi parle votre message?",
+      "message": "Votre message",
+      "messagePlaceholder": "Dites-nous ce que vous souhaitez...",
       "send": "Envoyer le message",
       "sending": "Envoi en cours...",
-      "success": "Message envoyé!",
-      "error": "Une erreur s'est produite. Veuillez réessayer."
-    },
-    "info": {
-      "address": "Adresse",
-      "email": "E-mail",
-      "phone": "Téléphone"
+      "success": "Merci pour votre message! Nous vous contacterons dès que possible.",
+      "error": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer."
     }
   },
   "about": {
-    "title": "À Propos",
+    "title": "À Propos de Nous",
     "subtitle": "Qui nous sommes",
+    "description": "Découvrez qui nous sommes, ce que nous faisons et comment nous faisons la différence ensemble.",
     "mission": {
       "title": "Notre Mission",
-      "description": "La Fondation Laassara s'engage pour le développement et le bien-être du village de Laassara et de ses habitants."
+      "description": "La Fondation Laassara s'engage pour le développement et le bien-être du village de Laassara et de ses habitants.",
+      "text1": "La Fondation Laassara s'engage à aider le village de Laassara et ses habitants. La fondation a été créée par un groupe de personnes qui se sentent concernées par la communauté et souhaitent améliorer les conditions de vie des habitants.",
+      "text2": "Notre mission est d'aider les gens et de leur apprendre à devenir autonomes. Grâce à notre aide, nous voulons créer un changement durable, afin que les gens ne soient pas seulement aidés à court terme, mais puissent également bénéficier à long terme des compétences acquises."
     },
     "vision": {
       "title": "Notre Vision",
-      "description": "Une communauté où chacun a accès à l'éducation, aux soins de santé et aux possibilités de développement personnel."
+      "description": "Une communauté où chacun a accès à l'éducation, aux soins de santé et aux possibilités de développement personnel.",
+      "text1": "Nous regardons notre communauté mondiale pour nous assurer qu'elle reçoit le soutien qu'elle mérite. À travers nos projets, nous aspirons à un monde où chacun a accès aux besoins de base comme l'éducation, les soins de santé, l'eau potable et un environnement de vie sûr.",
+      "text2": "Nous croyons au pouvoir de la collaboration et de l'engagement local. Ce n'est qu'en travaillant avec les communautés elles-mêmes que nous pouvons réaliser un changement durable et significatif."
+    },
+    "goals": {
+      "title": "Nos",
+      "titleHighlight": "Objectifs",
+      "description": "Nous nous concentrons sur six domaines clés pour maximiser notre impact dans les communautés que nous servons.",
+      "community": { "title": "Communauté & Développement", "description": "Aider les gens et renforcer les communautés grâce à des initiatives locales et à la collaboration." },
+      "donations": { "title": "Dons & Infrastructures d'eau", "description": "Fournir des colis d'aide et permettre l'accès à l'eau potable pour tous dans le besoin." },
+      "education": { "title": "Éducation & Protection", "description": "Créer l'accès à une éducation de qualité et des environnements sûrs pour tous les membres de la communauté." },
+      "justice": { "title": "Justice sociale", "description": "Créer des chances égales pour tous, indépendamment de l'origine ou du statut social." },
+      "culture": { "title": "Culture & Traditions", "description": "Préserver et partager les valeurs culturelles pour protéger la riche histoire et identité." },
+      "local": { "title": "Engagement local", "description": "Collaboration directe avec les communautés locales pour un impact durable." }
     },
     "team": {
-      "title": "Notre Équipe",
-      "description": "Rencontrez les personnes derrière la Fondation Laassara."
+      "title": "Notre",
+      "titleHighlight": "Équipe",
+      "description": "Rencontrez les personnes dévouées qui travaillent à réaliser notre mission.",
+      "roles": {
+        "chairman": "Président",
+        "viceChairman": "Vice-président",
+        "treasurer": "Trésorier",
+        "treasurer2": "2ème trésorier",
+        "secretary": "Secrétaire"
+      }
     }
   },
   "footer": {
@@ -157,6 +183,7 @@
     "error": "Une erreur s'est produite",
     "readMore": "En savoir plus",
     "back": "Retour",
-    "perMonth": "par mois"
+    "perMonth": "par mois",
+    "donate": "Faire un don"
   }
 }

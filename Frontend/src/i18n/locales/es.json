@@ -1,0 +1,210 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "projects": "Proyectos",
+    "donate": "Donar",
+    "contact": "Contacto",
+    "anbi": "Reconocido ANBI",
+    "slogan": "Juntos marcamos la diferencia"
+  },
+  "home": {
+    "hero": {
+      "title": "Juntos marcamos la",
+      "titleHighlight": "diferencia",
+      "description": "La Fundación Laassara se dedica a ayudar al pueblo de Laassara y sus habitantes. La fundación fue creada por un grupo de personas comprometidas con la comunidad y dedicadas a mejorar las condiciones de vida de las personas.",
+      "learnMore": "Más sobre nosotros",
+      "donateNow": "Donar ahora"
+    },
+    "stats": {
+      "projects": "Proyectos",
+      "yearsActive": "Años activos",
+      "transparent": "Transparente"
+    },
+    "why": {
+      "subtitle": "Por qué nosotros",
+      "title": "¿Por qué Laassara Foundation?",
+      "description": "Creemos en crear un impacto sostenible a través de la educación y el apoyo comunitario.",
+      "community": {
+        "title": "Comunidad primero",
+        "description": "Escuchamos las necesidades de la comunidad local y trabajamos juntos en soluciones que realmente marcan la diferencia."
+      },
+      "transparent": {
+        "title": "Transparente y honesto",
+        "description": "Total transparencia en cómo gastamos las donaciones. Cada proyecto se documenta e informa."
+      },
+      "impact": {
+        "title": "Impacto duradero",
+        "description": "Nos enfocamos en proyectos que generan cambios positivos a largo plazo en la vida de las personas."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para marcar la diferencia?",
+      "description": "Cada contribución, grande o pequeña, nos ayuda a cambiar vidas y fortalecer comunidades.",
+      "donateNow": "Donar ahora",
+      "viewProjects": "Ver proyectos"
+    }
+  },
+  "projects": {
+    "subtitle": "Lo que hacemos",
+    "title": "Nuestros Proyectos",
+    "description": "Descubre cómo trabajamos juntos por un mejor futuro para las comunidades necesitadas.",
+    "viewProject": "Ver proyecto",
+    "showMore": "Mostrar más proyectos",
+    "showLess": "Mostrar menos",
+    "cta": {
+      "badge": "Crea impacto",
+      "title": "¿Quieres apoyar un proyecto?",
+      "description": "Cada donación marca la diferencia. Ayúdanos a realizar estos importantes proyectos.",
+      "donateNow": "Donar ahora",
+      "contact": "Contáctanos"
+    },
+    "modal": {
+      "about": "Sobre este proyecto",
+      "details": "Detalles",
+      "impact": "Impacto",
+      "videos": "Videos",
+      "support": "¿Quieres apoyar este proyecto?",
+      "supportDescription": "Tu contribución marca la diferencia.",
+      "close": "Cerrar"
+    }
+  },
+  "donate": {
+    "subtitle": "Apóyanos",
+    "title": "Apoya Nuestro Trabajo",
+    "description": "Elige abajo cómo quieres contribuir a nuestra misión",
+    "membership": {
+      "title": "Hazte Miembro",
+      "description": "Apóyanos con una contribución mensual",
+      "monthlyCancel": "Cancelable mensualmente",
+      "monthlyInfo": "Marca la diferencia con una contribución mensual y apoya nuestro trabajo para crear un cambio positivo.",
+      "chooseAmount": "Elige tu contribución mensual",
+      "becomeMember": "Hazte miembro ahora",
+      "processing": "Procesando...",
+      "automated": "Totalmente automatizado",
+      "cancelable": "Cancelable mensualmente",
+      "secure": "Pago seguro via Stripe"
+    },
+    "oneTime": {
+      "title": "Donación Única",
+      "description": "Apóyanos con una donación única",
+      "amount": "Cantidad de donación",
+      "comment": "Comentarios (opcional)",
+      "commentPlaceholder": "Añade un comentario a tu donación...",
+      "continue": "Continuar con la Donación",
+      "amountChosen": "Cantidad Elegida",
+      "paymentDetails": "Detalles de Pago",
+      "minAmount": "Introduce una cantidad válida (mínimo €1)"
+    },
+    "trust": {
+      "impact": "100% Impacto",
+      "impactDescription": "Tu donación va directamente a nuestros proyectos",
+      "anbi": "Estado ANBI",
+      "anbiDescription": "Deducible de impuestos (861878405)",
+      "secure": "Donación Segura",
+      "secureDescription": "A través de métodos de pago seguros"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Contáctanos",
+    "description": "¿Tienes preguntas o quieres saber más sobre nuestros proyectos? No dudes en contactarnos.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado!",
+      "error": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "info": {
+      "address": "Dirección",
+      "email": "Correo",
+      "phone": "Teléfono"
+    }
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Quiénes somos",
+    "description": "Descubre quiénes somos, qué hacemos y cómo juntos hacemos la diferencia en el mundo.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "La Fundación Laassara se dedica al desarrollo y bienestar del pueblo de Laassara y sus habitantes.",
+      "text1": "La Fundación Laassara se dedica a ayudar al pueblo de Laassara y sus habitantes. La fundación fue creada por un grupo de personas comprometidas con la comunidad y dedicadas a mejorar las condiciones de vida de las personas.",
+      "text2": "Nuestra misión es ayudar a las personas y enseñarles a ser autosuficientes. A través de nuestra ayuda queremos lograr un cambio sostenible, para que las personas no solo reciban ayuda a corto plazo, sino que también puedan beneficiarse a largo plazo de las habilidades que han aprendido."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Una comunidad donde todos tengan acceso a educación, atención médica y oportunidades de desarrollo personal.",
+      "text1": "Observamos nuestra comunidad global para asegurarnos de que reciban el apoyo que merecen. A través de nuestros proyectos aspiramos a un mundo donde todos tengan acceso a necesidades básicas como educación, atención médica, agua limpia y un entorno de vida seguro.",
+      "text2": "Creemos en el poder de la colaboración y el compromiso local. Solo trabajando con las comunidades mismas podemos lograr un cambio sostenible y significativo."
+    },
+    "goals": {
+      "title": "Nuestros",
+      "titleHighlight": "Objetivos",
+      "description": "Nos enfocamos en seis áreas clave para lograr el máximo impacto en las comunidades que servimos.",
+      "community": { "title": "Comunidad y Desarrollo", "description": "Ayudar a las personas y fortalecer comunidades a través de iniciativas locales y colaboración." },
+      "donations": { "title": "Donaciones e Infraestructura de Agua", "description": "Proporcionar paquetes de ayuda y permitir el acceso a agua limpia para todos los necesitados." },
+      "education": { "title": "Educación y Protección", "description": "Crear acceso a educación de calidad y entornos seguros para todos los miembros de la comunidad." },
+      "justice": { "title": "Justicia Social", "description": "Crear oportunidades iguales para todos, independientemente de su origen o estatus social." },
+      "culture": { "title": "Cultura y Tradiciones", "description": "Preservar y compartir valores culturales para proteger la rica historia e identidad." },
+      "local": { "title": "Compromiso Local", "description": "Colaboración directa con comunidades locales para lograr un impacto sostenible." }
+    },
+    "team": {
+      "title": "Nuestro",
+      "titleHighlight": "Equipo",
+      "description": "Conoce a las personas dedicadas que trabajan para realizar nuestra misión.",
+      "roles": {
+        "chairman": "Presidente",
+        "viceChairman": "Vicepresidente",
+        "treasurer": "Tesorero",
+        "treasurer2": "2do Tesorero",
+        "secretary": "Secretario"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Ponte en contacto",
+    "description": "¿Tienes preguntas o quieres más información? ¡No dudes en contactarnos!",
+    "info": {
+      "title": "Datos de Contacto",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "address": "Dirección"
+    },
+    "form": {
+      "email": "Tu dirección de correo",
+      "emailPlaceholder": "tu@email.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué trata tu mensaje?",
+      "message": "Tu mensaje",
+      "messagePlaceholder": "Cuéntanos qué deseas...",
+      "send": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Gracias por tu mensaje! Nos pondremos en contacto contigo lo antes posible.",
+      "error": "Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
+    }
+  },
+  "footer": {
+    "contact": "Contacto",
+    "links": "Enlaces",
+    "newsletter": "Mantente informado",
+    "newsletterDescription": "¡Mantente al día con nuestras últimas noticias suscribiéndote a nuestro boletín!",
+    "name": "Nombre",
+    "email": "Correo",
+    "subscribe": "Suscribirse",
+    "rights": "Todos los derechos reservados"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "readMore": "Leer más",
+    "back": "Volver",
+    "perMonth": "por mes",
+    "donate": "Donar"
+  }
+}

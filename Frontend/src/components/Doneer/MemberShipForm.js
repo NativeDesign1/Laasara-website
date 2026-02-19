@@ -3,40 +3,43 @@ import { loadStripe } from "@stripe/stripe-js";
 import Select from "react-select";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import { useTranslation } from 'react-i18next';
 
 const stripePromise = loadStripe(
   "pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK",
 );
 
 const SubscriptionForm = () => {
+  const { t } = useTranslation();
   const [selectedPrice, setSelectedPrice] = useState(
     "price_1Q6WfBHM8dE1aPueXK1VLe30",
   );
   const [isProcessing, setIsProcessing] = useState(false);
 
+  const perMonth = t('common.perMonth');
   const options = [
-    { value: "price_1Sl9Y2HM8dE1aPueG1LJijyP", label: "€2,50 per maand" },
-    { value: "price_1Q6WfBHM8dE1aPueXK1VLe30", label: "€5 per maand" },
-    { value: "price_1Sl9YBHM8dE1aPueyU821N4J", label: "€7,50 per maand" },
-    { value: "price_1Q6WfIHM8dE1aPueEcFQS4Cd", label: "€10 per maand" },
-    { value: "price_1Sl9YJHM8dE1aPueqYB3yAXB", label: "€12,50 per maand" },
-    { value: "price_1Q6WfQHM8dE1aPuexsoirJf4", label: "€15 per maand" },
-    { value: "price_1Sl9YSHM8dE1aPueyuEqiVrB", label: "€17,50 per maand" },
-    { value: "price_1Q6Wf2HM8dE1aPuex2mB7ogZ", label: "€20 per maand" },
-    { value: "price_1Sl9YgHM8dE1aPuebF51x7GM", label: "€22,50 per maand" },
-    { value: "price_1QZGc8HM8dE1aPue70tex1zg", label: "€25 per maand" },
-    { value: "price_1Sl9YnHM8dE1aPue3wmUNalv", label: "€27,50 per maand" },
-    { value: "price_1QZGcIHM8dE1aPueHLMPZ30E", label: "€30 per maand" },
-    { value: "price_1Sl9YuHM8dE1aPueLaEO3TOt", label: "€32,50 per maand" },
-    { value: "price_1QZGcQHM8dE1aPueaIJCJW8R", label: "€35 per maand" },
-    { value: "price_1Sl9Z1HM8dE1aPue7OtrkiaD", label: "€37,50 per maand" },
-    { value: "price_1QZGcYHM8dE1aPueixgX0Pj6", label: "€40 per maand" },
-    { value: "price_1Sl9Z8HM8dE1aPuejqlN4864", label: "€42,50 per maand" },
-    { value: "price_1QZGciHM8dE1aPueAujGVg7K", label: "€45 per maand" },
-    { value: "price_1Sl9ZHHM8dE1aPueeTSokXQQ", label: "€47,50 per maand" },
-    { value: "price_1Q6WevHM8dE1aPuehEXe2xBz", label: "€50 per maand" },
-    { value: "price_1St2rpHM8dE1aPueXYHFebB2", label: "€75 per maand" },
-    { value: "price_1St2s3HM8dE1aPuepR6TaJ3b", label: "€100 per maand" },
+    { value: "price_1Sl9Y2HM8dE1aPueG1LJijyP", label: `€2,50 ${perMonth}` },
+    { value: "price_1Q6WfBHM8dE1aPueXK1VLe30", label: `€5 ${perMonth}` },
+    { value: "price_1Sl9YBHM8dE1aPueyU821N4J", label: `€7,50 ${perMonth}` },
+    { value: "price_1Q6WfIHM8dE1aPueEcFQS4Cd", label: `€10 ${perMonth}` },
+    { value: "price_1Sl9YJHM8dE1aPueqYB3yAXB", label: `€12,50 ${perMonth}` },
+    { value: "price_1Q6WfQHM8dE1aPuexsoirJf4", label: `€15 ${perMonth}` },
+    { value: "price_1Sl9YSHM8dE1aPueyuEqiVrB", label: `€17,50 ${perMonth}` },
+    { value: "price_1Q6Wf2HM8dE1aPuex2mB7ogZ", label: `€20 ${perMonth}` },
+    { value: "price_1Sl9YgHM8dE1aPuebF51x7GM", label: `€22,50 ${perMonth}` },
+    { value: "price_1QZGc8HM8dE1aPue70tex1zg", label: `€25 ${perMonth}` },
+    { value: "price_1Sl9YnHM8dE1aPue3wmUNalv", label: `€27,50 ${perMonth}` },
+    { value: "price_1QZGcIHM8dE1aPueHLMPZ30E", label: `€30 ${perMonth}` },
+    { value: "price_1Sl9YuHM8dE1aPueLaEO3TOt", label: `€32,50 ${perMonth}` },
+    { value: "price_1QZGcQHM8dE1aPueaIJCJW8R", label: `€35 ${perMonth}` },
+    { value: "price_1Sl9Z1HM8dE1aPue7OtrkiaD", label: `€37,50 ${perMonth}` },
+    { value: "price_1QZGcYHM8dE1aPueixgX0Pj6", label: `€40 ${perMonth}` },
+    { value: "price_1Sl9Z8HM8dE1aPuejqlN4864", label: `€42,50 ${perMonth}` },
+    { value: "price_1QZGciHM8dE1aPueAujGVg7K", label: `€45 ${perMonth}` },
+    { value: "price_1Sl9ZHHM8dE1aPueeTSokXQQ", label: `€47,50 ${perMonth}` },
+    { value: "price_1Q6WevHM8dE1aPuehEXe2xBz", label: `€50 ${perMonth}` },
+    { value: "price_1St2rpHM8dE1aPueXYHFebB2", label: `€75 ${perMonth}` },
+    { value: "price_1St2s3HM8dE1aPuepR6TaJ3b", label: `€100 ${perMonth}` },
   ];
 
   const handleSubscription = async (e) => {
@@ -110,11 +113,10 @@ const SubscriptionForm = () => {
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center space-x-2 text-gray-600">
           <AutorenewIcon className="animate-spin-slow" />
-          <span>Maandelijks opzegbaar</span>
+          <span>{t('donate.membership.monthlyCancel')}</span>
         </div>
         <p className="text-gray-600 leading-relaxed">
-          Maak het verschil met een maandelijkse bijdrage en steun ons werk om
-          positieve verandering te creëren.
+          {t('donate.membership.monthlyInfo')}
         </p>
       </div>
 
@@ -124,7 +126,7 @@ const SubscriptionForm = () => {
             htmlFor="subscriptionPlan"
             className="block text-lg font-medium text-gray-700"
           >
-            Kies uw maandelijkse bijdrage
+            {t('donate.membership.chooseAmount')}
           </label>
           <Select
             id="subscriptionPlan"
@@ -152,21 +154,21 @@ const SubscriptionForm = () => {
           {isProcessing ? (
             <>
               <AutorenewIcon className="animate-spin" />
-              <span>Wordt verwerkt...</span>
+              <span>{t('donate.membership.processing')}</span>
             </>
           ) : (
             <>
               <PersonAddIcon />
-              <span>Word nu lid</span>
+              <span>{t('donate.membership.becomeMember')}</span>
             </>
           )}
         </button>
       </form>
 
       <div className="text-center text-sm text-gray-500">
-        <p>✓ Volledig geautomatiseerd</p>
-        <p>✓ Maandelijks opzegbaar</p>
-        <p>✓ Veilig betalen via Stripe</p>
+        <p>✓ {t('donate.membership.automated')}</p>
+        <p>✓ {t('donate.membership.cancelable')}</p>
+        <p>✓ {t('donate.membership.secure')}</p>
       </div>
     </div>
   );

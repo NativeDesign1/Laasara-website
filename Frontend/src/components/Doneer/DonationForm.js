@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import CheckoutForm from './CheckoutForm';
 import { Euro, ErrorOutline } from '@mui/icons-material';
 
 const stripePromise = loadStripe('pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK');
 
 const DonationForm = () => {
+    const { t } = useTranslation();
     const [clientSecret, setClientSecret] = useState('');
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
@@ -16,7 +18,7 @@ const DonationForm = () => {
 
     const createPaymentIntent = async () => {
         if (amount < 1) {
-            setError('Voer een geldig bedrag in (minimaal €1)');
+            setError(t('donate.oneTime.minAmount'));
             return;
         }
 
@@ -32,7 +34,7 @@ const DonationForm = () => {
             setIsPaymentIntentCreated(true);
         } catch (error) {
             console.error('Error creating payment intent', error);
-            setError('Er is een fout opgetreden. Probeer het opnieuw.');
+            setError(t('common.error'));
         }
     };
 
@@ -41,7 +43,7 @@ const DonationForm = () => {
             {/* Amount Input */}
             <div className="space-y-4">
                 <label htmlFor="amount" className="block text-lg font-medium text-gray-700">
-                    Donatiebedrag
+                    {t('donate.oneTime.amount')}
                 </label>
                 <div className="relative group">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2">
@@ -83,13 +85,13 @@ const DonationForm = () => {
             </div>
             <div className="space-y-4">
                 <label htmlFor="comment" className="block text-lg font-medium text-gray-700">
-                    Opmerkingen (optioneel)
+                    {t('donate.oneTime.comment')}
                 </label>
                 <textarea
                     id="comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    placeholder="Voeg een opmerking toe bij uw donatie..."
+                    placeholder={t('donate.oneTime.commentPlaceholder')}
                     rows={3}
                     className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-lg
                         focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500
@@ -108,14 +110,14 @@ const DonationForm = () => {
                     isPaymentIntentCreated ? 'bg-emerald-500 cursor-not-allowed' :
                     'bg-emerald-600 hover:bg-emerald-700'}`}
             >
-                {isPaymentIntentCreated ? '✓ Bedrag Gekozen' : 'Doorgaan met Doneren'}
+                {isPaymentIntentCreated ? `✓ ${t('donate.oneTime.amountChosen')}` : t('donate.oneTime.continue')}
             </button>
 
             {/* Payment Form */}
             {clientSecret && (
                 <div className="mt-8 pt-8 border-t border-gray-200">
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">
-                        Betaalgegevens
+                        {t('donate.oneTime.paymentDetails')}
                     </h3>
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
                         <CheckoutForm amount={amount} />

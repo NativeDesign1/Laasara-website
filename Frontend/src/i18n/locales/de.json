@@ -106,40 +106,66 @@
     }
   },
   "contact": {
-    "title": "Kontakt",
-    "subtitle": "Nehmen Sie Kontakt auf",
-    "description": "Haben Sie Fragen oder möchten Sie mehr über unsere Projekte erfahren? Zögern Sie nicht, uns zu kontaktieren.",
-    "form": {
-      "name": "Name",
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Kontaktieren Sie uns",
+    "description": "Haben Sie Fragen oder möchten Sie mehr Informationen? Kontaktieren Sie uns gerne!",
+    "info": {
+      "title": "Kontaktdaten",
       "email": "E-Mail",
-      "phone": "Telefonnummer",
+      "phone": "Telefon",
+      "address": "Adresse"
+    },
+    "form": {
+      "email": "Ihre E-Mail-Adresse",
+      "emailPlaceholder": "ihre@email.com",
       "subject": "Betreff",
-      "message": "Nachricht",
+      "subjectPlaceholder": "Worum geht es in Ihrer Nachricht?",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns, was Sie möchten...",
       "send": "Nachricht senden",
       "sending": "Wird gesendet...",
-      "success": "Nachricht gesendet!",
-      "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
-    },
-    "info": {
-      "address": "Adresse",
-      "email": "E-Mail",
-      "phone": "Telefon"
+      "success": "Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.",
+      "error": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
     }
   },
   "about": {
     "title": "Über uns",
-    "subtitle": "Lernen Sie uns kennen",
+    "subtitle": "Wer wir sind",
+    "description": "Entdecken Sie, wer wir sind, was wir tun und wie wir gemeinsam einen Unterschied in der Welt machen.",
     "mission": {
       "title": "Unsere Mission",
-      "description": "Die Stiftung Laasara setzt sich für die Entwicklung und das Wohlergehen des Dorfes Laasara und seiner Bewohner ein."
+      "description": "Die Stiftung Laasara setzt sich für die Entwicklung und das Wohlergehen des Dorfes Laasara und seiner Bewohner ein.",
+      "text1": "Die Stiftung Laasara setzt sich dafür ein, dem Dorf Laasara und seinen Bewohnern zu helfen. Die Stiftung wurde von einer Gruppe von Menschen gegründet, die sich der Gemeinschaft verbunden fühlen und die Lebensbedingungen der Menschen verbessern möchten.",
+      "text2": "Unsere Mission ist es, Menschen zu helfen und ihnen beizubringen, selbstständig zu werden. Durch unsere Hilfe wollen wir nachhaltige Veränderungen bewirken, damit Menschen nicht nur kurzfristig geholfen wird, sondern sie auch langfristig von den erlernten Fähigkeiten profitieren können."
     },
     "vision": {
       "title": "Unsere Vision",
-      "description": "Eine Gemeinschaft, in der jeder Zugang zu Bildung, Gesundheitsversorgung und Möglichkeiten zur persönlichen Entwicklung hat."
+      "description": "Eine Gemeinschaft, in der jeder Zugang zu Bildung, Gesundheitsversorgung und Möglichkeiten zur persönlichen Entwicklung hat.",
+      "text1": "Wir schauen auf unsere weltweite Gemeinschaft, um sicherzustellen, dass sie die Unterstützung erhält, die sie verdient. Durch unsere Projekte streben wir eine Welt an, in der jeder Zugang zu Grundbedürfnissen wie Bildung, Gesundheitsversorgung, sauberem Wasser und einer sicheren Lebensumgebung hat.",
+      "text2": "Wir glauben an die Kraft der Zusammenarbeit und des lokalen Engagements. Nur durch die Zusammenarbeit mit den Gemeinschaften selbst können wir nachhaltige und bedeutungsvolle Veränderungen erreichen."
+    },
+    "goals": {
+      "title": "Unsere",
+      "titleHighlight": "Ziele",
+      "description": "Wir konzentrieren uns auf sechs Kernbereiche, um maximale Wirkung in den Gemeinschaften zu erzielen, die wir unterstützen.",
+      "community": { "title": "Gemeinschaft & Entwicklung", "description": "Menschen helfen und Gemeinschaften durch lokale Initiativen und Zusammenarbeit stärken." },
+      "donations": { "title": "Spenden & Wasserinfrastruktur", "description": "Hilfspakete bereitstellen und Zugang zu sauberem Wasser für alle Bedürftigen ermöglichen." },
+      "education": { "title": "Bildung & Schutz", "description": "Zugang zu qualitativ hochwertiger Bildung und sichere Umgebungen für alle Gemeinschaftsmitglieder schaffen." },
+      "justice": { "title": "Soziale Gerechtigkeit", "description": "Gleiche Chancen für alle schaffen, unabhängig von Herkunft oder sozialem Status." },
+      "culture": { "title": "Kultur & Traditionen", "description": "Kulturelle Werte bewahren und teilen, um die reiche Geschichte und Identität zu schützen." },
+      "local": { "title": "Lokales Engagement", "description": "Direkte Zusammenarbeit mit lokalen Gemeinschaften für nachhaltige Wirkung." }
     },
     "team": {
-      "title": "Unser Team",
-      "description": "Lernen Sie die Menschen hinter der Stiftung Laasara kennen."
+      "title": "Unser",
+      "titleHighlight": "Team",
+      "description": "Lernen Sie die engagierten Menschen kennen, die daran arbeiten, unsere Mission zu verwirklichen.",
+      "roles": {
+        "chairman": "Vorsitzender",
+        "viceChairman": "Stellvertretender Vorsitzender",
+        "treasurer": "Schatzmeister",
+        "treasurer2": "2. Schatzmeister",
+        "secretary": "Sekretär"
+      }
     }
   },
   "footer": {
@@ -154,9 +180,10 @@
   },
   "common": {
     "loading": "Wird geladen...",
-    "error": "Etwas ist schief gelaufen",
+    "error": "Ein Fehler ist aufgetreten",
     "readMore": "Mehr lesen",
     "back": "Zurück",
-    "perMonth": "pro Monat"
+    "perMonth": "pro Monat",
+    "donate": "Spenden"
   }
 }

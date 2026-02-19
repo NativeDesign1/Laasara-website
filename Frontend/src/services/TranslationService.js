@@ -10,11 +10,12 @@ const LANGUAGE_MAP = {
   'fr': 'FR',
   'de': 'DE',
   'ar': 'AR', // DeepL supports Arabic
-  'da': 'DA'
+  'da': 'DA',
+  'es': 'ES'
 };
 
 // Languages that DeepL supports
-const SUPPORTED_LANGUAGES = ['fr', 'de', 'da']; // Arabic not fully supported by DeepL free
+const SUPPORTED_LANGUAGES = ['fr', 'de', 'da', 'es']; // Arabic not fully supported by DeepL free
 
 /**
  * Translate text using DeepL API
@@ -72,7 +73,7 @@ export const translateText = async (text, targetLang) => {
  */
 export const translateProject = async (project) => {
   const translations = [];
-  const targetLanguages = ['fr', 'de', 'da']; // Languages to auto-translate
+  const targetLanguages = ['fr', 'de', 'da', 'es']; // Languages to auto-translate
 
   for (const lang of targetLanguages) {
     try {

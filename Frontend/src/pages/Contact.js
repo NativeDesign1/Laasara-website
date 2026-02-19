@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
   // State to capture form input
   const [formData, setFormData] = useState({
     email: '',
@@ -46,7 +48,7 @@ const Contact = () => {
         }
       );
 
-      setSuccesText('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
+      setSuccesText(t('contact.form.success'));
       setFormData({
         email: '',
         subject: '',
@@ -57,7 +59,7 @@ const Contact = () => {
       setTimeout(() => setSuccesText(''), 5000);
     } catch (error) {
       console.error('Error sending message:', error);
-      setSuccesText('Er is een fout opgetreden bij het verzenden van uw bericht. Probeer opnieuw.');
+      setSuccesText(t('contact.form.error'));
     } finally {
       setIsLoading(false);
     }
@@ -68,9 +70,9 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-emerald-600 to-cyan-600 text-white py-24">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold mb-6">Contact opnemen</h1>
+          <h1 className="text-6xl font-bold mb-6">{t('contact.title')}</h1>
           <p className="text-xl max-w-3xl mx-auto text-emerald-50">
-            Heb je vragen of wil je meer informatie? Neem gerust contact met ons op!
+            {t('contact.description')}
           </p>
         </div>
       </section>
@@ -82,7 +84,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">Contactgegevens</h2>
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">{t('contact.info.title')}</h2>
                 <div className="space-y-6">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
@@ -93,7 +95,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800">Email</h3>
+                      <h3 className="text-lg font-semibold text-gray-800">{t('contact.info.email')}</h3>
                       <p className="text-gray-600">info@laassaarafoundation.nl</p>
                     </div>
                   </div>
@@ -107,7 +109,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800">Telefoon</h3>
+                      <h3 className="text-lg font-semibold text-gray-800">{t('contact.info.phone')}</h3>
                       <p className="text-gray-600">+31 623044495</p>
                     </div>
                   </div>
@@ -122,7 +124,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800">Adres</h3>
+                      <h3 className="text-lg font-semibold text-gray-800">{t('contact.info.address')}</h3>
                       <p className="text-gray-600">Keulseplein 11<br />6043EX Roermond, NL</p>
                     </div>
                   </div>
@@ -135,7 +137,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 rounded-2xl shadow-sm">
                 <div>
                   <label htmlFor="email" className="block mb-3 text-sm font-semibold text-gray-800">
-                    Je e-mailadres
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
@@ -143,14 +145,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                    placeholder="jouw@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     required
                   />
                 </div>
 
                 <div>
                   <label htmlFor="subject" className="block mb-3 text-sm font-semibold text-gray-800">
-                    Onderwerp
+                    {t('contact.form.subject')}
                   </label>
                   <input
                     type="text"
@@ -158,14 +160,14 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                    placeholder="Waar gaat je bericht over?"
+                    placeholder={t('contact.form.subjectPlaceholder')}
                     required
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block mb-3 text-sm font-semibold text-gray-800">
-                    Je bericht
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
@@ -173,7 +175,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
-                    placeholder="Vertel ons wat je wilt..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     required
                   ></textarea>
                 </div>
@@ -187,12 +189,12 @@ const Contact = () => {
                       : 'hover:shadow-lg hover:scale-105'
                   }`}
                 >
-                  {isLoading ? 'Bezig met verzenden...' : 'Verstuur bericht'}
+                  {isLoading ? t('contact.form.sending') : t('contact.form.send')}
                 </button>
 
                 {succesText && (
                   <div className={`p-4 rounded-lg text-center font-medium ${
-                    succesText.includes('Bedankt') 
+                    succesText === t('contact.form.success')
                       ? 'bg-emerald-100 text-emerald-700 border border-emerald-300' 
                       : 'bg-red-100 text-red-700 border border-red-300'
                   }`}>

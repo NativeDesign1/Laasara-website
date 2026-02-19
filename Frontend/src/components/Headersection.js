@@ -12,7 +12,7 @@ function Home() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 sm:px-6 py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div>
+          <div className="flex flex-col justify-center">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
               {t('home.hero.title')} <span className="text-emerald-600">{t('home.hero.titleHighlight')}</span>
             </h2>
@@ -35,12 +35,12 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative order-first lg:order-last">
+          <div className="relative order-first lg:order-last flex items-center">
             <img
               src={headerImage}
               fetchPriority="high"
               alt="Laassara Foundation"
-              className="rounded-2xl w-full object-cover h-[300px] sm:h-[400px] lg:h-[500px]"
+              className="rounded-2xl w-full object-cover h-[300px] sm:h-[400px] lg:h-[450px]"
             />
           </div>
         </div>
