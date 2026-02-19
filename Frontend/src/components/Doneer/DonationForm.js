@@ -45,7 +45,7 @@ const DonationForm = () => {
                 </label>
                 <div className="relative group">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                        <Euro className="text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+                        <Euro className="text-gray-400 group-hover:text-emerald-600 transition-colors duration-200" />
                     </div>
                     <input
                         id="amount"
@@ -53,9 +53,9 @@ const DonationForm = () => {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         className="w-full pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-xl
-                            focus:ring-4 focus:ring-blue-100 focus:border-blue-500
+                            focus:ring-4 focus:ring-emerald-100 focus:border-emerald-500
                             transition-all duration-200 outline-none
-                            group-hover:border-blue-300"
+                            group-hover:border-emerald-300"
                         placeholder="0.00"
                     />
                 </div>
@@ -73,9 +73,9 @@ const DonationForm = () => {
                     <button
                         key={quickAmount}
                         onClick={() => setAmount(quickAmount)}
-                        className="py-2 px-4 text-sm font-medium rounded-lg border-2 border-gray-200
-                            hover:border-blue-500 hover:bg-blue-50 transition-all duration-200
-                            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="py-2.5 px-4 text-sm font-medium rounded-lg border border-gray-200
+                            hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-200
+                            focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                     >
                         €{quickAmount}
                     </button>
@@ -91,10 +91,10 @@ const DonationForm = () => {
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Voeg een opmerking toe bij uw donatie..."
                     rows={3}
-                    className="w-full px-4 py-3 text-gray-700 border-2 border-gray-200 rounded-xl
-                        focus:ring-4 focus:ring-blue-100 focus:border-blue-500
+                    className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-lg
+                        focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500
                         transition-all duration-200 outline-none
-                        hover:border-blue-300"
+                        hover:border-emerald-300"
                 />
             </div>
 
@@ -102,12 +102,11 @@ const DonationForm = () => {
             <button
                 onClick={createPaymentIntent}
                 disabled={!amount || isPaymentIntentCreated}
-                className={`w-full py-4 px-6 rounded-xl text-white text-lg font-semibold
-                    transition-all duration-300 transform hover:scale-[1.02]
-                    ${!amount ? 'bg-gray-400 cursor-not-allowed' :
-                    isPaymentIntentCreated ? 'bg-green-500 cursor-not-allowed' :
-                    'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}
-                    shadow-md hover:shadow-lg`}
+                className={`w-full py-3.5 px-6 rounded-lg text-white font-semibold
+                    transition-colors duration-200
+                    ${!amount ? 'bg-gray-300 cursor-not-allowed' :
+                    isPaymentIntentCreated ? 'bg-emerald-500 cursor-not-allowed' :
+                    'bg-emerald-600 hover:bg-emerald-700'}`}
             >
                 {isPaymentIntentCreated ? '✓ Bedrag Gekozen' : 'Doorgaan met Doneren'}
             </button>

@@ -75,33 +75,33 @@ const SubscriptionForm = () => {
     control: (provided, state) => ({
       ...provided,
       padding: "0.5rem",
-      borderRadius: "1rem",
-      border: "2px solid",
-      borderColor: state.isFocused ? "#3B82F6" : "#E5E7EB",
-      boxShadow: state.isFocused ? "0 0 0 3px rgba(59, 130, 246, 0.1)" : "none",
+      borderRadius: "0.5rem",
+      border: "1px solid",
+      borderColor: state.isFocused ? "#059669" : "#E5E7EB",
+      boxShadow: state.isFocused ? "0 0 0 2px rgba(5, 150, 105, 0.1)" : "none",
       "&:hover": {
-        borderColor: "#3B82F6",
+        borderColor: "#059669",
       },
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected
-        ? "#3B82F6"
+        ? "#059669"
         : state.isFocused
-          ? "#EFF6FF"
+          ? "#ECFDF5"
           : "white",
       color: state.isSelected ? "white" : "#1F2937",
       padding: "0.75rem 1rem",
       cursor: "pointer",
       "&:active": {
-        backgroundColor: "#2563EB",
+        backgroundColor: "#047857",
       },
     }),
     menu: (provided) => ({
       ...provided,
-      borderRadius: "1rem",
+      borderRadius: "0.5rem",
       overflow: "hidden",
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
     }),
   };
 
@@ -140,14 +140,14 @@ const SubscriptionForm = () => {
         <button
           type="submit"
           disabled={isProcessing}
-          className={`w-full py-4 px-6 rounded-xl text-white text-lg font-semibold
-            transition-all duration-300 transform hover:scale-[1.02]
+          className={`w-full py-3.5 px-6 rounded-lg text-white font-semibold
+            transition-colors duration-200
             ${
               isProcessing
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-emerald-600 hover:bg-emerald-700"
             }
-            shadow-md hover:shadow-lg flex items-center justify-center space-x-2`}
+            flex items-center justify-center space-x-2`}
         >
           {isProcessing ? (
             <>
