@@ -5,135 +5,135 @@ import headerImage from "../assets/headerPic1.png"
 
 function Home() {
   return (
-    <div className="pt-32">
-      <section className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <div className="pt-28 md:pt-32">
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 sm:px-6 py-12 md:py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <h2 className="text-6xl font-bold text-gray-800 mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
               Samen maken we het <span className="text-emerald-600">verschil</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-10 leading-relaxed">
               Stichting Laassara zet zich in om het dorp Laassara en haar bewoners te helpen.
               De stichting is opgericht door een groep mensen die zich betrokken voelen bij de
               gemeenschap en zich willen inzetten om de levensomstandigheden van de mensen te verbeteren.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 to="/over-ons"
-                className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition inline-flex items-center gap-2"
+                className="bg-emerald-600 text-white px-6 md:px-8 py-3.5 md:py-4 rounded-lg font-semibold hover:bg-emerald-700 transition inline-flex items-center justify-center gap-2"
               >
                 Lees meer over ons
-                <ArrowRight size={20} />
+                <ArrowRight size={18} />
               </Link>
               <Link
                 to="/doneer"
-                className="bg-white border-2 border-emerald-500 text-emerald-600 px-8 py-4 rounded-lg font-semibold hover:bg-emerald-50 transition"
+                className="bg-white border-2 border-emerald-600 text-emerald-600 px-6 md:px-8 py-3.5 md:py-4 rounded-lg font-semibold hover:bg-emerald-50 transition text-center"
               >
                 Doneer nu
               </Link>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -top-8 -left-8 w-full h-full bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-3xl opacity-20"></div>
+          <div className="relative order-first lg:order-last">
             <img
               src={headerImage}
               fetchPriority="high"
               alt="Laassara Foundation"
-              className="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]"
+              className="rounded-2xl w-full object-cover h-[300px] sm:h-[400px] lg:h-[500px]"
             />
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-emerald-500 to-cyan-500 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white/10 backdrop-blur-sm text-white p-10 rounded-2xl">
-              <div className="text-6xl font-bold mb-3">15+</div>
-              <div className="text-emerald-100 font-medium text-lg">Projecten</div>
+      {/* Stats Section */}
+      <section className="bg-emerald-600 py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center text-white">
+            <div className="p-4 md:p-8">
+              <div className="text-3xl md:text-5xl lg:text-6xl font-bold mb-1 md:mb-2">15+</div>
+              <div className="text-emerald-100 text-sm md:text-base font-medium">Projecten</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm text-white p-10 rounded-2xl">
-              <div className="text-6xl font-bold mb-3">15+</div>
-              <div className="text-cyan-100 font-medium text-lg">Jaren</div>
+            <div className="p-4 md:p-8">
+              <div className="text-3xl md:text-5xl lg:text-6xl font-bold mb-1 md:mb-2">15+</div>
+              <div className="text-emerald-100 text-sm md:text-base font-medium">Jaren actief</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm text-white p-10 rounded-2xl">
-              <div className="text-6xl font-bold mb-3">15+</div>
-              <div className="text-teal-100 font-medium text-lg">Actief Gepland</div>
+            <div className="p-4 md:p-8">
+              <div className="text-3xl md:text-5xl lg:text-6xl font-bold mb-1 md:mb-2">100%</div>
+              <div className="text-emerald-100 text-sm md:text-base font-medium">Transparant</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-800 mb-6">
-              Waarom <span className="text-emerald-600">Laassara Foundation</span>?
+      {/* Why Us Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <p className="text-sm font-medium tracking-wider text-emerald-600 uppercase mb-3">
+              Waarom wij
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+              Waarom Laassara Foundation?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We geloven in het creëren van duurzame impact door middel van onderwijs, ontwikkeling en gemeenschapsondersteuning.
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+              We geloven in het creëren van duurzame impact door middel van onderwijs en gemeenschapsondersteuning.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="group">
-              <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 p-8 rounded-2xl hover:shadow-xl transition h-full">
-                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                  <Heart className="text-white" size={36} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Gemeenschap eerst</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">
-                  We luisteren naar de behoeften van de lokale gemeenschap en werken samen aan oplossingen die echt verschil maken.
-                </p>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-gray-50 p-6 md:p-8 rounded-xl hover:bg-emerald-50 transition-colors">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-600 rounded-xl flex items-center justify-center mb-5 md:mb-6">
+                <Heart className="text-white" size={28} />
               </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 md:mb-4">Gemeenschap eerst</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We luisteren naar de behoeften van de lokale gemeenschap en werken samen aan oplossingen die echt verschil maken.
+              </p>
             </div>
 
-            <div className="group">
-              <div className="bg-gradient-to-br from-cyan-50 to-teal-50 p-8 rounded-2xl hover:shadow-xl transition h-full">
-                <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                  <Users className="text-white" size={36} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Transparant & Eerlijk</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">
-                  Volledige transparantie in hoe we donaties besteden. Elk project wordt gedocumenteerd en gerapporteerd.
-                </p>
+            <div className="bg-gray-50 p-6 md:p-8 rounded-xl hover:bg-emerald-50 transition-colors">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-600 rounded-xl flex items-center justify-center mb-5 md:mb-6">
+                <Users className="text-white" size={28} />
               </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 md:mb-4">Transparant & Eerlijk</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Volledige transparantie in hoe we donaties besteden. Elk project wordt gedocumenteerd en gerapporteerd.
+              </p>
             </div>
 
-            <div className="group">
-              <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-8 rounded-2xl hover:shadow-xl transition h-full">
-                <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                  <Gift className="text-white" size={36} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Duurzame impact</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">
-                  We richten ons op projecten die langdurige positieve verandering brengen in de levens van mensen.
-                </p>
+            <div className="bg-gray-50 p-6 md:p-8 rounded-xl hover:bg-emerald-50 transition-colors">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-600 rounded-xl flex items-center justify-center mb-5 md:mb-6">
+                <Gift className="text-white" size={28} />
               </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 md:mb-4">Duurzame impact</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We richten ons op projecten die langdurige positieve verandering brengen in de levens van mensen.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-gray-50 to-emerald-50 py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-12 text-center">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
               Klaar om het verschil te maken?
             </h2>
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-10">
               Elke bijdrage, groot of klein, helpt ons om levens te veranderen en gemeenschappen te versterken.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link
                 to="/doneer"
-                className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-10 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition text-lg"
+                className="bg-emerald-600 text-white px-8 md:px-10 py-3.5 md:py-4 rounded-lg font-semibold hover:bg-emerald-700 transition text-lg"
               >
                 Doneer nu
               </Link>
               <Link
                 to="/projecten"
-                className="bg-white border-2 border-gray-300 text-gray-700 px-10 py-4 rounded-lg font-semibold hover:border-emerald-500 hover:text-emerald-600 transition text-lg"
+                className="border-2 border-gray-300 text-gray-700 px-8 md:px-10 py-3.5 md:py-4 rounded-lg font-semibold hover:border-emerald-600 hover:text-emerald-600 transition text-lg"
               >
                 Bekijk projecten
               </Link>

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { X, ZoomIn, ChevronLeft, ChevronRight, Play, Heart, Calendar } from 'lucide-react';
+import { X, ZoomIn, ChevronLeft, ChevronRight, Play, Calendar } from 'lucide-react';
 
 function ProjectModal({ project, onClose }) {
   const videoRefs = useRef([]);
@@ -62,16 +62,16 @@ function ProjectModal({ project, onClose }) {
     <>
       {/* Main Modal */}
       <div 
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={(e) => e.target === e.currentTarget && onClose()}
       >
-        <div className="bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl">
+        <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
           {/* Header */}
-          <div className="sticky top-0 bg-gradient-to-r from-emerald-600 to-cyan-600 px-6 py-5 flex justify-between items-center z-10">
+          <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-5 flex justify-between items-start z-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">{project.title}</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">{project.title}</h2>
               {project.created_at && (
-                <p className="text-emerald-100 text-sm mt-1 flex items-center gap-1">
+                <p className="text-gray-400 text-sm mt-1 flex items-center gap-1.5">
                   <Calendar size={14} />
                   {new Date(project.created_at).toLocaleDateString('nl-NL', { 
                     year: 'numeric', 
@@ -82,42 +82,42 @@ function ProjectModal({ project, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition"
+              className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg p-2 transition -mr-2 -mt-1"
               aria-label="Sluiten"
             >
-              <X size={28} />
+              <X size={24} />
             </button>
           </div>
 
           {/* Content */}
-          <div className="overflow-y-auto max-h-[calc(95vh-80px)]">
+          <div className="overflow-y-auto max-h-[calc(90vh-88px)]">
             {/* Image Gallery */}
             <div className="p-6 pb-0">
               {/* Main featured image */}
               <div 
-                className="relative rounded-2xl overflow-hidden cursor-pointer group mb-4 bg-gray-100"
+                className="relative rounded-lg overflow-hidden cursor-pointer group mb-4 bg-gray-100"
                 onClick={() => openImageGallery(0)}
               >
                 <img
                   src={project.image_url}
                   loading="lazy"
                   alt={project.title}
-                  className="w-full h-[300px] sm:h-[400px] object-contain bg-gray-50"
+                  className="w-full h-[300px] sm:h-[380px] object-contain bg-gray-50"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                  <div className="bg-white/90 rounded-full p-3 opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                    <ZoomIn className="text-gray-800" size={24} />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                  <div className="bg-white rounded-full p-3 opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
+                    <ZoomIn className="text-gray-700" size={20} />
                   </div>
                 </div>
               </div>
 
               {/* Thumbnail strip */}
               {allImages.length > 1 && (
-                <div className="flex gap-3 overflow-x-auto pb-4">
+                <div className="flex gap-2 overflow-x-auto pb-4">
                   {allImages.map((image, index) => (
                     <div
                       key={index}
-                      className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
+                      className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden cursor-pointer transition-all duration-200 ${
                         index === 0 ? 'ring-2 ring-emerald-500 ring-offset-2' : 'hover:ring-2 hover:ring-gray-300'
                       }`}
                       onClick={() => openImageGallery(index)}
@@ -135,31 +135,27 @@ function ProjectModal({ project, onClose }) {
 
             {/* Project Info */}
             <div className="p-6 pt-2">
-              {/* Description Card */}
-              <div className="bg-gradient-to-br from-gray-50 to-emerald-50/30 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                  <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+              {/* Description */}
+              <div className="mb-8">
+                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">
                   Over dit project
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-gray-600 leading-relaxed">
                   {project.full_description || project.description}
                 </p>
               </div>
 
               {/* Details & Impact Grid */}
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {project.details && project.details.length > 0 && (
-                  <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                    <h4 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                      <span className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
-                        <span className="text-cyan-600 text-sm">✓</span>
-                      </span>
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">
                       Details
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {project.details.map((detail, index) => (
                         <li key={index} className="flex items-start gap-3 text-gray-600">
-                          <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+                          <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -168,32 +164,29 @@ function ProjectModal({ project, onClose }) {
                 )}
 
                 {project.impact && (
-                  <div className="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl p-6 text-white">
-                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
-                      <Heart size={20} />
+                  <div className="bg-gray-50 rounded-lg p-5">
+                    <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">
                       Impact
                     </h4>
-                    <p className="leading-relaxed opacity-95">{project.impact}</p>
+                    <p className="text-gray-600 leading-relaxed">{project.impact}</p>
                   </div>
                 )}
               </div>
 
               {/* Videos Section */}
               {project.videos && project.videos.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <span className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
-                      <Play className="text-red-500" size={16} />
-                    </span>
+                <div className="mb-8">
+                  <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                    <Play size={14} />
                     Video's ({project.videos.length})
                   </h4>
                   <div className="grid gap-4">
                     {project.videos.map((video, index) => (
-                      <div key={index} className="bg-gray-900 rounded-2xl overflow-hidden shadow-lg">
+                      <div key={index} className="bg-gray-900 rounded-lg overflow-hidden">
                         <video 
                           ref={el => videoRefs.current[index] = el}
                           controls 
-                          className="w-full max-h-[450px] object-contain"
+                          className="w-full max-h-[400px] object-contain"
                           onPlay={() => handleVideoPlay(index)}
                           playsInline
                           preload="metadata"
@@ -208,21 +201,21 @@ function ProjectModal({ project, onClose }) {
               )}
 
               {/* Call to Action */}
-              <div className="bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <div className="border-t border-gray-100 pt-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
                 <div>
-                  <h4 className="text-lg font-bold text-gray-800">Wil je dit project steunen?</h4>
-                  <p className="text-gray-600 text-sm">Jouw bijdrage maakt het verschil!</p>
+                  <h4 className="font-medium text-gray-900">Wil je dit project steunen?</h4>
+                  <p className="text-gray-500 text-sm">Jouw bijdrage maakt het verschil.</p>
                 </div>
                 <div className="flex gap-3 w-full sm:w-auto">
                   <a 
                     href="/doneer" 
-                    className="flex-1 sm:flex-none bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 text-center"
+                    className="flex-1 sm:flex-none bg-emerald-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors text-center text-sm"
                   >
                     Doneer nu
                   </a>
                   <button
                     onClick={onClose}
-                    className="px-6 py-3 border-2 border-gray-200 rounded-xl font-semibold hover:border-gray-300 hover:bg-gray-50 transition text-gray-600"
+                    className="px-5 py-2.5 border border-gray-200 rounded-lg font-medium hover:border-gray-300 hover:bg-gray-50 transition text-gray-600 text-sm"
                   >
                     Sluiten
                   </button>
@@ -242,10 +235,10 @@ function ProjectModal({ project, onClose }) {
           {/* Close button */}
           <button
             onClick={() => setExpandedImage(null)}
-            className="absolute top-4 right-4 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition z-10"
+            className="absolute top-4 right-4 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-lg p-2.5 transition z-10"
             aria-label="Sluiten"
           >
-            <X size={28} />
+            <X size={24} />
           </button>
 
           {/* Navigation arrows */}
@@ -253,24 +246,24 @@ function ProjectModal({ project, onClose }) {
             <>
               <button
                 onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-lg p-2.5 transition"
                 aria-label="Vorige afbeelding"
               >
-                <ChevronLeft size={32} />
+                <ChevronLeft size={28} />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-lg p-2.5 transition"
                 aria-label="Volgende afbeelding"
               >
-                <ChevronRight size={32} />
+                <ChevronRight size={28} />
               </button>
             </>
           )}
 
           {/* Image counter */}
           {allImages.length > 1 && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 text-white/80 px-4 py-2 rounded-lg text-sm font-medium">
               {currentImageIndex + 1} / {allImages.length}
             </div>
           )}
