@@ -5,16 +5,65 @@ import { supabase } from '../../lib/supabaseClient';
 import { ArrowRight, Image, Film } from 'lucide-react';
 
 const ProjectenNew = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedProject, setSelectedProject] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [translations, setTranslations] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch projects on mount
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  // Fetch translations when language changes
+  useEffect(() => {
+    if (projects.length > 0) {
+      fetchTranslations();
+    }
+  }, [i18n.language, projects.length]);
+
+  // Fetch translations for current language
+  const fetchTranslations = async () => {
+    try {
+      const currentLang = i18n.language;
+      const projectIds = projects.map(p => p.id);
+      
+      const { data, error } = await supabase
+        .from('project_translations')
+        .select('project_id, title, description')
+        .eq('language_code', currentLang)
+        .in('project_id', projectIds);
+
+      if (error) {
+        console.warn('Translations table may not exist yet:', error.message);
+        return;
+      }
+
+      // Create a map of project_id -> translation
+      const translationsMap = {};
+      data?.forEach(t => {
+        translationsMap[t.project_id] = {
+          title: t.title,
+          description: t.description
+        };
+      });
+      setTranslations(translationsMap);
+    } catch (err) {
+      console.warn('Could not fetch translations:', err);
+    }
+  };
+
+  // Helper function to get translated content with fallback
+  const getTranslated = (project, field) => {
+    const translation = translations[project.id];
+    if (translation && translation[field]) {
+      return translation[field];
+    }
+    return project[field]; // Fallback to original (Dutch)
+  };
 
 const fetchProjects = async () => {
   try {
@@ -185,7 +234,7 @@ const fetchProjects = async () => {
                 <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] mb-4 md:mb-5">
                   <img
                     src={project.image_url}
-                    alt={project.title}
+                    alt={getTranslated(project, 'title')}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       e.target.src = '/fallback-image.jpg';
@@ -212,10 +261,10 @@ const fetchProjects = async () => {
                 {/* Content - flex-grow pushes button to bottom */}
                 <div className="flex flex-col flex-grow">
                   <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-gray-600 transition-colors line-clamp-2">
-                    {project.title}
+                    {getTranslated(project, 'title')}
                   </h3>
                   <p className="text-gray-500 text-sm md:text-base leading-relaxed line-clamp-2 mb-4 flex-grow">
-                    {project.description}
+                    {getTranslated(project, 'description')}
                   </p>
                   <span className="inline-flex items-center text-sm font-medium text-emerald-600 group-hover:gap-2 transition-all mt-auto">
                     {t('projects.viewProject')}
@@ -242,7 +291,11 @@ const fetchProjects = async () => {
 
       {/* Modal */}
       <ProjectModal 
-        project={selectedProject} 
+        project={selectedProject ? {
+          ...selectedProject,
+          title: getTranslated(selectedProject, 'title'),
+          description: getTranslated(selectedProject, 'description')
+        } : null} 
         onClose={() => setSelectedProject(null)} 
       />
 
