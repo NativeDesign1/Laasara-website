@@ -45,15 +45,15 @@ const LanguageSelector = ({ variant = 'default' }) => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-1.5 transition-colors ${
+        className={`flex items-center gap-2 transition-colors ${
           isTopbar 
             ? 'text-white/90 hover:text-white text-xs' 
             : 'text-gray-700 hover:text-emerald-600 text-sm p-2 -m-2 md:p-0 md:m-0'
         }`}
         aria-label="Select language"
       >
-        <Globe className={isTopbar ? 'w-3.5 h-3.5' : 'w-5 h-5 md:w-4 md:h-4'} />
-        <span>{currentLanguage.flag}</span>
+        <Globe className={isTopbar ? 'w-3.5 h-3.5' : 'w-7 h-7 md:w-5 md:h-5'} />
+        <span className="text-lg md:text-base">{currentLanguage.flag}</span>
         <span className={isTopbar ? 'hidden md:inline' : 'hidden sm:inline'}>{currentLanguage.code.toUpperCase()}</span>
         <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
