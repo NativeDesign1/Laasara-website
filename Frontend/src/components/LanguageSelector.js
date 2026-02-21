@@ -47,14 +47,14 @@ const LanguageSelector = ({ variant = 'default' }) => {
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-1.5 transition-colors ${
           isTopbar 
-            ? 'bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded text-white text-xs font-medium' 
+            ? 'bg-white/20 hover:bg-white/30 px-2 py-0.5 rounded text-white font-medium' 
             : 'text-gray-700 hover:text-emerald-600 text-sm p-2 -m-2 md:p-0 md:m-0'
         }`}
         aria-label="Select language"
       >
         {!isTopbar && <Globe className="w-7 h-7 md:w-5 md:h-5" />}
-        <span className={isTopbar ? 'text-sm' : 'text-lg md:text-base'}>{currentLanguage.flag}</span>
-        <span>{currentLanguage.code.toUpperCase()}</span>
+        <span>{currentLanguage.flag}</span>
+        {!isTopbar && <span className="hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>}
         <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 

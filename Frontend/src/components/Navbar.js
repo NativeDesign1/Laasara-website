@@ -23,32 +23,43 @@ function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white z-50">
-      <div className="bg-emerald-600 text-white py-2">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
-          {/* Contact info links */}
-          <div className="flex items-center gap-4">
-            <a href="mailto:info@laassaarafoundation.nl" className="flex items-center gap-1.5 hover:text-emerald-100 transition">
-              <Mail size={14} />
-              <span>info@laassaarafoundation.nl</span>
-            </a>
-            <a href="tel:+31623044495" className="hidden sm:flex items-center gap-1.5 hover:text-emerald-100 transition">
-              <Phone size={14} />
-              <span>+31 6 2304 4495</span>
-            </a>
+      {/* Topbar */}
+      <div className="bg-emerald-600 text-white py-1.5 text-xs">
+        <div className="container mx-auto px-4">
+          {/* Desktop layout */}
+          <div className="hidden md:flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <a href="mailto:info@laassaarafoundation.nl" className="flex items-center gap-1.5 hover:text-emerald-100 transition">
+                <Mail size={12} />
+                <span>info@laassaarafoundation.nl</span>
+              </a>
+              <span className="w-px h-3 bg-white/30"></span>
+              <a href="tel:+31623044495" className="flex items-center gap-1.5 hover:text-emerald-100 transition">
+                <Phone size={12} />
+                <span>+31 6 2304 4495</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1.5 bg-white/15 px-2 py-0.5 rounded font-medium">
+                <BadgeCheck size={11} />
+                {t('nav.anbi')}
+              </span>
+              <span className="w-px h-3 bg-white/30"></span>
+              <span className="flex items-center gap-1.5">
+                <Heart size={12} />
+                <span>NL67 TRIO 0320 5916 89</span>
+              </span>
+              <span className="w-px h-3 bg-white/30"></span>
+              <LanguageSelector variant="topbar" />
+            </div>
           </div>
           
-          {/* ANBI + IBAN + Language rechts */}
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 bg-white/15 px-2.5 py-0.5 rounded text-xs font-medium">
-              <BadgeCheck size={12} />
-              {t('nav.anbi')}
-            </span>
-            <span className="hidden sm:block w-px h-4 bg-white/30"></span>
-            <span className="flex items-center gap-1.5">
-              <Heart size={14} />
-              <span className="font-medium">NL67 TRIO 0320 5916 89</span>
-            </span>
-            <span className="hidden sm:block w-px h-4 bg-white/30"></span>
+          {/* Mobile layout */}
+          <div className="flex md:hidden justify-between items-center">
+            <a href="mailto:info@laassaarafoundation.nl" className="flex items-center gap-1.5">
+              <Mail size={12} />
+              <span>info@laassaarafoundation.nl</span>
+            </a>
             <LanguageSelector variant="topbar" />
           </div>
         </div>
