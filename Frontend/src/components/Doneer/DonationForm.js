@@ -14,7 +14,9 @@ const DonationForm = () => {
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
     const [isPaymentIntentCreated, setIsPaymentIntentCreated] = useState(false);
-    const [comment, setComment] = useState(''); 
+    const [comment, setComment] = useState('');
+    const [email, setEmail] = useState('');
+    const [wantReceipt, setWantReceipt] = useState(true); 
 
     const createPaymentIntent = async () => {
         if (amount < 1) {
@@ -28,7 +30,8 @@ const DonationForm = () => {
             const response = await axios.post('https://laasara-backend-8a70df67d523.herokuapp.com/create-payment-intent', {
                 amount: amount,
                 currency: 'eur',
-                comment: comment
+                comment: comment,
+                email: wantReceipt && email ? email : null
             });
             setClientSecret(response.data.clientSecret);
             setIsPaymentIntentCreated(true);
@@ -83,6 +86,37 @@ const DonationForm = () => {
                     </button>
                 ))}
             </div>
+
+            {/* Email Input */}
+            <div className="space-y-4">
+                <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+                    {t('donate.oneTime.email')}
+                </label>
+                <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t('donate.oneTime.emailPlaceholder')}
+                    className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-lg
+                        focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500
+                        transition-all duration-200 outline-none
+                        hover:border-emerald-300"
+                />
+                
+                {/* Receipt Checkbox */}
+                <label className="flex items-center space-x-3 cursor-pointer">
+                    <input
+                        type="checkbox"
+                        checked={wantReceipt}
+                        onChange={(e) => setWantReceipt(e.target.checked)}
+                        className="w-5 h-5 text-emerald-600 border-gray-300 rounded
+                            focus:ring-emerald-500 cursor-pointer"
+                    />
+                    <span className="text-gray-700">{t('donate.oneTime.wantReceipt')}</span>
+                </label>
+            </div>
+
             <div className="space-y-4">
                 <label htmlFor="comment" className="block text-lg font-medium text-gray-700">
                     {t('donate.oneTime.comment')}

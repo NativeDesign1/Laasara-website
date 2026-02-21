@@ -83,16 +83,23 @@ app.post("/api/contact", async (req, res) => {
 
 // Stripe payment intent route
 app.post("/create-payment-intent", async (req, res) => {
-  const { amount, currency, comment } = req.body;
+  const { amount, currency, comment, email } = req.body;
   console.log("comment = ", typeof comment);
 
   try {
-    const paymentIntent = await stripe.paymentIntents.create({
+    const paymentIntentData = {
       amount: amount * 100,
       currency: currency || "eur",
       payment_method_types: ["card", "ideal", "bancontact", "sepa_debit"],
       metadata: { mededeling: comment },
-    });
+    };
+
+    // Add receipt_email if provided (Stripe will send automatic receipt)
+    if (email) {
+      paymentIntentData.receipt_email = email;
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create(paymentIntentData);
 
     res.send({
       clientSecret: paymentIntent.client_secret,
