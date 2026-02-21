@@ -104,8 +104,7 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 
 // Determine the domain based on the environment
-const isProduction = process.env.NODE_ENV === "production";
-const DOMAIN = isProduction ? "https://laassara.nl" : "http://localhost:3000";
+const DOMAIN = process.env.DOMAIN || "https://laassara.nl";
 
 // Stripe subscription session route
 app.post("/create-subscription-session", async (req, res) => {
