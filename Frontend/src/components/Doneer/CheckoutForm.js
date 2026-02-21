@@ -21,7 +21,7 @@ const CheckoutForm = ({ amount }) => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'http://localhost:3000/doneer',  // Replace with your return URL
+        return_url: `${window.location.origin}/doneer`,
       },
     });
 
