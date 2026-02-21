@@ -7,7 +7,7 @@ import SubscriptionForm from "../../src/components/Doneer/MemberShipForm";
 import { Heart, Users, Shield, BadgeCheck, Banknote, CheckCircle, X } from 'lucide-react';
 
 const stripePromise = loadStripe(
-  "pk_test_51MlfU8HM8dE1aPuehjCiSNdPMvzYUcL27JQIC8DTkf4PgMNcPLTBOx3re5eDAexkYFp7Wa9ZioU4H6mhEseIQvJy00Wd1AGhRV"
+  "pk_live_51MlfU8HM8dE1aPueIeK7Hhchs0uj8WUbs0BjxPxPSbSSGztV6PqtSX89BNWf5XhV6Oy3Gvc4QyXEDi430uHrRdAQ0007fTaCSK"
 );
 
 const Doneer = () => {
@@ -16,7 +16,6 @@ const Doneer = () => {
   const [paymentType, setPaymentType] = useState('');
 
   useEffect(() => {
-    // Check URL params for payment confirmation
     const urlParams = new URLSearchParams(window.location.search);
     const redirectStatus = urlParams.get('redirect_status');
     const paymentIntent = urlParams.get('payment_intent');
@@ -25,7 +24,6 @@ const Doneer = () => {
     if (redirectStatus === 'succeeded' && paymentIntent) {
       setShowSuccess(true);
       setPaymentType('donation');
-      // Clean URL without reloading
       window.history.replaceState({}, '', window.location.pathname);
     } else if (sessionId) {
       setShowSuccess(true);
@@ -38,10 +36,9 @@ const Doneer = () => {
     <Elements stripe={stripePromise}>
       <div className="bg-white pt-28 md:pt-32 pb-16">
         
-        {/* Success Modal */}
         {showSuccess && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center relative animate-fade-in">
+            <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center relative">
               <button 
                 onClick={() => setShowSuccess(false)}
                 className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
@@ -78,10 +75,6 @@ const Doneer = () => {
           </div>
         )}
 
-  return (
-    <Elements stripe={stripePromise}>
-      <div className="bg-white pt-28 md:pt-32 pb-16">
-        {/* Header Section */}
         <div className="bg-gradient-to-br from-emerald-50 to-white py-12 md:py-16 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <p className="text-sm font-medium tracking-wider text-emerald-600 uppercase mb-3">
@@ -96,11 +89,9 @@ const Doneer = () => {
           </div>
         </div>
 
-        {/* Cards Container */}
         <div className="container mx-auto px-4 sm:px-6 py-12 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             
-            {/* Membership Card */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-xl mb-4">
@@ -116,7 +107,6 @@ const Doneer = () => {
               <SubscriptionForm />
             </div>
 
-            {/* Donation Card */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-xl mb-4">
@@ -133,7 +123,6 @@ const Doneer = () => {
             </div>
           </div>
 
-          {/* Trust Indicators */}
           <div className="max-w-5xl mx-auto mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="bg-gray-50 p-5 md:p-6 rounded-xl text-center">
               <div className="inline-flex items-center justify-center w-10 h-10 bg-emerald-100 rounded-lg mb-3">
