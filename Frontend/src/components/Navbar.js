@@ -58,9 +58,15 @@ function Header() {
           <div className="flex md:hidden justify-between items-center">
             <a href="mailto:info@laassaarafoundation.nl" className="flex items-center gap-1.5">
               <Mail size={12} />
-              <span>info@laassaarafoundation.nl</span>
+              <span className="text-[10px]">info@laassaarafoundation.nl</span>
             </a>
-            <LanguageSelector variant="topbar" />
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1 bg-white/15 px-1.5 py-0.5 rounded text-[10px] font-medium">
+                <BadgeCheck size={10} />
+                {t('nav.anbi')}
+              </span>
+              <LanguageSelector variant="topbar" />
+            </div>
           </div>
         </div>
       </div>
