@@ -106,6 +106,13 @@
       "anbiDescription": "Fiscaal aftrekbaar (861878405)",
       "secure": "Veilig Doneren",
       "secureDescription": "Via beveiligde betaalmethoden"
+    },
+    "success": {
+      "title": "Bedankt voor uw bijdrage!",
+      "donationMessage": "Uw donatie is succesvol ontvangen. Dankzij uw steun kunnen wij ons werk voortzetten en levens verbeteren.",
+      "subscriptionMessage": "Uw lidmaatschap is succesvol geactiveerd. Welkom bij de Laassara familie!",
+      "emailNotice": "U ontvangt een bevestiging per e-mail.",
+      "close": "Sluiten"
     }
   },
   "contact": {

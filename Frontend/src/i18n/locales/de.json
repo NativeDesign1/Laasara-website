@@ -106,6 +106,13 @@
       "anbiDescription": "Steuerlich absetzbar (861878405)",
       "secure": "Sichere Spende",
       "secureDescription": "Über sichere Zahlungsmethoden"
+    },
+    "success": {
+      "title": "Vielen Dank für Ihren Beitrag!",
+      "donationMessage": "Ihre Spende wurde erfolgreich empfangen. Dank Ihrer Unterstützung können wir unsere Arbeit fortsetzen und Leben verbessern.",
+      "subscriptionMessage": "Ihre Mitgliedschaft wurde erfolgreich aktiviert. Willkommen in der Laassara-Familie!",
+      "emailNotice": "Sie erhalten eine Bestätigung per E-Mail.",
+      "close": "Schließen"
     }
   },
   "contact": {

@@ -106,6 +106,13 @@
       "anbiDescription": "Deducible de impuestos (861878405)",
       "secure": "Donación Segura",
       "secureDescription": "A través de métodos de pago seguros"
+    },
+    "success": {
+      "title": "¡Gracias por tu contribución!",
+      "donationMessage": "Tu donación ha sido recibida con éxito. Gracias a tu apoyo, podemos continuar nuestro trabajo y mejorar vidas.",
+      "subscriptionMessage": "Tu membresía ha sido activada con éxito. ¡Bienvenido a la familia Laassara!",
+      "emailNotice": "Recibirás una confirmación por correo electrónico.",
+      "close": "Cerrar"
     }
   },
   "contact": {

@@ -106,6 +106,13 @@
       "anbiDescription": "Skattefradrag (861878405)",
       "secure": "Sikker donation",
       "secureDescription": "Via sikre betalingsmetoder"
+    },
+    "success": {
+      "title": "Tak for dit bidrag!",
+      "donationMessage": "Din donation er modtaget. Takket være din støtte kan vi fortsætte vores arbejde og forbedre liv.",
+      "subscriptionMessage": "Dit medlemskab er blevet aktiveret. Velkommen til Laassara-familien!",
+      "emailNotice": "Du modtager en bekræftelse via e-mail.",
+      "close": "Luk"
     }
   },
   "contact": {
