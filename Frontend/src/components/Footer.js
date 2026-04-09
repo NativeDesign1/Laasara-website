@@ -25,10 +25,10 @@ const Footer = () => {
           <p>
             {t('footer.email')}:{" "}
             <a
-              href="mailto:info@laassaarafoundation.nl"
+              href="mailto:Info@laassarafoundation.nl"
               className="hover:underline"
             >
-              info@laassaarafoundation.nl
+              Info@laassarafoundation.nl
             </a>
           </p>
           <p>Phone: +31 623044495</p>
